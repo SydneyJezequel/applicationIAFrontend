@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
+
+
+
+/******************************* Pied de page de l'application *******************************/
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -7,9 +14,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+
+
+
+
+
+  /******************************* Constructeur *******************************/
   constructor() { }
 
+
+
+
+
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
+
+
+
+
+
 }
+

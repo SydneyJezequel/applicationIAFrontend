@@ -4,6 +4,7 @@
 
 <br>
 <br>
+<!-- Formulaire d'ajout d'une Personne -->
 <form (ngSubmit)="onSubmitPersonne()">
   <label for="nom">nom: </label>
   <input id="nom" [(ngModel)]="addPerson.nom" name="nom" placeholder="nom">
@@ -24,4 +25,5 @@
 
 <br>
 <br>
+<!-- Bouton de retour à la page principale -->
 <button [routerLink]="''">Retour à la liste des Personnes</button>

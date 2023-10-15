@@ -30,6 +30,7 @@ export class PersonneServiceService {
 
 
 
+
   /******************************* Constructeur *******************************/
   constructor(private http : HttpClient) { }
 
@@ -37,21 +38,33 @@ export class PersonneServiceService {
 
 
 
+
   /******************************* Méthodes controlleur *******************************/
+
+  /**
+   * Méthode qui renvoie la liste de toutes les personnes.
+   *
+   */
   public getAllPersonne():Observable<Personne[]>
   {
     return this.http.get<Personne[]>(this.getAll);
   }
 
 
-
+  /**
+   * Méthode qui renvoie une personne en fonction de son Id.
+   *
+   */
   public findPersonne(no_personne:number):Observable<Personne>
   {
     return this.http.get<Personne>(this.idPersonne+no_personne);
   }
 
 
-
+  /**
+   * Méthode qui ajoute une personne.
+   *
+   */
   public addPerson(personne : Personne):void
   {
    console.log(this.addPersonne, personne);
@@ -63,7 +76,10 @@ export class PersonneServiceService {
   }
 
 
-
+  /**
+   * Méthode qui supprime une personne.
+   *
+   */
   public delete(no_personne:number):void
   {
     console.log("Suppression : "+this.deletePersonne+no_personne);
@@ -77,12 +93,5 @@ export class PersonneServiceService {
 
 
 
-
-
-
-
-
 }
-
-
 

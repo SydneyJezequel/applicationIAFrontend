@@ -30,7 +30,7 @@ const routes: Routes = [
 
 
 
-/******************************* Module *******************************/
+/******************************* Module de Routage *******************************/
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

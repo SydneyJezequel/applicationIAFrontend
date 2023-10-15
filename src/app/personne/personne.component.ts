@@ -27,7 +27,6 @@ export class PersonneComponent implements OnInit {
   /******************************* Attributs *******************************/
   public personne !: Personne;
   public personnes !: Personne[];
-  public personneTrouve !: Personne;
   public no_personne !: number;
 
 
@@ -54,16 +53,18 @@ export class PersonneComponent implements OnInit {
 
 
 
-  /******************************* Méthodes controlleur *******************************/
+  /******************************* Méthodes *******************************/
+
+  /**
+   * Méthode qui renvoie la liste de toutes les personnes.
+   *
+   */
   public getAll():void
   {
     this.personneService.getAllPersonne().subscribe(
       (response: Personne[]) =>
       {
         this.personnes = response;
-        // Test :
-        console.log(this.personnes);
-        // Test :
       }),
       (error:HttpErrorResponse) =>
       {
@@ -73,16 +74,19 @@ export class PersonneComponent implements OnInit {
 
 
 
+  /**
+   * Méthode qui supprime une personne.
+   * @param no_personne
+   */
   delete(no_personne : number){
       this.personneService.delete(no_personne);
-      window.location.reload();
+      window.location.reload(); // Re-chargement de la fenêtre.
   }
 
 
 
 
 
+
 }
-
-
 

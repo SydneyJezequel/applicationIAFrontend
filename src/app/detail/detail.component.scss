@@ -1,7 +1,13 @@
+
+
+/* Police d'écriture */
 h2, p, button{
   font-family: Arial, sans-serif;
 }
 
+
+
+/* Mise en forme des informations */
 .details-container {
   width: 300px;
   margin: 0 auto;
@@ -16,6 +22,9 @@ h2, p, button{
   margin-bottom: 5px;
 }
 
+
+
+/* Mise en forme des boutons */
 button {
   background-color: royalblue;
   color: white;

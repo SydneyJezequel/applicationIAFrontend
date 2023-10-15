@@ -8,7 +8,6 @@ import {HttpClientModule} from "@angular/common/http";
 import { DetailComponent } from './detail/detail.component';
 import { AddPersonneComponent } from './add-personne/add-personne.component';
 import { EditPersonneComponent } from './edit-personne/edit-personne.component';
-import {ActivatedRoute} from "@angular/router";
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
@@ -18,8 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 
 
 
-
-
+// Module : Composant, Dépendances :
 @NgModule({
   declarations: [
     AppComponent,

@@ -25,15 +25,7 @@ export class AddPersonneComponent implements OnInit {
 
 
   /******************************* Attributs *******************************/
-  /*
-  public addPerson: any = {
-    nom: '',
-    prenom: '',
-    date_naissance: '',
-    no_securite_sociale: ''
-  };
-  */
-  addPerson: Personne = new Personne()
+  addPerson: Personne = new Personne();
 
 
 
@@ -57,26 +49,35 @@ export class AddPersonneComponent implements OnInit {
 
 
 
-  /******************************* Méthodes controlleur *******************************/
+  /******************************* Méthodes *******************************/
+
+
+  /**
+   * Méthode d'exécution du Formulaire.
+   */
   onSubmitPersonne(){
     this.newPerson(this.addPerson);
   }
 
 
 
-
-
-    public newPerson(personne : Personne){
-      const datePipe = new DatePipe('en-US');
+  /**
+   * Méthode d'ajout d'une Personne.
+   * Cette méthode appelle le service pour créer une Personne.
+   * @param personne
+   */
+  public newPerson(personne : Personne){
+      const datePipe = new DatePipe('en-US'); // Conversion de la date en format Java.
       const formattedDate = datePipe.transform(this.addPerson.date_naissance, 'yyyy-MM-dd');
-      this.addPerson.date_naissance = new Date("01-02-2022");
-      console.log(this.addPerson.date_naissance);
-      console.log(typeof this.addPerson.date_naissance);
-      this.personneService.addPerson(this.addPerson);
-      this.router.navigate(['personnes']);
+      if(formattedDate !== null){ // Controle de la date formatée.
+        this.addPerson.date_naissance = new Date(formattedDate);
+        this.personneService.addPerson(this.addPerson);
+      }
+      this.router.navigate(['personnes']); // Redirection
   }
 
 
 
 
 }
+

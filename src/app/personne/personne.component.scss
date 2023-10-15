@@ -1,9 +1,13 @@
+
+
+/* Police d'écriture */
 h2, th, td, button{
   font-family: Arial, sans-serif;
 }
 
 
-/* CSS */
+
+/* Mise en forme du tableau */
 .table-container {
   width: 100%;
   margin-bottom: 20px;
@@ -25,6 +29,9 @@ th {
   background-color: #f2f2f2;
 }
 
+
+
+/* Mise en forme des boutons */
 button {
   background-color: royalblue;
   color: white;

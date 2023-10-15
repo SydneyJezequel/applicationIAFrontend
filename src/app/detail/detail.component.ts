@@ -54,21 +54,19 @@ export class DetailComponent implements OnInit {
 
 
 
-  /******************************* Méthodes controlleur *******************************/
+  /******************************* Méthodes *******************************/
+
+
+  /**
+   * Méthode qui renvoie une personne en fonction de son Id.
+   * @param no_personne
+   */
   getOnePersonne(no_personne : number){
     console.log(" numéro de personne : " + no_personne);
     this.personneService.findPersonne(no_personne).subscribe(
       (response) =>
       {
         this.personneTrouve = response;
-        // Test :
-        console.log(this.personneTrouve);
-        console.log(this.personneTrouve.nom);
-        console.log(this.personneTrouve.prenom);
-        console.log(this.personneTrouve.no_personne);
-        console.log(this.personneTrouve.date_naissance);
-        console.log(this.personneTrouve.no_securite_sociale);
-        // Test :
       }),
       (error:HttpErrorResponse) =>
       {
@@ -81,8 +79,5 @@ export class DetailComponent implements OnInit {
 
 
 
-
 }
-
-
 

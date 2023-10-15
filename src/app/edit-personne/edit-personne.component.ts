@@ -39,9 +39,13 @@ export class EditPersonneComponent implements OnInit {
   /******************************* Constructeur *******************************/
 
   constructor(private route: ActivatedRoute, private personneService : PersonneServiceService, private router: Router) { }
-
-
-
+/*
+REMARQUE :
+  Route est utilisé pour configurer les routes dans l'application,
+  tandis que ActivatedRoute est utilisé
+  pour extraire des informations spécifiques à partir de la route
+  active dans un composant.
+*/
 
 
 
@@ -51,20 +55,13 @@ export class EditPersonneComponent implements OnInit {
   /******************************* Initialisation *******************************/
 
   ngOnInit(): void {
+    // Récupération de la Personne en fonction de l'Id de la Personne passé dans l'url :
     this.route.params.subscribe( params => {
       this.numero = params['no_personne'];
       this.personneService.findPersonne(this.numero).subscribe(
         (response) =>
         {
           this.editPerson = response;
-          // Test :
-          console.log(this.editPerson);
-          console.log(this.editPerson.nom);
-          console.log(this.editPerson.prenom);
-          console.log(this.editPerson.no_personne);
-          console.log(this.editPerson.date_naissance);
-          console.log(this.editPerson.no_securite_sociale);
-          // Test :
         }),
         (error:HttpErrorResponse) =>
         {
@@ -80,12 +77,16 @@ export class EditPersonneComponent implements OnInit {
 
 
 
-  /******************************* Méthodes controlleur *******************************/
+  /******************************* Méthodes *******************************/
 
+  /**
+   * Méthode édite une Personne.
+   * Cette méthode appelle le service pour éditer une Personne.
+   * @param personne
+   */
   onEditPersonne(){
-    console.log("personne ajoutée : " + this.editPerson.prenom +" "+ this.editPerson.nom + " "+this.editPerson.date_naissance+ " "+this.editPerson.no_securite_sociale);
     this.personneService.addPerson(this.editPerson);
-    this.router.navigate(['personnes']);
+    this.router.navigate(['personnes']);     // Redirection
   }
 
 
