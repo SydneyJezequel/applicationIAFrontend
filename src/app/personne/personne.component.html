@@ -1,0 +1,33 @@
+<h2>Liste des personnes</h2>
+
+
+
+<br>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>numero</th>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>naissance</th>
+      <th>securite sociale</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let personne of personnes">
+    <td>{{personne.no_personne}}</td>
+    <td>{{personne.nom}}</td>
+    <td>{{personne.prenom}}</td>
+    <td>{{personne.date_naissance}}</td>
+    <td>{{personne.no_securite_sociale}}</td>
+    <button (click)="delete(personne.no_personne)">Supprimer</button>
+    <button [routerLink]="'/edit/' + personne.no_personne">Modifier</button>
+    <button [routerLink]="'/details/' + personne.no_personne">Afficher le détail</button>
+  </tr>
+  </tbody>
+</table>
+<button [routerLink]="'/add'">Ajouter une nouvelle personne</button>
+
+
+

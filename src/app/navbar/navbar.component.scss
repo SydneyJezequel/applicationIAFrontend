@@ -1,0 +1,19 @@
+.navbar {
+  background-color: royalblue;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 1px;
+  position: absolute; /* Position absolue pour fixer le pied de page en bas de la fenêtre */
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  margin-right: 10px; /* Espacement entre les éléments de la barre de navigation */
+}
+
+.rounded-image{
+  border-radius: 50%;
+}

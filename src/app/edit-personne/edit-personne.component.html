@@ -1,0 +1,27 @@
+<h2>Edition d'une Personne</h2>
+
+
+
+<br>
+<br>
+<form (ngSubmit)="onEditPersonne()">
+  <label for="nom">nom: </label>
+  <input id="nom" [(ngModel)]="editPerson.nom" name="nom" placeholder="nom">
+  <br>
+  <label for="prenom">prenom: </label>
+  <input id="prenom" [(ngModel)]="editPerson.prenom" name="prenom" placeholder="prenom">
+  <br>
+  <label for="date_naissance">date de naissance: </label>
+  <input id="date_naissance" [(ngModel)]="editPerson.date_naissance" name="date_naissance" placeholder="date_naissance">
+  <br>
+  <label for="no_securite_sociale">no de sécurite sociale: </label>
+  <input id="no_securite_sociale" [(ngModel)]="editPerson.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
+  <br>
+  <button type="submit">Enregistrer</button>
+</form>
+
+
+
+<br>
+<br>
+<button [routerLink]="''">Retour à la liste des Personnes</button>
