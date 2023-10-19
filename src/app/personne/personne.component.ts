@@ -36,7 +36,7 @@ export class PersonneComponent implements OnInit {
 
   /******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService) {
-    this.no_personne = 1;
+    this.personneService = personneService;
   }
 
 

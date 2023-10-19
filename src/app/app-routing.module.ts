@@ -5,6 +5,9 @@ import {DetailComponent} from "./detail/detail.component";
 import {AddPersonneComponent} from "./add-personne/add-personne.component";
 import {EditPersonneComponent} from "./edit-personne/edit-personne.component";
 import {ContactComponent} from "./contact/contact.component";
+import {AddManyPersonnesComponent} from "./add-many-personnes/add-many-personnes.component";
+import {VilleComponent} from "./ville/ville.component";
+
 
 
 
@@ -20,8 +23,11 @@ const routes: Routes = [
   { path:'add', component: AddPersonneComponent },
   { path:'edit/:no_personne', component: EditPersonneComponent },
   { path:'contact', component: ContactComponent },
+  { path: 'add/many-personnes', component: AddManyPersonnesComponent },
+  { path: 'villes', component: VilleComponent },
   { path: '', redirectTo: 'personnes', pathMatch: 'full' }
 ];
+
 
 
 

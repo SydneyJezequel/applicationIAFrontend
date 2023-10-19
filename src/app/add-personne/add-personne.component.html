@@ -18,6 +18,9 @@
   <label for="no_securite_sociale">no de sécurite sociale: </label>
   <input id="no_securite_sociale" [(ngModel)]="addPerson.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
   <br>
+  <label for="photo">photo: </label>
+  <input id="photo" [(ngModel)]="file" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
+  <br>
   <button type="submit">Enregistrer</button>
 </form>
 
@@ -27,3 +30,6 @@
 <br>
 <!-- Bouton de retour à la page principale -->
 <button [routerLink]="''">Retour à la liste des Personnes</button>
+
+<!-- Bouton d'ajout en masse des utilisateurs' -->
+<button [routerLink]="'many-personnes'">Intégrer des Personnes en masse</button>

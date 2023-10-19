@@ -11,6 +11,8 @@ import { EditPersonneComponent } from './edit-personne/edit-personne.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { AddManyPersonnesComponent } from './add-many-personnes/add-many-personnes.component';
+import { VilleComponent } from './ville/ville.component';
 
 
 
@@ -27,7 +29,9 @@ import { ContactComponent } from './contact/contact.component';
     EditPersonneComponent,
     NavbarComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    AddManyPersonnesComponent,
+    VilleComponent
   ],
   imports: [
     BrowserModule,

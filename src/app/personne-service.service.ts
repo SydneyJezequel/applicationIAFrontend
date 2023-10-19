@@ -21,11 +21,11 @@ export class PersonneServiceService {
 
 
   /******************************* Urls *******************************/
-  private getAll : string = "api/all"
-  private idPersonne : string = "api/personne/"
-  private addPersonne : string = "api/add_personne/"
-  private deletePersonne : string = "api/delete/"
-
+  private getAll : string = "api/personne/all";
+  private idPersonne : string = "api/personne/";
+  private addPersonne : string = "api/personne/add-personne/";
+  private deletePersonne : string = "api/personne/delete/";
+  private addPersonnes : string = 'api/personne//import/excel/';
 
 
 
@@ -51,6 +51,7 @@ export class PersonneServiceService {
   }
 
 
+
   /**
    * Méthode qui renvoie une personne en fonction de son Id.
    *
@@ -61,19 +62,36 @@ export class PersonneServiceService {
   }
 
 
+
   /**
    * Méthode qui ajoute une personne.
    *
    */
-  public addPerson(personne : Personne):void
+  public async addPerson(personne: Personne): Promise<void> {
+    try {
+      console.log("objet envoyé : "+personne.photo);
+      console.log("Type de l'attribut : "+ typeof personne.photo);
+      const response = await this.http.post<Personne>(this.addPersonne, personne).toPromise();
+      console.log(response);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+  // ANIENNE VERSION :
+  /*
+    public addPerson(personne : Personne):void
   {
-   console.log(this.addPersonne, personne);
    this.http.post<Personne>(this.addPersonne,personne).subscribe(
      response => {},
        error => {
        console.error('Erreur : ', error);
      });
   }
+  */
+
+
+
 
 
   /**
@@ -88,6 +106,21 @@ export class PersonneServiceService {
         error => {
       console.error('Erreur : ', error);
     });
+  }
+
+
+
+  /**
+   * Méthode qui intègre un fichier Excel contenant plusieurs personnes
+   *
+   */
+  public uploadFile(file: File) : Promise<any> {
+    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
+    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
+    return this.http.post(this.addPersonnes, formData).toPromise(); // Envoie du formData vers le Back.
+
+
+
   }
 
 
