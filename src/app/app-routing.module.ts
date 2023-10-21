@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PersonneComponent} from "./personne/personne.component";
-import {DetailComponent} from "./detail/detail.component";
-import {AddPersonneComponent} from "./add-personne/add-personne.component";
-import {EditPersonneComponent} from "./edit-personne/edit-personne.component";
-import {ContactComponent} from "./contact/contact.component";
-import {AddManyPersonnesComponent} from "./add-many-personnes/add-many-personnes.component";
-import {VilleComponent} from "./ville/ville.component";
+import {VilleModule} from "./_modules/ville/ville.module";
+import {PersonneModule} from "./_modules/personne/personne.module";
 
 
 
@@ -18,14 +13,7 @@ import {VilleComponent} from "./ville/ville.component";
 
 /******************************* Routes *******************************/
 const routes: Routes = [
-  { path:'personnes', component: PersonneComponent },
-  { path:'details/:no_personne', component: DetailComponent },
-  { path:'add', component: AddPersonneComponent },
-  { path:'edit/:no_personne', component: EditPersonneComponent },
-  { path:'contact', component: ContactComponent },
-  { path: 'add/many-personnes', component: AddManyPersonnesComponent },
-  { path: 'villes', component: VilleComponent },
-  { path: '', redirectTo: 'personnes', pathMatch: 'full' }
+  // Vos routes principales ici si nécessaire
 ];
 
 
@@ -38,7 +26,11 @@ const routes: Routes = [
 
 /******************************* Module de Routage *******************************/
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    VilleModule,
+    PersonneModule
+  ],
   exports: [RouterModule]
 })
 

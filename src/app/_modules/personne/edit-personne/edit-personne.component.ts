@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonneServiceService} from "../personne-service.service";
+import {PersonneServiceService} from "../../../_services/personne-service.service";
 import {ActivatedRoute} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Personne} from "../model/personne.model";
+import {Personne} from "../../../model/personne.model";
 import {Router} from "@angular/router";
 
 
@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 /******************************* Fonctionnalité d'Edition d'une Personne *******************************/
 
 @Component({
-  selector: 'app-edit-personne',
+  selector: 'app-edit-list-personne',
   templateUrl: './edit-personne.component.html',
   styleUrls: ['./edit-personne.component.scss']
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonneServiceService} from "../personne-service.service";
-import {Personne} from "../model/personne.model";
+import {PersonneServiceService} from "../../../_services/personne-service.service";
+import {Personne} from "../../../model/personne.model";
 import {HttpErrorResponse} from "@angular/common/http";
 
 
@@ -12,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 /******************************* Fonctionnalité qui liste les Personnes *******************************/
 
 @Component({
-  selector: 'app-personne',
+  selector: 'app-list-personne',
   templateUrl: './personne.component.html',
   styleUrls: ['./personne.component.scss']
 })
@@ -75,7 +75,7 @@ export class PersonneComponent implements OnInit {
 
 
   /**
-   * Méthode qui supprime une personne.
+   * Méthode qui supprime une list-personne.
    * @param no_personne
    */
   delete(no_personne : number){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonneServiceService} from "../personne-service.service";
-import {Personne} from "../model/personne.model";
+import {PersonneServiceService} from "../../../_services/personne-service.service";
+import {Personne} from "../../../model/personne.model";
 import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";
 
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 /******************************* Fonctionnalité d'Ajout d'une Personne *******************************/
 
 @Component({
-  selector: 'app-add-personne',
+  selector: 'app-add-list-personne',
   templateUrl: './add-personne.component.html',
   styleUrls: ['./add-personne.component.scss']
 })
@@ -74,12 +74,12 @@ export class AddPersonneComponent implements OnInit {
     let photo = await this.convertToByteArray(this.file); // Conversion du fichier en objet Uint8Array.
     const byteArray: number[] = Array.from(photo); // Conversion de l'objet Uint8Array en array de nombre.
     this.addPerson.photo = byteArray; // On assigne l'array de nombre à l'attribut de l'objet Personne.
-    
+
     console.log("this.addPerson.photo) : " + this.addPerson.photo); // Contrôle de la conversion de la photo.
 
     if (formattedDate !== null) { // Controle de la date formatée.
       this.addPerson.date_naissance = new Date(formattedDate);
-      this.personneService.addPerson(this.addPerson); // Envoi de la nouvelle personne vers le backend.
+      this.personneService.addPerson(this.addPerson); // Envoi de la nouvelle list-personne vers le backend.
     }
     this.router.navigate(['personnes']); // Redirection
   }
@@ -99,7 +99,7 @@ export class AddPersonneComponent implements OnInit {
   // *************************** METHODE D'ANALYSE ***************************
   // *************************** METHODE D'ANALYSE ***************************
   /*
-    public async newPerson(personne: Personne) {
+    public async newPerson(list-personne: Personne) {
     const datePipe = new DatePipe('en-US'); // Conversion de la date en format Java.
     const formattedDate = datePipe.transform(this.addPerson.date_naissance, 'yyyy-MM-dd');
 

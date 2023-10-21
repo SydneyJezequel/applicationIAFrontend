@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
-import {Personne} from "../model/personne.model";
-import {PersonneServiceService} from "../personne-service.service";
+import {Personne} from "../../../model/personne.model";
+import {PersonneServiceService} from "../../../_services/personne-service.service";
 import {ActivatedRoute, ParamMap} from '@angular/router';
 
 
@@ -46,7 +46,6 @@ export class DetailComponent implements OnInit {
     let no_personne = id as unknown as number;
     this.personneService.findPersonne(no_personne);
     this.getOnePersonne(no_personne);
-
   }
 
 
@@ -58,11 +57,11 @@ export class DetailComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie une personne en fonction de son Id.
+   * Méthode qui renvoie une list-personne en fonction de son Id.
    * @param no_personne
    */
   getOnePersonne(no_personne : number){
-    console.log(" numéro de personne : " + no_personne);
+    console.log(" numéro de list-personne : " + no_personne);
     this.personneService.findPersonne(no_personne).subscribe(
       (response) =>
       {

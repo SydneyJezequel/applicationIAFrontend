@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Personne} from "./model/personne.model";
+import {Personne} from "../model/personne.model";
 
 
 
@@ -25,7 +25,8 @@ export class PersonneServiceService {
   private idPersonne : string = "api/personne/";
   private addPersonne : string = "api/personne/add-personne/";
   private deletePersonne : string = "api/personne/delete/";
-  private addPersonnes : string = 'api/personne//import/excel/';
+  private addPersonnes : string = 'api/personne/import/excel/';
+
 
 
 
@@ -53,7 +54,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui renvoie une personne en fonction de son Id.
+   * Méthode qui renvoie une list-personne en fonction de son Id.
    *
    */
   public findPersonne(no_personne:number):Observable<Personne>
@@ -64,7 +65,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui ajoute une personne.
+   * Méthode qui ajoute une list-personne.
    *
    */
   public async addPerson(personne: Personne): Promise<void> {
@@ -80,9 +81,9 @@ export class PersonneServiceService {
 
   // ANIENNE VERSION :
   /*
-    public addPerson(personne : Personne):void
+    public addPerson(list-personne : Personne):void
   {
-   this.http.post<Personne>(this.addPersonne,personne).subscribe(
+   this.http.post<Personne>(this.addPersonne,list-personne).subscribe(
      response => {},
        error => {
        console.error('Erreur : ', error);
@@ -95,7 +96,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui supprime une personne.
+   * Méthode qui supprime une list-personne.
    *
    */
   public delete(no_personne:number):void
