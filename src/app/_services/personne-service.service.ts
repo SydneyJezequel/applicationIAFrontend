@@ -79,20 +79,6 @@ export class PersonneServiceService {
     }
   }
 
-  // ANIENNE VERSION :
-  /*
-    public addPerson(list-personne : Personne):void
-  {
-   this.http.post<Personne>(this.addPersonne,list-personne).subscribe(
-     response => {},
-       error => {
-       console.error('Erreur : ', error);
-     });
-  }
-  */
-
-
-
 
 
   /**
@@ -115,14 +101,51 @@ export class PersonneServiceService {
    * Méthode qui intègre un fichier Excel contenant plusieurs personnes
    *
    */
-  public uploadFile(file: File) : Promise<any> {
+  public uploadFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post(this.addPersonnes, formData).toPromise(); // Envoie du formData vers le Back.
-
-
-
+    return this.http.post<any[]>(this.addPersonnes, formData); // Envoie du formData vers le Back.
   }
+
+
+
+
+
+
+
+
+
+
+
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+
+
+  /**
+   * Méthode qui intègre une photo en Base64.
+   *
+   */
+  private baseUrl = 'api/personne/upload';
+
+  public uploadBase64(base64String: string | null): Observable<any> {
+    return this.http.post<any>(this.baseUrl, { base64String });
+  }
+
+
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+  // *************************** TEST *************************** //
+
+
+
+
+
+
+
+
 
 
 

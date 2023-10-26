@@ -38,3 +38,11 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+
+
+/* Mise en forme de l'image */
+img {
+  border: 2px solid black; /* Couleur et largeur du cadre */
+  padding: 10px; /* Espace à l'intérieur du cadre (ajustez selon vos besoins) */
+}

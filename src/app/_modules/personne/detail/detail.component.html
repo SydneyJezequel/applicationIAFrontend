@@ -8,6 +8,9 @@
   <p>Prénom : {{ personneTrouve.prenom }}</p>
   <p>Date de naissance : {{ personneTrouve.date_naissance }}</p>
   <p>Numéro de sécurité sociale : {{ personneTrouve.no_securite_sociale }}</p>
+  <div *ngIf="imageDataUrl">
+    <img [src]="imageDataUrl" alt="Image">
+  </div>
 </div>
 
 

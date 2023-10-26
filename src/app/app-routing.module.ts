@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {VilleModule} from "./_modules/ville/ville.module";
 import {PersonneModule} from "./_modules/personne/personne.module";
+import {ContactComponent} from "./contact/contact.component";
 
 
 
@@ -14,6 +15,7 @@ import {PersonneModule} from "./_modules/personne/personne.module";
 /******************************* Routes *******************************/
 const routes: Routes = [
   // Vos routes principales ici si nécessaire
+  { path:'contact', component: ContactComponent }
 ];
 
 

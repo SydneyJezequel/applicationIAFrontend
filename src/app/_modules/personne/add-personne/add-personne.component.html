@@ -20,6 +20,7 @@
   <br>
   <label for="photo">photo: </label>
   <input id="photo" [(ngModel)]="file" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
+
   <br>
   <button type="submit">Enregistrer</button>
 </form>
@@ -33,3 +34,20 @@
 
 <!-- Bouton d'ajout en masse des utilisateurs' -->
 <button [routerLink]="'many-personnes'">Intégrer des Personnes en masse</button>
+
+
+
+
+
+
+
+<!-- ************ TEST **************-->
+<form id="fileForm">
+  <label for="fileInput">Sélectionner un fichier :</label>
+  <input type="file" id="fileInput" accept=".txt, .pdf, .jpg, .png" required>
+  <button type="button" (click)="convertFileToBase64()">Convertir en Base64</button>
+</form>
+<!-- ************ TEST **************-->
+
+
+
