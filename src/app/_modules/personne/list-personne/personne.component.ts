@@ -28,6 +28,7 @@ export class PersonneComponent implements OnInit {
   public personne !: Personne;
   public personnes !: Personne[];
   public no_personne !: number;
+  public generationFichierExcel !: boolean;
 
 
 
@@ -82,6 +83,26 @@ export class PersonneComponent implements OnInit {
       this.personneService.delete(no_personne);
       window.location.reload(); // Re-chargement de la fenêtre.
   }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   *
+   */
+  public generateExcel() {
+    this.personneService.generateExcel().subscribe(
+      (response: boolean) =>
+      {
+        this.generationFichierExcel = response;
+        console.log(this.generationFichierExcel);
+      }),
+      (error:HttpErrorResponse) =>
+      {
+        alert(error.message);
+      }
+  }
+
 
 
 

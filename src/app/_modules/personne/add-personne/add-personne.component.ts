@@ -236,32 +236,6 @@ export class AddPersonneComponent implements OnInit {
 
 
 
-/*
-  public changeFile(file : File) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-  }
-
-  public uploadFile(event:any) {
-    if (event.target.value) {
-      const file = event.target.files[0];
-      const type = file.type;
-      this.changeFile(file).then((base64: string): any => {
-        console.log(base64);
-        this.fileBlob = this.b64Blob([base64], type);
-        console.log(this.fileBlob)
-      });
-    } else alert('Nothing')
-  }
-*/
-  // *************************** TENTATIVE DE CONVERSION ***************************
-  // *************************** TENTATIVE DE CONVERSION ***************************
-  // *************************** TENTATIVE DE CONVERSION ***************************
-  // *************************** TENTATIVE DE CONVERSION ***************************
 
 
 
@@ -274,10 +248,31 @@ export class AddPersonneComponent implements OnInit {
 
 
 
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
 
   public async convertFileToBase64() {
     const fileInput = document.getElementById('fileInput') as HTMLInputElement; // On récupère l'élément du front.
@@ -287,6 +282,7 @@ export class AddPersonneComponent implements OnInit {
       try {
         const base64String = await this.fileToBase64(file); // On convertit le fichier en String base64.
         console.log(base64String);
+        console.log(typeof base64String);
         // Envoyer le fichier converti vers le backend
         this.personneService.uploadBase64(base64String).subscribe( // On l'envoie vers le back pour conversion en byte array et insertion en BDD.
           response => {
@@ -315,11 +311,14 @@ export class AddPersonneComponent implements OnInit {
     });
   }
 
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
 
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
+
+
+
+
 
 
 
@@ -331,3 +330,51 @@ export class AddPersonneComponent implements OnInit {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************
+
+/*
+  public changeFile(file : File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  public uploadFile(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      const type = file.type;
+      this.changeFile(file).then((base64: string): any => {
+        console.log(base64);
+        this.fileBlob = this.b64Blob([base64], type);
+        console.log(this.fileBlob)
+      });
+    } else alert('Nothing')
+  }
+*/
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************
+// *************************** TENTATIVE DE CONVERSION ***************************

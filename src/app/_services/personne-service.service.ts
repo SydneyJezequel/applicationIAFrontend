@@ -26,6 +26,8 @@ export class PersonneServiceService {
   private addPersonne : string = "api/personne/add-personne/";
   private deletePersonne : string = "api/personne/delete/";
   private addPersonnes : string = 'api/personne/import/excel/';
+  private generateExcelFile : string = "api/personne/generateExcel";
+
 
 
 
@@ -104,7 +106,17 @@ export class PersonneServiceService {
   public uploadFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<any[]>(this.addPersonnes, formData); // Envoie du formData vers le Back.
+    return this.http.post<boolean>(this.addPersonnes, formData); // Envoie du formData vers le Back.
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   *
+   */
+  public generateExcel() {
+    return this.http.get<boolean>(this.generateExcelFile);
   }
 
 
@@ -117,11 +129,9 @@ export class PersonneServiceService {
 
 
 
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
 
   /**
    * Méthode qui intègre une photo en Base64.
@@ -130,18 +140,14 @@ export class PersonneServiceService {
   private baseUrl = 'api/personne/upload';
 
   public uploadBase64(base64String: string | null): Observable<any> {
+    console.log("Valeur string : " + base64String);
+    console.log(typeof base64String);
     return this.http.post<any>(this.baseUrl, { base64String });
   }
 
-
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-  // *************************** TEST *************************** //
-
-
-
-
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
 
 
 

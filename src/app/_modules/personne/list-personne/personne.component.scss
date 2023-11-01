@@ -1,7 +1,7 @@
 
 
 /* Police d'écriture */
-h2, th, td, button{
+h2, th, td, label, button{
   font-family: Arial, sans-serif;
 }
 
@@ -44,5 +44,13 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+
+
+/* Message de succès lors de la génération d'un fichier Excel. */
+.success-message{
+  font-family: Arial, sans-serif;
+  color: #45a049;
 }
 
