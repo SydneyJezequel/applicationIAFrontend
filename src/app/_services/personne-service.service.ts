@@ -25,8 +25,10 @@ export class PersonneServiceService {
   private idPersonne : string = "api/personne/";
   private addPersonne : string = "api/personne/add-personne/";
   private deletePersonne : string = "api/personne/delete/";
-  private addPersonnes : string = 'api/personne/import/excel/';
+  private addExcelPersonnes : string = 'api/personne/import/excel/';
+  private addCsvPersonnes : string = 'api/personne/import/csv/';
   private generateExcelFile : string = "api/personne/generateExcel";
+  private generateCsvFile : string = "/api/personne/generateCsv";
 
 
 
@@ -103,10 +105,10 @@ export class PersonneServiceService {
    * Méthode qui intègre un fichier Excel contenant plusieurs personnes
    *
    */
-  public uploadFile(file: File) {
+  public uploadExcelFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addPersonnes, formData); // Envoie du formData vers le Back.
+    return this.http.post<boolean>(this.addExcelPersonnes, formData); // Envoie du formData vers le Back.
   }
 
 
@@ -119,6 +121,27 @@ export class PersonneServiceService {
     return this.http.get<boolean>(this.generateExcelFile);
   }
 
+
+
+  /**
+   * Méthode qui intègre un fichier Csv contenant plusieurs personnes
+   *
+   */
+  public uploadCsvFile(file: File) {
+    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
+    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
+    return this.http.post<boolean>(this.addCsvPersonnes, formData); // Envoie du formData vers le Back.
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   *
+   */
+  public generateCsv() {
+    return this.http.get<boolean>(this.generateCsvFile);
+  }
 
 
 

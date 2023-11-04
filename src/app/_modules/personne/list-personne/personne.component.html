@@ -44,15 +44,25 @@
 <button [routerLink]="'/add'">Ajouter une nouvelle personne</button>
 
 
+
+<!-- Bouton pour générer un fichier Excel qui contient la liste des personnes en BDD. -->
 <br>
 <br>
 <div class="success-message" *ngIf="generationFichierExcel">
   Fichier Excel généré avec succès.
 </div>
-<br>
 <div>
   <button (click)="generateExcel()">Générer un fichier Excel</button>
 </div>
 
+<!-- Bouton pour générer un fichier Csv qui contient la liste des personnes en BDD. -->
+<br>
+<div class="success-message" *ngIf="generationFichierCsv">
+  Fichier Csv généré avec succès.
+</div>
+<div>
+  <button (click)="generateCsv()">Générer un fichier Csv</button>
+</div>
+<br>
 
 

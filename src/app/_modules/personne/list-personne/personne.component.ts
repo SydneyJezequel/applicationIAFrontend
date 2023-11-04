@@ -29,6 +29,7 @@ export class PersonneComponent implements OnInit {
   public personnes !: Personne[];
   public no_personne !: number;
   public generationFichierExcel !: boolean;
+  public generationFichierCsv !: boolean;
 
 
 
@@ -102,6 +103,28 @@ export class PersonneComponent implements OnInit {
         alert(error.message);
       }
   }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   *
+   */
+  public generateCsv() {
+    this.personneService.generateCsv().subscribe(
+      (response: boolean) =>
+      {
+        this.generationFichierCsv = response;
+        console.log(this.generationFichierCsv);
+      }),
+      (error:HttpErrorResponse) =>
+      {
+        alert(error.message);
+      }
+  }
+
+
+
 
 
 
