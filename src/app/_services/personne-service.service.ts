@@ -29,6 +29,8 @@ export class PersonneServiceService {
   private addCsvPersonnes : string = 'api/personne/import/csv/';
   private generateExcelFile : string = "api/personne/generateExcel";
   private generateCsvFile : string = "/api/personne/generateCsv";
+  private baseUrl = 'api/personne/upload';
+  private getPhoto = 'api/personne/image-base64';
 
 
 
@@ -82,6 +84,21 @@ export class PersonneServiceService {
       console.error('Erreur : ', error);
     }
   }
+  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
+  /*
+  public async addPerson(personne: Personne, photoBase64String : any): Promise<void> {
+    try {
+      console.log("objet PhotoBase64String envoyé : "+photoBase64String);
+      console.log("Type de l'attribut : "+ typeof photoBase64String);
+      const response = await this.http.post<Personne>(this.addPersonne, { personne, photoBase64String }).toPromise();
+      console.log(response);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+  */
+  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
+
 
 
 
@@ -152,6 +169,24 @@ export class PersonneServiceService {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
@@ -160,8 +195,6 @@ export class PersonneServiceService {
    * Méthode qui intègre une photo en Base64.
    *
    */
-  private baseUrl = 'api/personne/upload';
-
   public uploadBase64(base64String: string | null): Observable<any> {
     console.log("Valeur string : " + base64String);
     console.log(typeof base64String);
@@ -171,6 +204,40 @@ export class PersonneServiceService {
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
   // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
+
+
+
+
+
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+
+  /**
+   * Méthode qui récupère une photo stocké en BDD.
+   * Le
+   */
+  public getPicture(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.http.get<string>(this.getPhoto).subscribe(
+          (response: string) => {
+            console.log("Réponse du service : " + response);
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+
+
+
+
+
 
 
 

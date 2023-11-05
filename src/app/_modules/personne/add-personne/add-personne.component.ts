@@ -27,6 +27,10 @@ export class AddPersonneComponent implements OnInit {
   /******************************* Attributs *******************************/
   addPerson: Personne = new Personne();
   file!: File;
+  // PARAMETRE TRANSFERT DE PHOTO :
+  photoBase64String !: any;
+  // PARAMETRE TRANSFERT DE PHOTO :
+
 
 
 
@@ -83,70 +87,35 @@ export class AddPersonneComponent implements OnInit {
     }
     this.router.navigate(['personnes']); // Redirection
   }
-
-
-
-
-
-
-
-
-
-
-
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
+  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
   /*
-    public async newPerson(list-personne: Personne) {
+  public async newPerson(personne: Personne) {
     const datePipe = new DatePipe('en-US'); // Conversion de la date en format Java.
     const formattedDate = datePipe.transform(this.addPerson.date_naissance, 'yyyy-MM-dd');
 
-    // ******************* TEST *******************
-    // ******************* TEST *******************
-    let photo = await this.convertToByteArray(this.file);
-    //this.addPerson.photo = photo;
-    let array = Array.from(photo);
-    let nombres!:number[];
-
-    const uint8Array: Uint8Array = new Uint8Array(photo); // Votre Uint8Array
-    const byteArray: number[] = Array.from(uint8Array); // Convertir Uint8Array en tableau de nombres
-
-    console.log("uint8Array : " + byteArray);
-    console.log("byteArray: " + typeof byteArray);
-    this.addPerson.photo = byteArray;
-
-    console.log("array de nombres : " + nombres);
-    console.log("type de nombres: " + typeof nombres);
-    console.log("array : " + array);
-    console.log("type de array : " + typeof array);
-    console.log("photo : " + photo);
-    console.log("type de photo : " + typeof photo);
-    console.log("this.addPerson.photo) : " + this.addPerson.photo);
-    // ******************* TEST *******************
-    // ******************* TEST *******************
-
-
-    if (formattedDate !== null) { // Controle de la date formatée.
-      this.addPerson.date_naissance = new Date(formattedDate);
-      // ******************* TEST *******************
-      // ******************* TEST *******************
-      console.log("this.addPerson : "+this.addPerson.photo);
-      // ******************* TEST *******************
-      // ******************* TEST *******************
-      this.personneService.addPerson(this.addPerson);
+    // Transformation du fichier en photo :
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement; // On récupère l'élément du front.
+    const file = fileInput.files?.[0]; // On récupère le fichier.
+    if (file) {
+      try {
+        this.photoBase64String = await this.fileToBase64(file); // On convertit le fichier en String base64.
+        console.log(this.photoBase64String);
+        console.log(this.photoBase64String);
+        console.log("this.addPerson.photo) : " + this.addPerson.photo); // Contrôle de la conversion de la photo.
+      } catch (error) {
+        console.error(error);
+      }
     }
+    // Controle de la date formatée :
+    if (formattedDate !== null) {
+      this.addPerson.date_naissance = new Date(formattedDate);
+    }
+    // Appel du service :
+    this.personneService.addPerson(this.addPerso, this.photoBase64String); // Envoi de la nouvelle list-personne vers le backend.
     this.router.navigate(['personnes']); // Redirection
   }
   */
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
-  // *************************** METHODE D'ANALYSE ***************************
-
-
-
+  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
 
 
 
@@ -204,18 +173,8 @@ export class AddPersonneComponent implements OnInit {
     const inputElement: HTMLInputElement = event.target; //  Extrait l'élément DOM qui a déclenché l'événement, puis l'assigne à une variable inputElement.
     const fileList: FileList | null = inputElement.files; // On récupère les Fichiers de l'objet InputElement.
 
-    console.log("TEST");
-    console.log(inputElement);
-    console.log(fileList)
-    console.log("TEST");
-
     if (fileList && fileList.length > 0) { // On vérifie si fileList is not null et s'il contient un fichier.
       const file: Blob = fileList[0]; // Extrait le premier fichier de la liste et l'assigne à la variable file.
-
-      console.log("TEST 2");
-      console.log(file);
-      console.log(typeof file);
-      console.log("TEST 2");
 
       if (file instanceof Blob) { // Si le fichier est de type Blob
         this.convertToByteArray(file) // On le convertit en tableau de Byte.
@@ -232,7 +191,10 @@ export class AddPersonneComponent implements OnInit {
       console.error("Aucun fichier sélectionné.");
     }
   }
-
+  // *************************** TENTATIVE DE CONVERSION ***************************
+  // *************************** TENTATIVE DE CONVERSION ***************************
+  // *************************** TENTATIVE DE CONVERSION ***************************
+  // *************************** TENTATIVE DE CONVERSION ***************************
 
 
 
@@ -300,6 +262,35 @@ export class AddPersonneComponent implements OnInit {
       console.error("Aucun fichier sélectionné.");
     }
   }
+  // *************************** NOUVELLE VERSION DE LA METHODE *************************** :
+  /*
+  public async convertFileToBase64(event: any): void {
+    const fileInput = document.getElementById('file') as HTMLInputElement; // On récupère l'élément du front.
+    const file = fileInput.files?.[0]; // On récupère le fichier.
+
+    if (file) {
+      try {
+        const base64String = await this.fileToBase64(file); // On convertit le fichier en String base64.
+        console.log(base64String);
+        console.log(typeof base64String);
+        // Envoyer le fichier convertit vers le backend
+        this.personneService.uploadBase64(base64String).subscribe( // On l'envoie vers le back pour conversion en byte array et insertion en BDD.
+          response => {
+            console.log('Fichier envoyé avec succès au backend', response);
+          },
+          error => {
+            console.error('Erreur lors de l\'envoi du fichier au backend', error);
+          }
+        );
+
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.error("Aucun fichier sélectionné.");
+    }
+  }
+  */
 
 
   public async fileToBase64(file: File): Promise<string | null> {

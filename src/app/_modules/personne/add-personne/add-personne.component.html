@@ -19,8 +19,12 @@
   <input id="no_securite_sociale" [(ngModel)]="addPerson.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
   <br>
   <label for="photo">photo: </label>
+  <!-- ANCIENNE VERSION DU CHARGEMENT DES PHOTOS : -->
   <input id="photo" [(ngModel)]="file" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
-
+  <!-- NOUVELLE VERSION DU CHARGEMENT DES PHOTOS :  -->
+  <!--
+  <input id="photo" [(ngModel)]="file" name="photo" placeholder="photo" type="file">
+  -->
   <br>
   <button type="submit">Enregistrer</button>
 </form>
