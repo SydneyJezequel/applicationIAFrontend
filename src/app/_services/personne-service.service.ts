@@ -29,7 +29,6 @@ export class PersonneServiceService {
   private addCsvPersonnes : string = 'api/personne/import/csv/';
   private generateExcelFile : string = "api/personne/generateExcel";
   private generateCsvFile : string = "/api/personne/generateCsv";
-  private baseUrl = 'api/personne/upload';
   private getPhoto = 'api/personne/image-base64';
 
 
@@ -71,34 +70,17 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui ajoute une list-personne.
+   * Méthode qui ajoute une Personne.
    *
    */
-  public async addPerson(personne: Personne): Promise<void> {
+  public async addPerson(personne: Personne, photoBase64String: string): Promise<void> {
     try {
-      console.log("objet envoyé : "+personne.photo);
-      console.log("Type de l'attribut : "+ typeof personne.photo);
-      const response = await this.http.post<Personne>(this.addPersonne, personne).toPromise();
+      const response = await this.http.post<Object>(this.addPersonne, { personne, photoBase64String }).toPromise();
       console.log(response);
     } catch (error) {
       console.error('Erreur : ', error);
     }
   }
-  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
-  /*
-  public async addPerson(personne: Personne, photoBase64String : any): Promise<void> {
-    try {
-      console.log("objet PhotoBase64String envoyé : "+photoBase64String);
-      console.log("Type de l'attribut : "+ typeof photoBase64String);
-      const response = await this.http.post<Personne>(this.addPersonne, { personne, photoBase64String }).toPromise();
-      console.log(response);
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-  */
-  // *********************** NOUVELLE VERSION DE LA METHODE ********************* //
-
 
 
 
@@ -169,46 +151,6 @@ export class PersonneServiceService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-
-  /**
-   * Méthode qui intègre une photo en Base64.
-   *
-   */
-  public uploadBase64(base64String: string | null): Observable<any> {
-    console.log("Valeur string : " + base64String);
-    console.log(typeof base64String);
-    return this.http.post<any>(this.baseUrl, { base64String });
-  }
-
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-  // *************************** TEST ENREGISTRER UNE IMAGE *************************** //
-
-
-
-
-
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
@@ -233,10 +175,6 @@ export class PersonneServiceService {
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
-
-
-
-
 
 
 

@@ -18,6 +18,9 @@
   <label for="no_securite_sociale">no de sécurite sociale: </label>
   <input id="no_securite_sociale" [(ngModel)]="editPerson.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
   <br>
+  <label for="photo">photo: </label>
+  <input id="photo" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
+  <br>
   <button type="submit">Enregistrer</button>
 </form>
 
