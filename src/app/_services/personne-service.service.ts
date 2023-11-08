@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Personne} from "../model/personne.model";
-
-
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Personne } from "../model/personne.model";
 
 
 
 
 /******************************* Service qui gère les Personnes *******************************/
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,9 +15,7 @@ export class PersonneServiceService {
 
 
 
-
-
-  /******************************* Urls *******************************/
+/******************************* Urls *******************************/
   private getAll : string = "api/personne/all";
   private idPersonne : string = "api/personne/";
   private addPersonne : string = "api/personne/add-personne/";
@@ -34,18 +29,13 @@ export class PersonneServiceService {
 
 
 
-
-
-
-  /******************************* Constructeur *******************************/
+/******************************* Constructeur *******************************/
   constructor(private http : HttpClient) { }
 
 
 
 
-
-
-  /******************************* Méthodes controlleur *******************************/
+/******************************* Méthodes controlleur *******************************/
 
   /**
    * Méthode qui renvoie la liste de toutes les personnes.
@@ -59,7 +49,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui renvoie une list-personne en fonction de son Id.
+   * Méthode qui renvoie une personne en fonction de son Id.
    *
    */
   public findPersonne(no_personne:number):Observable<Personne>
@@ -70,7 +60,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui ajoute une Personne.
+   * Méthode qui ajoute une personne.
    *
    */
   public async addPerson(personne: Personne, photoBase64String: string): Promise<void> {
@@ -85,7 +75,7 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui supprime une list-personne.
+   * Méthode qui supprime une personne.
    *
    */
   public delete(no_personne:number):void
@@ -101,13 +91,13 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui intègre un fichier Excel contenant plusieurs personnes
+   * Méthode qui intègre un fichier Excel contenant une liste de personnes
    *
    */
   public uploadExcelFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addExcelPersonnes, formData); // Envoie du formData vers le Back.
+    return this.http.post<boolean>(this.addExcelPersonnes, formData); // Envoi du formData vers le Back.
   }
 
 
@@ -123,13 +113,13 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui intègre un fichier Csv contenant plusieurs personnes
+   * Méthode qui intègre un fichier Csv contenant une liste de personnes.
    *
    */
   public uploadCsvFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addCsvPersonnes, formData); // Envoie du formData vers le Back.
+    return this.http.post<boolean>(this.addCsvPersonnes, formData); // Envoi du formData vers le Back.
   }
 
 
@@ -144,20 +134,12 @@ export class PersonneServiceService {
 
 
 
-
-
-
-
-
-
-
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
-
   /**
    * Méthode qui récupère une photo stocké en BDD.
-   * Le
+   *
    */
   public getPicture(): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -175,11 +157,6 @@ export class PersonneServiceService {
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
-
-
-
-
-
 
 
 

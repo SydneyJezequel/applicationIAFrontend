@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpErrorResponse} from "@angular/common/http";
-import {Personne} from "../../../model/personne.model";
-import {PersonneServiceService} from "../../../_services/personne-service.service";
-import {ActivatedRoute, ParamMap} from '@angular/router';
-
-
+import { HttpErrorResponse } from "@angular/common/http";
+import { Personne } from "../../../model/personne.model";
+import { PersonneServiceService } from "../../../_services/personne-service.service";
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 
 
 
 /******************************* Fonctionnalité qui détaille une Personne *******************************/
-
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -21,9 +18,7 @@ export class DetailComponent implements OnInit {
 
 
 
-
-
-  /******************************* Attributs *******************************/
+/******************************* Attributs *******************************/
   public personneTrouve ?: Personne;
   public imageDataUrl !: any;
   // ************ TEST AFFICHAGE PHOTO *********** //
@@ -33,19 +28,14 @@ export class DetailComponent implements OnInit {
 
 
 
-
-
-
-  /******************************* Constructeur *******************************/
+/******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService,
               private route : ActivatedRoute) { }
 
 
 
 
-
-
-  /******************************* Initialisation *******************************/
+/******************************* Initialisation *******************************/
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_personne');
     let no_personne = id as unknown as number;
@@ -59,17 +49,15 @@ export class DetailComponent implements OnInit {
 
 
 
-
-
-  /******************************* Méthodes *******************************/
+/******************************* Méthodes *******************************/
 
 
   /**
-   * Méthode qui renvoie une list-personne en fonction de son Id.
+   * Méthode qui renvoie une personne en fonction de son Id.
    * @param no_personne
    */
   public getOnePersonne(no_personne : number){
-    console.log(" numéro de list-personne : " + no_personne);
+    console.log(" numéro de personne : " + no_personne);
     this.personneService.findPersonne(no_personne).subscribe(
       (response) =>
       {
@@ -87,6 +75,9 @@ export class DetailComponent implements OnInit {
 
 
 
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
   /**
    * Méthode qui convertit l'attribut Photo de type number[] en Blob.
    *
@@ -95,8 +86,6 @@ export class DetailComponent implements OnInit {
     const uint8Array = new Uint8Array(photo);
     return new Blob([uint8Array], { type: 'image/png' }); // Remplacez 'image/jpeg' par le type MIME de votre image si nécessaire
   }
-
-
 
   /**
    * Méthode qui convertit le Blob en photo affichable.
@@ -110,32 +99,15 @@ export class DetailComponent implements OnInit {
     };
     reader.readAsDataURL(blob); // Conversion du Blob en photo affichable.
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
+  // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
 
 
 
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
-
   /**
    * Méthode qui récupère une image.
    *
@@ -144,11 +116,9 @@ export class DetailComponent implements OnInit {
     this.base64String = await this.personneService.getPicture();
     console.log("base64String : " + this.base64String);
   }
-
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
-
 
 
 

@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonneServiceService} from "../../../_services/personne-service.service";
-import {ActivatedRoute} from "@angular/router";
-import {HttpErrorResponse} from "@angular/common/http";
-import {Personne} from "../../../model/personne.model";
-import {Router} from "@angular/router";
-import {DatePipe} from "@angular/common";
-
-
-
+import { PersonneServiceService } from "../../../_services/personne-service.service";
+import { ActivatedRoute } from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Personne } from "../../../model/personne.model";
+import { Router } from "@angular/router";
+import { DatePipe } from "@angular/common";
 
 
 
 
 /******************************* Fonctionnalité d'Edition d'une Personne *******************************/
-
 @Component({
   selector: 'app-edit-list-personne',
   templateUrl: './edit-personne.component.html',
@@ -24,10 +20,7 @@ export class EditPersonneComponent implements OnInit {
 
 
 
-
-
-
-  /******************************* Attributs *******************************/
+/******************************* Attributs *******************************/
 
   public numero !: number;
   public file !: any;
@@ -37,9 +30,7 @@ export class EditPersonneComponent implements OnInit {
 
 
 
-
-
-  /******************************* Constructeur *******************************/
+/******************************* Constructeur *******************************/
 
   constructor(private route: ActivatedRoute, private personneService : PersonneServiceService, private router: Router) { }
 /*
@@ -53,9 +44,7 @@ REMARQUE :
 
 
 
-
-
-  /******************************* Initialisation *******************************/
+/******************************* Initialisation *******************************/
 
   ngOnInit(): void {
     // Récupération de la Personne en fonction de l'Id de la Personne passé dans l'url :
@@ -76,11 +65,7 @@ REMARQUE :
 
 
 
-
-
-
-
-  /******************************* Méthodes *******************************/
+/******************************* Méthodes *******************************/
 
   /**
    * Méthode édite une Personne.
@@ -167,10 +152,6 @@ REMARQUE :
       reader.onerror = error => reject(error); // Résultat si échec.
     });
   }
-
-
-
-
 
 
 

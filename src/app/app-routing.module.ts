@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {VilleModule} from "./_modules/ville/ville.module";
 import {PersonneModule} from "./_modules/personne/personne.module";
 import {ContactComponent} from "./contact/contact.component";
@@ -7,21 +7,10 @@ import {ContactComponent} from "./contact/contact.component";
 
 
 
-
-
-
-
-
 /******************************* Routes *******************************/
 const routes: Routes = [
-  // Vos routes principales ici si nécessaire
   { path:'contact', component: ContactComponent }
 ];
-
-
-
-
-
 
 
 
@@ -35,9 +24,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-
-
-
 
 export class AppRoutingModule { }
 

@@ -1,19 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {PersonneServiceService} from "../_services/personne-service.service";
-import {EmailService} from "../_services/email.service";
-import {Email} from "../model/email.model";
-
-
-
-
-
+import { EmailService } from "../_services/email.service";
+import { Email } from "../model/email.model";
 
 
 
 
 /******************************* Formulaire de contact *******************************/
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -24,10 +16,7 @@ export class ContactComponent implements OnInit {
 
 
 
-
-
-
-  /******************************* Attributs *******************************/
+/******************************* Attributs *******************************/
   email :Email = new Email();
   user!: string;
   message!: string;
@@ -35,12 +24,7 @@ export class ContactComponent implements OnInit {
 
 
 
-
-
-
-
-  /******************************* Constructeur *******************************/
-
+/******************************* Constructeur *******************************/
   constructor(private emailService : EmailService) {
     this.emailService = emailService;
   }
@@ -48,29 +32,21 @@ export class ContactComponent implements OnInit {
 
 
 
-
-
-
-  /******************************* Initialisation *******************************/
+/******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
 
 
 
-
-
-  /******************************* Méthodes *******************************/
-
+/******************************* Méthodes *******************************/
   onSubmit() {
     // Chargement des données :
     this.email.user = this.user;
     this.email.message = this.message;
-
     // Envoi de l'Email au serveur :
     this.emailService.sendEmailemail(this.email);
   }
-
 
 
 

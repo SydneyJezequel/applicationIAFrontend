@@ -1,7 +1,6 @@
 
 
-
-/******************************* Entité Personne manipulée *******************************/
+/******************************* Entité Personne *******************************/
 export class Personne {
   no_personne!: number;
   nom!: string;

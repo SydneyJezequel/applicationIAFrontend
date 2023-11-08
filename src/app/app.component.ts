@@ -3,9 +3,6 @@ import { Component } from '@angular/core';
 
 
 
-
-
-
 /******************************* AppComponent *******************************/
 
 @Component({
@@ -17,5 +14,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'crudTraining';
 }
-
 

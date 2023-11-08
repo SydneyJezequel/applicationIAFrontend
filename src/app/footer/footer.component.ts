@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 
 
 
-
-
 /******************************* Pied de page de l'application *******************************/
 
 @Component({
@@ -17,20 +15,15 @@ export class FooterComponent implements OnInit {
 
 
 
-
-
-  /******************************* Constructeur *******************************/
+/******************************* Constructeur *******************************/
   constructor() { }
 
 
 
 
-
-
-  /******************************* Initialisation *******************************/
+/******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
-
 
 
 

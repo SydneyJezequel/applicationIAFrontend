@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonneServiceService} from "../../../_services/personne-service.service";
-import {Personne} from "../../../model/personne.model";
-import {HttpErrorResponse} from "@angular/common/http";
-
-
-
+import { PersonneServiceService } from "../../../_services/personne-service.service";
+import { Personne } from "../../../model/personne.model";
+import { HttpErrorResponse } from "@angular/common/http";
 
 
 
 
 /******************************* Fonctionnalité qui liste les Personnes *******************************/
-
 @Component({
   selector: 'app-list-personne',
   templateUrl: './personne.component.html',
@@ -22,9 +18,7 @@ export class PersonneComponent implements OnInit {
 
 
 
-
-
-  /******************************* Attributs *******************************/
+/******************************* Attributs *******************************/
   public personne !: Personne;
   public personnes !: Personne[];
   public no_personne !: number;
@@ -34,9 +28,7 @@ export class PersonneComponent implements OnInit {
 
 
 
-
-
-  /******************************* Constructeur *******************************/
+/******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService) {
     this.personneService = personneService;
   }
@@ -44,8 +36,7 @@ export class PersonneComponent implements OnInit {
 
 
 
-
-  /******************************* Initialisation *******************************/
+/******************************* Initialisation *******************************/
   ngOnInit(): void {
     this.getAll();
   }
@@ -53,9 +44,7 @@ export class PersonneComponent implements OnInit {
 
 
 
-
-
-  /******************************* Méthodes *******************************/
+/******************************* Méthodes *******************************/
 
   /**
    * Méthode qui renvoie la liste de toutes les personnes.
@@ -77,7 +66,7 @@ export class PersonneComponent implements OnInit {
 
 
   /**
-   * Méthode qui supprime une list-personne.
+   * Méthode qui supprime une personne.
    * @param no_personne
    */
   delete(no_personne : number){
@@ -122,11 +111,6 @@ export class PersonneComponent implements OnInit {
         alert(error.message);
       }
   }
-
-
-
-
-
 
 
 
