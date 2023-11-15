@@ -10,4 +10,3 @@ export class Personne {
   photo!: number[]; // Le type File définit le fichier image
 }
 
-
