@@ -1,0 +1,47 @@
+
+
+/* Police d'écriture */
+h2, h3, p, div, button{
+  font-family: Arial, sans-serif;
+}
+
+
+/* Classe CSS pour le message de succès. */
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Classe CSS pour le message d'erreur. */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Classe CSS de mise en forme des boutons. */
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+
+/* Message de succès lors de la génération d'un fichier Excel. */
+.success-message{
+  font-family: Arial, sans-serif;
+  color: #45a049;
+}
+

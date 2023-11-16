@@ -1,0 +1,47 @@
+
+
+/* Police d'écriture */
+h2, p, li, button, label, input {
+  font-family: Arial, sans-serif;
+}
+
+
+/* Mise en forme des boutons */
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+/* Mise en forme de l'image */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-image {
+  width: 80%;
+  height: auto;
+}
+
+
+/* Alignement des paramètres */
+.inline-block-container {
+  display: inline-block;
+}
+
+
+/* Mise en valeur du résultat */
+.result{
+  font-weight: bold;
+}

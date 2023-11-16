@@ -1,0 +1,23 @@
+<h2>Communique avec Chat Gpt</h2>
+
+<br>
+<br>
+
+<!-- Réaction de la requête et reception de la réponse. -->
+<div>
+  <!-- Champ pour rédiger la requête -->
+  <textarea id="chatMessage" placeholder="Tapez votre message" [(ngModel)]="request" ></textarea>
+  <!-- Bouton pour envoyer la requête -->
+  <button (click)="sendMessage()">Envoyer</button>
+  <!-- Affichage de la réponse -->
+  <div *ngIf="reponse">
+    <p>{{ reponse }}</p>
+  </div>
+</div>
+
+<br>
+<br>
+
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="'/liste-ia'">Retour à la liste des IA</button>
+

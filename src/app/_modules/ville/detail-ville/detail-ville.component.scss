@@ -1,0 +1,40 @@
+
+
+/* Police d'écriture */
+h2, p, button{
+  font-family: Arial, sans-serif;
+}
+
+
+
+/* Mise en forme des informations */
+.details-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.details-container h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.details-container p {
+  margin-bottom: 5px;
+}
+
+
+
+/* Mise en forme des boutons */
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
