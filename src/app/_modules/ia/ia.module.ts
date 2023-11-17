@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ListIaComponent } from './list-ia/list-ia.component';
 import { IrisModelComponent } from './iris-model/iris-model.component';
+import { IrisModelResultsComponent } from './iris-model-results/iris-model-results.component';
 
 
 
@@ -16,7 +17,8 @@ import { IrisModelComponent } from './iris-model/iris-model.component';
   declarations: [
     ChatGptBotComponent,
     ListIaComponent,
-    IrisModelComponent
+    IrisModelComponent,
+    IrisModelResultsComponent
   ],
   imports: [
     CommonModule,
