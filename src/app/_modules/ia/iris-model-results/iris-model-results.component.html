@@ -1,0 +1,49 @@
+
+<br>
+
+<h2> Liste des résultats du modèle générés par les utilisateurs </h2>
+
+<br>
+<br>
+
+
+<!-- Affichage de la liste des résultats du modèle générés par les utilisateurs -->
+<table>
+
+  <thead>
+  <tr>
+    <th>Longueur du Sepal</th>
+    <th>Largeur du Sepal</th>
+    <th>Longueur du Petal</th>
+    <th>Largeur du Petal</th>
+    <th>Prédiction</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let result of listeResults">
+    <td>{{result.sepal_length}}</td>
+    <td>{{result.sepal_width}}</td>
+    <td>{{result.petal_length}}</td>
+    <td>{{result.petal_width}}</td>
+    <td>{{result.prediction}}</td>
+  </tr>
+  </tbody>
+
+</table>
+
+
+<!-- ********************************************** TEST ********************************************** -->
+<br>
+<br>
+  <button (click)="trainModelWithUserPredictions()">Entrainer le modèle avec ce jeu de données</button>
+<br>
+<br>
+<!-- ********************************************** TEST ********************************************** -->
+
+
+<br>
+<br>
+<button [routerLink]="'/iris'">Retour au modèle de prédictions des Iris</button>
+
+
+
