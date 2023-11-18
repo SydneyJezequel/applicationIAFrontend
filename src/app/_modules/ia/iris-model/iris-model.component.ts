@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IaService } from "../../../_services/ia.service";
 import { IrisModelRequest } from "../../../model/irisModelRequest";
-import {Router} from "@angular/router";
-import {IrisModelResponse} from "../../../model/irisModelResponse";
+import { Router } from "@angular/router";
+import { IrisModelResponse } from "../../../model/irisModelResponse";
 
 
 
@@ -101,7 +101,7 @@ export class IrisModelComponent implements OnInit {
         // Enregistrement en BDD :
         this.iaService.savePrediction(resultToSave);
         // Redirection après l'ajout de l'enregistrement :
-        // this.router.navigate(['result-iris']);
+        this.router.navigate(['result-iris']);
       } catch (error) {
         console.error('Erreur : ', error);
       }

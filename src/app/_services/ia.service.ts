@@ -20,6 +20,7 @@ export class IaService {
   private irisModelRequestUrl: string = '/api/ia/iris/predict';
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
+  private irisModelTrainWithUsersPredictionsUrl: string = '/api/ia/iris/load-predicts-in-model';
 
 
 
@@ -98,6 +99,29 @@ export class IaService {
       console.error('Erreur : ', error);
     }
   }
+
+
+
+  // ********************************************** TEST ********************************************** //
+  // ********************************************** TEST ********************************************** //
+  // ********************************************** TEST ********************************************** //
+  /**
+   * Méthode qui entraine le modèle avec les paramètres et prédictions
+   * générées par le user.
+   *
+   */
+  public async trainModelWithUserPredictions(): Promise<any>{
+    try {
+      const response = await this.http.get<string>(this.irisModelTrainWithUsersPredictionsUrl).toPromise();
+        console.log("Résultat :" + response);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+  // ********************************************** TEST ********************************************** //
+  // ********************************************** TEST ********************************************** //
+  // ********************************************** TEST ********************************************** //
+
 
 
 
