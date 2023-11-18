@@ -21,18 +21,34 @@ export class IaService {
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
   private irisModelTrainWithUsersPredictionsUrl: string = '/api/ia/iris/load-predicts-in-model';
+  private initializeModelIrisApiUrl: string = '/api/ia/iris/load-predict-in-model';
 
 
 
 
   /******************************* Constructeur *******************************/
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+
+
+
+  /************************************** Méthodes **************************************/
+
+  /**
+   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   *
+   */
+  public async initializeModelPrediction(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.initializeModelIrisApiUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
   }
 
 
-
-
-  /******************************* Méthodes controleur *******************************/
 
   /**
    * Méthode qui envoie une requête à chatGpt et récupère sa réponse.

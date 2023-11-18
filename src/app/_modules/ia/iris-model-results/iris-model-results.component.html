@@ -32,18 +32,15 @@
 </table>
 
 
-<!-- ********************************************** TEST ********************************************** -->
-<br>
-<br>
-  <button (click)="trainModelWithUserPredictions()">Entrainer le modèle avec ce jeu de données</button>
+
 <br>
 <br>
 <!-- ********************************************** TEST ********************************************** -->
-
-
+<button (click)="trainModelWithUserPredictions()">Entrainer le modèle avec ce jeu de données</button>
+<!-- ********************************************** TEST ********************************************** -->
+<button (click)="initializeModelPrediction()">Ré-initialiser le modèle de classification des Iris</button>
+<button [routerLink]="'/iris'">Retour au modèle de classification des Iris</button>
 <br>
 <br>
-<button [routerLink]="'/iris'">Retour au modèle de prédictions des Iris</button>
-
 
 

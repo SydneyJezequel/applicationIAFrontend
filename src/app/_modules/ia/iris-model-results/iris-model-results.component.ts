@@ -18,6 +18,7 @@ export class IrisModelResultsComponent implements OnInit {
 
   /******************************* Attributs *******************************/
   public listeResults !: IrisModelResponse[];
+  public messageSucces !: string;
 
 
 
@@ -38,6 +39,23 @@ export class IrisModelResultsComponent implements OnInit {
 
   /******************************* Méthodes *******************************/
 
+  /**
+   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   *
+   */
+  public initializeModelPrediction(): void {
+    try {
+      this.iaService.initializeModelPrediction().then((response) => {
+        this.messageSucces = response;
+        console.log(response);
+      });
+      console.log("Résultat de la ré-initialisation :" + this.messageSucces);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
 
   /**
    * Méthode qui renvoie la liste des résultats du modèle de machine Learning
@@ -54,7 +72,6 @@ export class IrisModelResultsComponent implements OnInit {
     } catch (error) {
       console.error('Erreur : ', error);
     }
-
   }
 
 
