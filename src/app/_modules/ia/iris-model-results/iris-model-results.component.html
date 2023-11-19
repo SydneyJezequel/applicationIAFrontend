@@ -38,8 +38,14 @@
 <!-- ********************************************** TEST ********************************************** -->
 <button (click)="trainModelWithUserPredictions()">Entrainer le modèle avec ce jeu de données</button>
 <!-- ********************************************** TEST ********************************************** -->
+<br>
+<br>
 <button (click)="initializeModelPrediction()">Ré-initialiser le modèle de classification des Iris</button>
-<button [routerLink]="'/iris'">Retour au modèle de classification des Iris</button>
+<button [routerLink]="'/iris'">Utiliser le modèle de classification des Iris</button>
+<br>
+<br>
+<button (click)="generateExcel()">Générer un fichier Excel</button>
+<button (click)="generateCsv()">Générer un fichier Csv</button>
 <br>
 <br>
 

@@ -22,6 +22,8 @@ export class IaService {
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
   private irisModelTrainWithUsersPredictionsUrl: string = '/api/ia/iris/load-predicts-in-model';
   private initializeModelIrisApiUrl: string = '/api/ia/iris/load-predict-in-model';
+  private generateExcelFile: string = '/api/ia/iris/generate-excel';
+  private generateCsvFile: string = '/api/ia/iris/generate-csv';
 
 
 
@@ -118,6 +120,34 @@ export class IaService {
 
 
 
+  /**
+   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   *
+   */
+  public generateExcel() {
+    return this.http.get<boolean>(this.generateExcelFile);
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   *
+   */
+  public generateCsv() {
+    return this.http.get<boolean>(this.generateCsvFile);
+  }
+
+
+
+
+
+
+
+
+
+
+
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
@@ -137,6 +167,12 @@ export class IaService {
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
+
+
+
+
+
+
 
 
 

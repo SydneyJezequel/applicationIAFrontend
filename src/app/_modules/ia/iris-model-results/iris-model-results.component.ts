@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IaService } from "../../../_services/ia.service";
 import { IrisModelResponse } from "../../../model/irisModelResponse";
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 
@@ -19,6 +20,8 @@ export class IrisModelResultsComponent implements OnInit {
   /******************************* Attributs *******************************/
   public listeResults !: IrisModelResponse[];
   public messageSucces !: string;
+  public generationFichierExcel !: boolean;
+  public generationFichierCsv !: boolean;
 
 
 
@@ -76,6 +79,51 @@ export class IrisModelResultsComponent implements OnInit {
 
 
 
+  /**
+   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   *
+   */
+  public generateExcel() {
+    this.iaService.generateExcel().subscribe(
+      (response: boolean) =>
+      {
+        this.generationFichierExcel = response;
+        console.log(this.generationFichierExcel);
+      }),
+      (error:HttpErrorResponse) =>
+      {
+        alert(error.message);
+      }
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   *
+   */
+  public generateCsv() {
+    this.iaService.generateCsv().subscribe(
+      (response: boolean) =>
+      {
+        this.generationFichierCsv = response;
+        console.log(this.generationFichierCsv);
+      }),
+      (error:HttpErrorResponse) =>
+      {
+        alert(error.message);
+      }
+  }
+
+
+
+
+
+
+
+
+
+
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
@@ -97,6 +145,10 @@ export class IrisModelResultsComponent implements OnInit {
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
   // ********************************************** TEST ********************************************** //
+
+
+
+
 
 
 
