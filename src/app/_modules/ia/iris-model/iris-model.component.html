@@ -63,13 +63,16 @@
 
   <button (click)="predict()">Predict</button>
   <button [routerLink]="'/result-iris'">Afficher les résultats du modèle</button>
+  <button [routerLink]="'/new-dataset'">Intégrer un nouveau jeu de données</button>
 
   <br>
   <br>
+
   <div *ngIf="reponseModeleIris">
     <p class="result"> Type de fleur : {{ reponseModeleIris }} </p>
     <button (click)="savePrediction()">Enregistrer cette prédiction</button>
   </div>
+
   <br>
   <br>
 

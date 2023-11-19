@@ -119,40 +119,5 @@ export class IrisModelResultsComponent implements OnInit {
 
 
 
-
-
-
-
-
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-  /**
-   * Méthode qui entraine le modèle avec les paramètres et prédictions
-   * générées par le user.
-   *
-   */
-  public trainModelWithUserPredictions(): void{
-    try {
-      this.iaService.trainModelWithUserPredictions().then((response) => {
-        this.listeResults = response;
-        console.log("Résultat :" + response);
-      });
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-
-
-
-
-
-
-
-
-
 }
 

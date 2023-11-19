@@ -4,6 +4,7 @@ import { ChatGptBotComponent } from "./chat-gpt-bot/chat-gpt-bot.component";
 import { ListIaComponent } from "./list-ia/list-ia.component";
 import { IrisModelComponent } from "./iris-model/iris-model.component";
 import { IrisModelResultsComponent } from "./iris-model-results/iris-model-results.component";
+import { IrisModelNewDatasetComponent } from "./iris-model-new-dataset/iris-model-new-dataset.component";
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'liste-ia', component: ListIaComponent },
   { path: 'iris', component: IrisModelComponent },
   { path: 'result-iris', component: IrisModelResultsComponent},
+  { path: 'new-dataset', component: IrisModelNewDatasetComponent},
 ];
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { IrisModelRequest } from "../model/irisModelRequest";
 import { IrisModelResponse } from "../model/irisModelResponse";
+import {Observable} from "rxjs";
 
 
 
@@ -20,10 +21,14 @@ export class IaService {
   private irisModelRequestUrl: string = '/api/ia/iris/predict';
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
-  private irisModelTrainWithUsersPredictionsUrl: string = '/api/ia/iris/load-predicts-in-model';
   private initializeModelIrisApiUrl: string = '/api/ia/iris/load-predict-in-model';
   private generateExcelFile: string = '/api/ia/iris/generate-excel';
   private generateCsvFile: string = '/api/ia/iris/generate-csv';
+  private generateTemplateForExcelDataSet: string = '/api/ia/iris/generate-template-excel-dataset';
+  private loadExcelDataSet:string = '/api/ia/iris/load-dataset-excel';
+  private generateTemplateForCsvDataSet: string = '/api/ia/iris/generate-template-csv-dataset';
+  private loadCsvDataSet:string = '/api/ia/iris/load-dataset-csv';
+
 
 
 
@@ -148,25 +153,88 @@ export class IaService {
 
 
 
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
+
+
+
+
+
+
+
+
+
+
+  // ********************************************** TEST EXCEL ********************************************** //
+  // ********************************************** TEST EXCEL ********************************************** //
+  // ********************************************** TEST EXCEL ********************************************** //
   /**
-   * Méthode qui entraine le modèle avec les paramètres et prédictions
-   * générées par le user.
+   * Méthode qui intègre un fichier Excel contenant un nouveau set de données.
    *
    */
-  public async trainModelWithUserPredictions(): Promise<any>{
-    try {
-      const response = await this.http.get<string>(this.irisModelTrainWithUsersPredictionsUrl).toPromise();
-        console.log("Résultat :" + response);
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
+  public async uploadExcelFile(file: File): Promise<any> {
+    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
+    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
+    return this.http.post<boolean>(this.loadExcelDataSet, formData).toPromise(); // Envoi du formData vers le Back.
   }
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
-  // ********************************************** TEST ********************************************** //
+
+
+
+  /**
+   * Méthode qui génère un fichier de Template Excel
+   * pour intégrer un nouveau jeu de données.
+   *
+   */
+  public generateTemplateExcelForDataSet(): Observable<boolean> {
+    return this.http.get<boolean>(this.generateTemplateForExcelDataSet);
+  }
+
+  // ********************************************** TEST EXCEL ********************************************** //
+  // ********************************************** TEST EXCEL ********************************************** //
+  // ********************************************** TEST EXCEL ********************************************** //
+
+
+
+
+
+
+
+
+
+
+
+
+  // ********************************************** TEST CSV ********************************************** //
+  // ********************************************** TEST CSV ********************************************** //
+  // ********************************************** TEST CSV ********************************************** //
+
+  /**
+   * Méthode qui intègre un fichier Csv contenant un nouveau set de données.
+   *
+   */
+  public uploadCsvTemplateFile(file: File): Promise<any> {
+    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
+    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
+    return this.http.post<boolean>(this.loadCsvDataSet, formData).toPromise(); // Envoi du formData vers le Back.
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier de Template Csv
+   * pour intégrer un nouveau jeu de données.
+   *
+   */
+  public generateTemplateCsvForDataSet(): Observable<boolean>  {
+    return this.http.get<boolean>(this.generateTemplateForCsvDataSet);
+  }
+  // ********************************************** TEST CSV ********************************************** //
+  // ********************************************** TEST CSV ********************************************** //
+  // ********************************************** TEST CSV ********************************************** //
+
+
+
+
+
+
 
 
 

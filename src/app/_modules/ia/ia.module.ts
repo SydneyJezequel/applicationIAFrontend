@@ -8,6 +8,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ListIaComponent } from './list-ia/list-ia.component';
 import { IrisModelComponent } from './iris-model/iris-model.component';
 import { IrisModelResultsComponent } from './iris-model-results/iris-model-results.component';
+import { IrisModelNewDatasetComponent } from './iris-model-new-dataset/iris-model-new-dataset.component';
 
 
 
@@ -18,7 +19,8 @@ import { IrisModelResultsComponent } from './iris-model-results/iris-model-resul
     ChatGptBotComponent,
     ListIaComponent,
     IrisModelComponent,
-    IrisModelResultsComponent
+    IrisModelResultsComponent,
+    IrisModelNewDatasetComponent
   ],
   imports: [
     CommonModule,

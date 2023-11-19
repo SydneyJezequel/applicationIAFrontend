@@ -3,7 +3,7 @@ import { IaService } from "../../../_services/ia.service";
 import { IrisModelRequest } from "../../../model/irisModelRequest";
 import { Router } from "@angular/router";
 import { IrisModelResponse } from "../../../model/irisModelResponse";
-import { HttpErrorResponse } from "@angular/common/http";
+
 
 
 
@@ -40,6 +40,7 @@ export class IrisModelComponent implements OnInit {
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
+
 
 
 
