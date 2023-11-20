@@ -1,0 +1,70 @@
+
+<br>
+<h2>Intégrer un nouveau jeu de données </h2>
+<br>
+<br>
+
+
+
+<!--Intégration d'un dataSet sous format Excel -->
+<h3>Intégrer un nouveau jeu de données Excel </h3>
+<br>
+<button (click)="generateTemplateExcelForDataSet()">Générer un template Excel pour intégrer les données</button>
+<!--Formulaire d'intégration du fichier-->
+<div>
+  <button (click)="uploadDataSetExcelFile()">Intégrer les nouvelles données sous format Excel</button>
+  <input type="file" (change)="onFileChange($event)" />
+  <!--Affichage du message de succès ou d'erreur -->
+  <div *ngIf="displaySuccessMessageExcel" class="success-message">
+    {{ displaySuccessMessageExcel }}
+  </div>
+  <div *ngIf="displayErrorMessageExcel" class="error-message">
+    {{ displayErrorMessageExcel }}
+  </div>
+</div>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+<!--Intégration d'un dataSet sous format Csv -->
+<h3>Intégrer un nouveau jeu de données Csv </h3>
+<br>
+
+<button (click)="generateTemplateCsvForDataSet()">Générer un template csv pour intégrer les données</button>
+<br>
+
+<!--Formulaire d'intégration du fichier-->
+<div>
+  <button (click)="uploadDataSetCsvFile()">Intégrer les nouvelles données sous format Csv</button>
+  <input type="file" (change)="onFileChange($event)" />
+  <!--Affichage du message de succès ou d'erreur -->
+  <div *ngIf="displaySuccessMessageCsv" class="success-message">
+    {{ displaySuccessMessageCsv }}
+  </div>
+  <div *ngIf="displayErrorMessageCsv" class="error-message">
+    {{ displayErrorMessageCsv }}
+  </div>
+</div>
+<br>
+<br>
+
+
+
+<br>
+<br>
+<br>
+<button [routerLink]="'/result-iris'">Retour aux résultats du modèle</button>
+<button [routerLink]="'/iris'">Utiliser le modèle de classification des Iris</button>
+<br>
+<br>
+
