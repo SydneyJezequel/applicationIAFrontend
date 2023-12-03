@@ -27,10 +27,10 @@ export class IrisModelNewDatasetComponent implements OnInit {
   public successGenerationCsv : string = 'Fichier d\'intégration Csv généré avec succès.';
   public successLoadingData: string = 'Données chargées. Modèle entrainé avec succès.';
   public displaySuccessMessageExcel !: string;
-  public errorMessageExcel : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes.';
+  public errorMessageExcel : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes. Si le problème persiste, veuillez appelez votre informaticien préféré.';
   public displayErrorMessageExcel !: string;
   public displaySuccessMessageCsv !: string;
-  public errorMessageCsv : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes.';
+  public errorMessageCsv : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes. Si le problème persiste, veuillez appelez votre informaticien préféré.';
   public displayErrorMessageCsv !: string;
   public selectedFile !: File;
 

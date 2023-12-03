@@ -9,6 +9,7 @@ import { ListIaComponent } from './list-ia/list-ia.component';
 import { IrisModelComponent } from './iris-model/iris-model.component';
 import { IrisModelResultsComponent } from './iris-model-results/iris-model-results.component';
 import { IrisModelNewDatasetComponent } from './iris-model-new-dataset/iris-model-new-dataset.component';
+import { FaceRecognizerModelComponent } from './face-recognizer-model/face-recognizer-model.component';
 
 
 
@@ -20,7 +21,8 @@ import { IrisModelNewDatasetComponent } from './iris-model-new-dataset/iris-mode
     ListIaComponent,
     IrisModelComponent,
     IrisModelResultsComponent,
-    IrisModelNewDatasetComponent
+    IrisModelNewDatasetComponent,
+    FaceRecognizerModelComponent
   ],
   imports: [
     CommonModule,

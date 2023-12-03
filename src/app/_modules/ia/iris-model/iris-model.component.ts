@@ -27,6 +27,11 @@ export class IrisModelComponent implements OnInit {
   public request : string = "";
   public reponse !: any;
   public reponseModeleIris ?: string;
+  public successInitialization : string = "Modèle ré-initialisé avec succès";
+  public displaySuccessResultInitialization !: string;
+  public errorInitialization : string = "Echec lors de la ré-initialisation. Appelez votre informaticien préféré.";
+  public displayErrorInitialization !: string;
+  public initializeResult !: boolean;
 
 
 
@@ -109,6 +114,29 @@ export class IrisModelComponent implements OnInit {
       }
 
     }
+
+
+
+  /**
+   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   *
+   */
+  public initializeModelPrediction(): void {
+    try {
+      this.iaService.initializeModelPrediction().then((response : boolean) => {
+        this.initializeResult = response;
+        console.log(this.initializeResult);
+        if(this.initializeResult){
+          this.displaySuccessResultInitialization = this.successInitialization;
+        }else{
+          this.displayErrorInitialization = this.errorInitialization;
+        }
+        console.log(" Résultat : " + this.displaySuccessResultInitialization + " " + this.displayErrorInitialization);
+      });
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
 
 
 

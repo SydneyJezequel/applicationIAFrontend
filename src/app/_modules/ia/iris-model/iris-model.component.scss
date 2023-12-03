@@ -45,3 +45,27 @@ button:hover {
 .result{
   font-weight: bold;
 }
+
+
+/* Classe CSS pour le message de succès. */
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Classe CSS pour le message d'erreur. */
+.error-message {
+  font-family: Arial, sans-serif;
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Message de succès lors de la génération d'un fichier Excel ou Csv. */
+.success-message{
+  font-family: Arial, sans-serif;
+  color: #45a049;
+}

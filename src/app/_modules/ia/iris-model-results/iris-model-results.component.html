@@ -35,6 +35,14 @@
 <br>
 <br>
 <button (click)="initializeModelPrediction()">Ré-initialiser le modèle de classification des Iris</button>
+<!--Affichage du message de succès ou d'erreur -->
+<div *ngIf="displaySuccessResultInitialization" class="success-message">
+  {{ displaySuccessResultInitialization }}
+</div>
+<div *ngIf="displayErrorInitialization" class="error-message">
+  {{ displayErrorInitialization }}
+</div>
+<br>
 <button [routerLink]="'/iris'">Utiliser le modèle de classification des Iris</button>
 <button [routerLink]="'/new-dataset'">Intégrer un nouveau jeu de données</button>
 <br>

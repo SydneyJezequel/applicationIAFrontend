@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IaService } from "../../../_services/ia.service";
 import { IrisModelResponse } from "../../../model/irisModelResponse";
-import {HttpErrorResponse} from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
 
 
 
@@ -19,9 +19,13 @@ export class IrisModelResultsComponent implements OnInit {
 
   /******************************* Attributs *******************************/
   public listeResults !: IrisModelResponse[];
-  public messageSucces !: string;
+  public successInitialization : string = "Modèle ré-initialisé avec succès";
+  public displaySuccessResultInitialization !: string;
+  public errorInitialization : string = "Echec lors de la ré-initialisation. Appelez votre informaticien préféré.";
+  public displayErrorInitialization !: string;
   public generationFichierExcel !: boolean;
   public generationFichierCsv !: boolean;
+  public initializeResult !: boolean;
 
 
 
@@ -48,11 +52,16 @@ export class IrisModelResultsComponent implements OnInit {
    */
   public initializeModelPrediction(): void {
     try {
-      this.iaService.initializeModelPrediction().then((response) => {
-        this.messageSucces = response;
-        console.log(response);
+      this.iaService.initializeModelPrediction().then((response : boolean) => {
+        this.initializeResult = response;
+        console.log(this.initializeResult);
+        if(this.initializeResult){
+          this.displaySuccessResultInitialization = this.successInitialization;
+        }else{
+          this.displayErrorInitialization = this.errorInitialization;
+        }
+        console.log(" Résultat : " + this.displaySuccessResultInitialization + " " + this.displayErrorInitialization);
       });
-      console.log("Résultat de la ré-initialisation :" + this.messageSucces);
     } catch (error) {
       console.error('Erreur : ', error);
     }

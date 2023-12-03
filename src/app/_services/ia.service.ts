@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { IrisModelRequest } from "../model/irisModelRequest";
 import { IrisModelResponse } from "../model/irisModelResponse";
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 
 
@@ -12,6 +12,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class IaService {
+
 
 
 
@@ -28,6 +29,8 @@ export class IaService {
   private loadExcelDataSet:string = '/api/ia/iris/load-dataset-excel';
   private generateTemplateForCsvDataSet: string = '/api/ia/iris/generate-template-csv-dataset';
   private loadCsvDataSet:string = '/api/ia/iris/load-dataset-csv';
+  private loadTrainingSetFile:string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
+  private loadValidationSetFile:string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
 
 
 
@@ -35,6 +38,8 @@ export class IaService {
 
   /******************************* Constructeur *******************************/
   constructor(private http: HttpClient) {}
+
+
 
 
 
@@ -47,7 +52,7 @@ export class IaService {
    */
   public async initializeModelPrediction(): Promise<any>{
     try {
-      const response= await this.http.get<string>(this.initializeModelIrisApiUrl).toPromise();
+      const response= await this.http.get<boolean>(this.initializeModelIrisApiUrl).toPromise();
       console.log(response);
       return response;
     } catch (error) {
@@ -145,27 +150,6 @@ export class IaService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // ********************************************** TEST EXCEL ********************************************** //
-  // ********************************************** TEST EXCEL ********************************************** //
-  // ********************************************** TEST EXCEL ********************************************** //
   /**
    * Méthode qui intègre un fichier Excel contenant un nouveau set de données.
    *
@@ -187,24 +171,7 @@ export class IaService {
     return this.http.get<boolean>(this.generateTemplateForExcelDataSet);
   }
 
-  // ********************************************** TEST EXCEL ********************************************** //
-  // ********************************************** TEST EXCEL ********************************************** //
-  // ********************************************** TEST EXCEL ********************************************** //
 
-
-
-
-
-
-
-
-
-
-
-
-  // ********************************************** TEST CSV ********************************************** //
-  // ********************************************** TEST CSV ********************************************** //
-  // ********************************************** TEST CSV ********************************************** //
 
   /**
    * Méthode qui intègre un fichier Csv contenant un nouveau set de données.
@@ -226,15 +193,141 @@ export class IaService {
   public generateTemplateCsvForDataSet(): Observable<boolean>  {
     return this.http.get<boolean>(this.generateTemplateForCsvDataSet);
   }
-  // ********************************************** TEST CSV ********************************************** //
-  // ********************************************** TEST CSV ********************************************** //
-  // ********************************************** TEST CSV ********************************************** //
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+
+
+  private testUrl1: string = '/api/ia/face-recognizer/test-1';
+  private testUrl2: string = '/api/ia/face-recognizer/test-2';
+  private testUrl3: string = '/api/ia/face-recognizer/test-3';
+
+
+
+
+  /**
+   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   *
+   */
+  public async test1(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.testUrl1).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+  public async test2(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.testUrl2).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+  public async test3(message: string): Promise<any>{
+    try {
+      console.log("Objet : ");
+      console.log(message);
+      let result = await this.http.post<string>(this.testUrl3, message ).toPromise();
+      console.log("Prédiction bien enregistrée en BDD : " + result);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+
+
+  /**
+   * Méthode qui charge le set d'image d'entrainement du modèle.
+   * @param file : Fichier .zip qui contient le set d'image d'entrainement.
+   *
+   */
+  public async processTrainingSetImageZip(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier d'images intégré : " +file);
+    return this.http.post<boolean>(this.loadTrainingSetFile, formData).toPromise();
+  }
+
+
+
+  /**
+   * Méthode qui charge le set d'image de validation du modèle.
+   * @param file : Fichier .zip qui contient le set d'image de validation.
+   *
+   */
+  public async processValidationSetImageZip(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier d'images intégré : " +file);
+    return this.http.post<boolean>(this.loadValidationSetFile, formData).toPromise();
+  }
+
+
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
 
 
 
