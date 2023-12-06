@@ -1,0 +1,97 @@
+
+<br>
+
+<h2> Bienvenue dans le module de Reconnaissance Faciale </h2>
+
+<br>
+<p class="consignes"> Exécuter les étapes encadrées les unes après les autres </p>
+
+<br>
+<br>
+<br>
+
+<div class="cadre">
+  <label> Charger la/les liste(s) de photo(s) d'une personne : </label>
+  <div>
+    <input type="file" (change)="onTrainingSetFileSelected($event)" />
+    <button (click)="uploadTrainingSetFile()">Upload</button>
+  </div>
+  <br>
+  <br>
+    <button (click)="entrainerLeModele()">Entrainer le modèle</button>
+  <br>
+  <br>
+  <p class="consignes">La liste de photos doit être stockée dans un fichier zip.
+     Ce fichier doit être nommé avec le prénom et le nom de la personne
+     à identifier : "prenom_nom".
+     Une fois les photos chargées, cliquer sur ENTRAINER LE MODELE.</p>
+  <br>
+  <div *ngIf="loadTrainingDataSetResultSuccess">
+    <p class="success-message"> {{ loadTrainingDataSetResultSuccess }} </p>
+  </div>
+  <div *ngIf="loadTrainingDataSetResultError">
+    <p class="error-message"> {{ loadTrainingDataSetResultError }} </p>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="cadre">
+  <label> Chargement du set de validation : </label>
+  <div>
+    <input type="file" (change)="onValidationSetFileSelected($event)" />
+    <button (click)="uploadValidationSetFile()">Upload</button>
+  </div>
+  <br>
+  <br>
+  <button (click)="validerLeModele()">Tester le modèle</button>
+  <br>
+  <br>
+  <p class="consignes">La liste de photos à tester doit être un fichier zip.
+    Une fois les photos chargées, cliquer sur TESTER LE MODELE.</p>
+  <br>
+  <div *ngIf="loadValidationDataSetResultSuccess">
+    <p class="success-message"> {{ loadValidationDataSetResultSuccess }} </p>
+  </div>
+  <div *ngIf="loadValidationDataSetResultError">
+    <p class="error-message"> {{ loadValidationDataSetResultError }} </p>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="cadre">
+  <label> Reconnaissance faciale : </label>
+  <div>
+    <input type="file" (change)="onFaceIdentifyFileSelected($event)" />
+    <button (click)="uploadFaceIdentify()">Upload</button>
+  </div>
+  <br>
+  <br>
+  <button (click)="faceIdentify()">Reconnaitre une personne</button>
+  <br>
+  <br>
+  <p class="consignes">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
+  <br>
+  <div *ngIf="loadValidationDataSetResultSuccess">
+    <p class="success-message"> {{ loadValidationDataSetResultSuccess }} </p>
+  </div>
+  <div *ngIf="loadValidationDataSetResultError">
+    <p class="error-message"> {{ loadValidationDataSetResultError }} </p>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<button (click)="test1()">Test 1</button>
+<br>
+<br>
+<br>
+<button (click)="test3()">Test 3</button>
+

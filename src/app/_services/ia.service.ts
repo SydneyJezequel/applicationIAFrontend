@@ -26,11 +26,16 @@ export class IaService {
   private generateExcelFile: string = '/api/ia/iris/generate-excel';
   private generateCsvFile: string = '/api/ia/iris/generate-csv';
   private generateTemplateForExcelDataSet: string = '/api/ia/iris/generate-template-excel-dataset';
-  private loadExcelDataSet:string = '/api/ia/iris/load-dataset-excel';
+  private loadExcelDataSet: string = '/api/ia/iris/load-dataset-excel';
   private generateTemplateForCsvDataSet: string = '/api/ia/iris/generate-template-csv-dataset';
-  private loadCsvDataSet:string = '/api/ia/iris/load-dataset-csv';
-  private loadTrainingSetFile:string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
-  private loadValidationSetFile:string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
+  private loadCsvDataSet: string = '/api/ia/iris/load-dataset-csv';
+  private loadTrainingSetFile: string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
+  private loadValidationSetFile: string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
+  private loadIdentifyFaceFile: string = '/api/ia/face-recognizer/process-identify-face-image';
+  private recognizeFaceTrainingUrl : string = '/api/ia/face-recognizer/recognize-face-training';
+  private recognizeFaceValidationUrl: string = '/api/ia/face-recognizer/recognize-face-test';
+  private useRecognizeFaceModelUrl: string = '/api/ia/face-recognizer/use-recognize-face';
+
 
 
 
@@ -202,6 +207,133 @@ export class IaService {
 
 
 
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+
+
+  /**
+   * Méthode qui charge le set d'image d'entrainement du modèle.
+   * @param file : Fichier .zip qui contient le set d'image d'entrainement.
+   *
+   */
+  public async processTrainingSetImageZip(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier d'images intégré : " +file);
+    return this.http.post<boolean>(this.loadTrainingSetFile, formData).toPromise();
+  }
+
+
+
+  /**
+   * Méthode qui charge le set d'image de validation du modèle.
+   * @param file : Fichier .zip qui contient le set d'image de validation.
+   *
+   */
+  public async processValidationSetImageZip(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier d'images intégré : " +file);
+    return this.http.post<boolean>(this.loadValidationSetFile, formData).toPromise();
+  }
+
+
+
+  /**
+   * Méthode qui charge le set d'image de validation du modèle.
+   * @param file : Fichier .zip qui contient le set d'image de validation.
+   *
+   */
+  public async processFaceIdentify(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier de l'image à reconnaitre : " +file);
+    return this.http.post<boolean>(this.loadIdentifyFaceFile, formData).toPromise();
+  }
+
+
+
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+  /************************************** TEST : Intégration des images **************************************/
+
+
+
+
+
+
+
+
+
+
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+
+  /**
+   * Méthode qui encode les photos et entraine le modèle
+   * avec les photos encodées.
+   *
+   */
+  public async entrainerLeModele(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.recognizeFaceTrainingUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui teste le modèle avec un set
+   * de photos d'entrainement.
+   *
+   */
+  public async validerLeModele(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.recognizeFaceValidationUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui utilise le modèle pour
+   * reconnaitre le visage d'une personne.
+   *
+   */
+  public async faceIdentify(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.useRecognizeFaceModelUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
+  /************************************** TEST : Manipuler le modèle **************************************/
 
 
 
@@ -218,12 +350,111 @@ export class IaService {
 
 
 
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
 
 
   private testUrl1: string = '/api/ia/face-recognizer/test-1';
@@ -268,72 +499,12 @@ export class IaService {
     }
   }
 
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-
-
-  /**
-   * Méthode qui charge le set d'image d'entrainement du modèle.
-   * @param file : Fichier .zip qui contient le set d'image d'entrainement.
-   *
-   */
-  public async processTrainingSetImageZip(file: File): Promise<any> {
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-    console.log("Fichier d'images intégré : " +file);
-    return this.http.post<boolean>(this.loadTrainingSetFile, formData).toPromise();
-  }
-
-
-
-  /**
-   * Méthode qui charge le set d'image de validation du modèle.
-   * @param file : Fichier .zip qui contient le set d'image de validation.
-   *
-   */
-  public async processValidationSetImageZip(file: File): Promise<any> {
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-    console.log("Fichier d'images intégré : " +file);
-    return this.http.post<boolean>(this.loadValidationSetFile, formData).toPromise();
-  }
-
-
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-
-
-
-
-
-
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
+  /************************************** TEST : Méthodes de test **************************************/
 
 
 
