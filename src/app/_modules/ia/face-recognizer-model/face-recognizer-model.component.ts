@@ -17,20 +17,58 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
 
+
+
   /******************************* Attributs *******************************/
+  // Messages à charger - Chargement du DataSet d'entrainement & la Validation du modèle :
+  public successLoading : string = "Set d'images chargé avec succès.";
+  public errorLoading : string = "Erreur lors du chargement du Set d'images : Attention à bien charger un fichier .zip contenant des images au format Jpeg / Jpg.";
+
+  // Messages de retour - Chargement du DataSet d'entrainement :
   public reponseLoadTrainingDataSet !: boolean;
-  public reponseLoadValidationDataSet !: boolean;
-  public success : string = "Set d'images chargé avec succès";
-  public error : string = "Erreur lors du chargement du Set d'images : Attention à bien charger un fichier .zip contenant des images au format Jpeg / Jpg.";
   public loadTrainingDataSetResultSuccess !: string;
   public loadTrainingDataSetResultError !: string;
+
+  // Messages de retour - Validation du modèle :
+  public reponseLoadValidationDataSet !: boolean;
   public loadValidationDataSetResultSuccess !: string;
   public loadValidationDataSetResultError !: string;
-  public identifySuccess : string = "Chargement de l'image réussi";
-  public identifyError : string = "Erreur lors du chargement de l'image : Attention à bien charger un fichier jpg ou jpeg.";
-  public reponseFaceIdentify !: string;
-  public reponseFaceIdentifyResultSuccess !: string;
-  public reponseFaceIdentifyeResultError !: string;
+
+  // Messages de retour - Entrainement du Modèle :
+  public reponseTrainingModele !: boolean;
+  public successTraining : string = "Modèle entrainé avec succès.";
+  public errorTraining : string = "Erreur de  l'entrainement du modèle.";
+  public successTrainingDataSet !: string;
+  public errorTrainingDataSet !: string;
+
+  // Messages de retour - Valider le Modèle :
+  public reponseModeleValidation !: boolean;
+  public successValidation : string = "Modèle testé avec succès.";
+  public errorValidation : string = "Erreur de  l'entrainement du modèle.";
+  public successValidationModel !: string;
+  public errorValidationModel !: string;
+
+  // Messages de retour - Chargement de l'image à identifier :
+  public reponseLoadFaceIdentify !: boolean;
+  public identifyLoadSuccess : string = "Chargement de la photo à identifier terminée.";
+  public identifyLoadError : string = "Erreur lors du chargement de la photo à identifier.";
+  public successLoadFaceIdentify !: string;
+  public errorLoadFaceIdentify !: string;
+
+  // Messages de retour - Identification d'un visage :
+  public reponseFaceIdentify !: boolean;
+  public identifySuccess : string = "Identification du visage terminée.";
+  public identifyError : string = "Erreur lors de l'identification du visage.";
+  public successFaceIdentify !: string;
+  public errorFaceIdentify !: string;
+
+  // Fichier zip de photos d'entrainement :
+  private selectedTrainingSetFile: File | null = null;
+  // Fichier zip de photos de validation :
+  private selectedValidationSetFile: File | null = null;
+  // Fichier de la photo à identifier :
+  private faceIdentifyFile : File | null = null;
+
 
 
 
@@ -38,6 +76,8 @@ export class FaceRecognizerModelComponent implements OnInit {
 
   /******************************* Constructeur *******************************/
   constructor(private iaService : IaService, private router: Router) { }
+
+
 
 
 
@@ -50,20 +90,6 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /******************************* Méthodes *******************************/
-
-
-
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-
-    // Fichier zip :
-  private selectedTrainingSetFile: File | null = null;
-
-
 
   /**
    * Méthode qui intègre les fichiers image sous forme Zip
@@ -87,10 +113,11 @@ export class FaceRecognizerModelComponent implements OnInit {
     if (this.selectedTrainingSetFile) {
       try {
         this.reponseLoadTrainingDataSet = await this.iaService.processTrainingSetImageZip(this.selectedTrainingSetFile);
+        console.log(this.reponseLoadTrainingDataSet);
         if (this.reponseLoadTrainingDataSet) {
-          this.loadTrainingDataSetResultSuccess = this.success;
+          this.loadTrainingDataSetResultSuccess = this.successLoading;
         } else {
-          this.loadTrainingDataSetResultError = this.error;
+          this.loadTrainingDataSetResultError = this.errorLoading;
         }
       } catch (error) {
         console.error('Erreur : ', error);
@@ -98,26 +125,6 @@ export class FaceRecognizerModelComponent implements OnInit {
 
     }
   }
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-  /************************************** TEST : Intégration jeu d'entrainement **************************************/
-
-
-
-
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-
-
-    // Fichier zip :
-  private selectedValidationSetFile: File | null = null;
 
 
 
@@ -143,10 +150,11 @@ export class FaceRecognizerModelComponent implements OnInit {
     if (this.selectedValidationSetFile) {
       try {
         this.reponseLoadValidationDataSet = await this.iaService.processValidationSetImageZip(this.selectedValidationSetFile);
+        console.log(this.reponseLoadValidationDataSet);
         if (this.reponseLoadValidationDataSet) {
-          this.loadValidationDataSetResultSuccess = this.success;
+          this.loadValidationDataSetResultSuccess = this.successLoading;
         } else {
-          this.loadValidationDataSetResultError = this.error;
+          this.loadValidationDataSetResultError = this.errorLoading;
         }
       } catch (error) {
         console.error('Erreur : ', error);
@@ -156,11 +164,6 @@ export class FaceRecognizerModelComponent implements OnInit {
   }
 
 
-
-
-
-  // Fichier zip :
-  private faceIdentifyFile : File | null = null;
 
   /**
    * Méthode qui intègre les fichiers image sous forme Zip
@@ -183,11 +186,11 @@ export class FaceRecognizerModelComponent implements OnInit {
   public async uploadFaceIdentify(): Promise<void> {
     if (this.faceIdentifyFile) {
       try {
-        this.reponseFaceIdentify = await this.iaService.processFaceIdentify(this.faceIdentifyFile);
-        if (this.reponseFaceIdentify) {
-          this.reponseFaceIdentifyResultSuccess = this.identifySuccess;
+        this.reponseLoadFaceIdentify = await this.iaService.processFaceIdentify(this.faceIdentifyFile);
+        if (this.reponseLoadFaceIdentify) {
+          this.successLoadFaceIdentify = this.identifyLoadSuccess;
         } else {
-          this.reponseFaceIdentifyeResultError = this.identifyError;
+          this.errorLoadFaceIdentify = this.identifyLoadError;
         }
       } catch (error) {
         console.error('Erreur : ', error);
@@ -195,32 +198,23 @@ export class FaceRecognizerModelComponent implements OnInit {
 
     }
   }
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
-  /************************************** TEST : Intégration jeu de validation **************************************/
 
 
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
 
   /**
    * Méthode qui encode les photos et entraine le modèle
    * avec les photos encodées.
    *
    */
-  public async entrainerLeModele(){
+  public async entrainerLeModele() {
     // Exécution de la requête :
     try {
-      this.iaService.entrainerLeModele().then((response) => {
-        console.log(response);
-      });
+      this.reponseTrainingModele= await this.iaService.entrainerLeModele();
+      if (this.reponseTrainingModele) {
+        this.successTrainingDataSet = this.successTraining;
+      } else {
+        this.errorTrainingDataSet = this.errorTraining;
+      }
     } catch (error) {
       console.error('Erreur : ', error);
     }
@@ -233,16 +227,17 @@ export class FaceRecognizerModelComponent implements OnInit {
    * de photos d'entrainement.
    *
    */
-  public async validerLeModele(){
-    let message : string = "ceci est un test";
+  public async validerLeModele() {
     try {
-      this.iaService.validerLeModele().then((response) => {
-        console.log(response);
-      });
+      this.reponseModeleValidation = await this.iaService.validerLeModele();
+      if (this.reponseModeleValidation) {
+        this.successValidationModel = this.successValidation;
+      } else {
+        this.errorValidationModel = this.errorValidation;
+      }
     } catch (error) {
       console.error('Erreur : ', error);
     }
-
   }
 
 
@@ -254,110 +249,18 @@ export class FaceRecognizerModelComponent implements OnInit {
    */
   public async faceIdentify(): Promise<any>{
     try {
-      this.iaService.faceIdentify().then((response) => {
-        console.log(response);
-      });
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /**
-   * Méthode qui XXXXXXXXXXXXXXXXX
-   *
-   */
-  public async test1(){
-    // Exécution de la requête :
-    try {
-      this.iaService.test1().then((response) => {
-        console.log(response);
-      });
+      this.reponseFaceIdentify = await this.iaService.faceIdentify();
+        console.log(this.reponseFaceIdentify);
+      if (this.reponseFaceIdentify) {
+        this.successFaceIdentify = this.identifySuccess
+      } else {
+        this.errorFaceIdentify = this.identifyError;
+      }
     } catch (error) {
       console.error('Erreur : ', error);
     }
   }
 
-
-
-  /**
-   * Méthode qui XXXXXXXXXXXXXXXXX
-   *
-   */
-  public async test3(){
-    let message : string = "ceci est un test";
-    try {
-      this.iaService.test3(message).then((response) => {
-        console.log(response);
-      });
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-
-  }
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
-  /************************************** TEST : Modèle de Reconnaissance Faciale **************************************/
 
 
 

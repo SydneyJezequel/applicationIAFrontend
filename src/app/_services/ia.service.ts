@@ -17,7 +17,10 @@ export class IaService {
 
 
 
-  /******************************* Urls *******************************/
+
+  /******************************* Urls du modèle de classificatio des Iris *******************************/
+
+  // Urls du modèle de classificatio des Iris :
   private sendMessageToChatGpt: string = "/api/ia/chat-gpt/";
   private irisModelRequestUrl: string = '/api/ia/iris/predict';
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
@@ -29,6 +32,9 @@ export class IaService {
   private loadExcelDataSet: string = '/api/ia/iris/load-dataset-excel';
   private generateTemplateForCsvDataSet: string = '/api/ia/iris/generate-template-csv-dataset';
   private loadCsvDataSet: string = '/api/ia/iris/load-dataset-csv';
+  private getIrisDataSetApiUrl: string = '/api/ia/iris/generate-iris-dataset-excel';
+
+  // Urls du modèle de classification des Iris :
   private loadTrainingSetFile: string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
   private loadValidationSetFile: string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
   private loadIdentifyFaceFile: string = '/api/ia/face-recognizer/process-identify-face-image';
@@ -58,6 +64,22 @@ export class IaService {
   public async initializeModelPrediction(): Promise<any>{
     try {
       const response= await this.http.get<boolean>(this.initializeModelIrisApiUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui envoie une requête à chatGpt et récupère sa réponse.
+   *
+   */
+  public async getIrisDataSet(): Promise<any>{
+    try {
+      const response= await this.http.get<boolean>(this.getIrisDataSetApiUrl).toPromise();
       console.log(response);
       return response;
     } catch (error) {
@@ -201,20 +223,6 @@ export class IaService {
 
 
 
-
-
-
-
-
-
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-
-
   /**
    * Méthode qui charge le set d'image d'entrainement du modèle.
    * @param file : Fichier .zip qui contient le set d'image d'entrainement.
@@ -256,29 +264,6 @@ export class IaService {
   }
 
 
-
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-  /************************************** TEST : Intégration des images **************************************/
-
-
-
-
-
-
-
-
-
-
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
 
   /**
    * Méthode qui encode les photos et entraine le modèle
@@ -328,183 +313,6 @@ export class IaService {
       console.error('Erreur : ', error);
     }
   }
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-  /************************************** TEST : Manipuler le modèle **************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-
-
-  private testUrl1: string = '/api/ia/face-recognizer/test-1';
-  private testUrl2: string = '/api/ia/face-recognizer/test-2';
-  private testUrl3: string = '/api/ia/face-recognizer/test-3';
-
-
-
-
-  /**
-   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
-   *
-   */
-  public async test1(): Promise<any>{
-    try {
-      const response= await this.http.get<string>(this.testUrl1).toPromise();
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-
-  public async test2(): Promise<any>{
-    try {
-      const response= await this.http.get<string>(this.testUrl2).toPromise();
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-
-  public async test3(message: string): Promise<any>{
-    try {
-      console.log("Objet : ");
-      console.log(message);
-      let result = await this.http.post<string>(this.testUrl3, message ).toPromise();
-      console.log("Prédiction bien enregistrée en BDD : " + result);
-    } catch (error) {
-      console.error('Erreur : ', error);
-    }
-  }
-
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
-  /************************************** TEST : Méthodes de test **************************************/
 
 
 

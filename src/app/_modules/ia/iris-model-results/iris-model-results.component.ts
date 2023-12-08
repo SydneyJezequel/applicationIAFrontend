@@ -26,12 +26,19 @@ export class IrisModelResultsComponent implements OnInit {
   public generationFichierExcel !: boolean;
   public generationFichierCsv !: boolean;
   public initializeResult !: boolean;
+  public getIrisDataSetResult !: boolean;
+  public successGetDataSet : string = "Fichier excel du dataSet généré avec succès";
+  public errorGetDataSet : string = "Erreur lors de la génération du fichier excel du dataSet";
+  public displaySuccessGetDataSet !: string;
+  public displayErrorGetDataSet !: string;
+
 
 
 
 
   /******************************* Constructeur *******************************/
   constructor(private iaService : IaService) { }
+
 
 
 
@@ -62,6 +69,27 @@ export class IrisModelResultsComponent implements OnInit {
         }
         console.log(" Résultat : " + this.displaySuccessResultInitialization + " " + this.displayErrorInitialization);
       });
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier Excel qui contient
+   * le DataSet du modèle des Iris.
+   *
+   */
+  public async getIrisDataSet() {
+    try {
+      this.getIrisDataSetResult = await this.iaService.getIrisDataSet();
+      console.log(this.getIrisDataSetResult);
+      if (this.getIrisDataSetResult) {
+        this.displaySuccessGetDataSet = this.successGetDataSet;
+      } else {
+        this.displayErrorGetDataSet = this.errorGetDataSet;
+      }
     } catch (error) {
       console.error('Erreur : ', error);
     }

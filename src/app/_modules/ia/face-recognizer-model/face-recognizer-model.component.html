@@ -11,26 +11,30 @@
 <br>
 
 <div class="cadre">
-  <label> Charger la/les liste(s) de photo(s) d'une personne : </label>
+  <label> Charger le jeu de données d'entrainement : </label>
+  <br>
+  <br>
+  <br>
   <div>
     <input type="file" (change)="onTrainingSetFileSelected($event)" />
-    <button (click)="uploadTrainingSetFile()">Upload</button>
+    <button (click)="uploadTrainingSetFile()">Charger les données</button>
   </div>
+  <p class="consignes">La liste de photos doit être stockée dans un fichier zip.
+    Ce fichier doit être nommé avec le prénom et le nom de la personne
+    à identifier : "prenom_nom". Vous pouvez charger les listes de plusieurs personnes.
+    Une fois les photos chargées, cliquer sur ENTRAINER LE MODELE.</p>
   <br>
   <br>
     <button (click)="entrainerLeModele()">Entrainer le modèle</button>
   <br>
+  <p class="consignes">L'entrainement du modèle peut prendre quelques minutes :
+    Attendez le message de l'application.</p>
   <br>
-  <p class="consignes">La liste de photos doit être stockée dans un fichier zip.
-     Ce fichier doit être nommé avec le prénom et le nom de la personne
-     à identifier : "prenom_nom".
-     Une fois les photos chargées, cliquer sur ENTRAINER LE MODELE.</p>
-  <br>
-  <div *ngIf="loadTrainingDataSetResultSuccess">
-    <p class="success-message"> {{ loadTrainingDataSetResultSuccess }} </p>
+  <div *ngIf="successTrainingDataSet">
+    <p class="success-message"> {{ successTrainingDataSet }} </p>
   </div>
-  <div *ngIf="loadTrainingDataSetResultError">
-    <p class="error-message"> {{ loadTrainingDataSetResultError }} </p>
+  <div *ngIf="errorTrainingDataSet">
+    <p class="error-message"> {{ errorTrainingDataSet }} </p>
   </div>
 </div>
 
@@ -39,16 +43,14 @@
 <br>
 
 <div class="cadre">
-  <label> Chargement du set de validation : </label>
+  <label> Chargement le jeu de données de validation : </label>
+  <br>
+  <br>
+  <br>
   <div>
     <input type="file" (change)="onValidationSetFileSelected($event)" />
-    <button (click)="uploadValidationSetFile()">Upload</button>
+    <button (click)="uploadValidationSetFile()">Charger les données</button>
   </div>
-  <br>
-  <br>
-  <button (click)="validerLeModele()">Tester le modèle</button>
-  <br>
-  <br>
   <p class="consignes">La liste de photos à tester doit être un fichier zip.
     Une fois les photos chargées, cliquer sur TESTER LE MODELE.</p>
   <br>
@@ -58,6 +60,19 @@
   <div *ngIf="loadValidationDataSetResultError">
     <p class="error-message"> {{ loadValidationDataSetResultError }} </p>
   </div>
+  <br>
+  <br>
+  <button (click)="validerLeModele()">Tester le modèle</button>
+  <br>
+  <p class="consignes">La validation du modèle prend quelques minutes :
+    Les photos du jeu de test seront affichées avec le nom de la personne.</p>
+  <br>
+  <div *ngIf="successValidationModel">
+    <p class="success-message"> {{ successValidationModel }} </p>
+  </div>
+  <div *ngIf="errorValidationModel">
+    <p class="error-message"> {{ errorValidationModel }} </p>
+  </div>
 </div>
 
 <br>
@@ -66,32 +81,36 @@
 
 <div class="cadre">
   <label> Reconnaissance faciale : </label>
+  <br>
+  <br>
+  <br>
   <div>
     <input type="file" (change)="onFaceIdentifyFileSelected($event)" />
-    <button (click)="uploadFaceIdentify()">Upload</button>
+    <button (click)="uploadFaceIdentify()">Charger les données</button>
+  </div>
+  <p class="consignes">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
+  <br>
+  <div *ngIf="successLoadFaceIdentify ">
+    <p class="success-message"> {{ successLoadFaceIdentify  }} </p>
+  </div>
+  <div *ngIf="errorLoadFaceIdentify">
+    <p class="error-message"> {{ errorLoadFaceIdentify }} </p>
   </div>
   <br>
   <br>
   <button (click)="faceIdentify()">Reconnaitre une personne</button>
+  <p class="consignes">Identifier le visage de la personne sur la photo.
+  Cette action peut prendre quelques minutes : Attendez le retour
+  de l'application.</p>
   <br>
-  <br>
-  <p class="consignes">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
-  <br>
-  <div *ngIf="loadValidationDataSetResultSuccess">
-    <p class="success-message"> {{ loadValidationDataSetResultSuccess }} </p>
+  <div *ngIf="successFaceIdentify ">
+    <p class="success-message"> {{ successFaceIdentify  }} </p>
   </div>
-  <div *ngIf="loadValidationDataSetResultError">
-    <p class="error-message"> {{ loadValidationDataSetResultError }} </p>
+  <div *ngIf="errorFaceIdentify">
+    <p class="error-message"> {{ errorFaceIdentify }} </p>
   </div>
 </div>
 
 <br>
 <br>
 <br>
-
-<button (click)="test1()">Test 1</button>
-<br>
-<br>
-<br>
-<button (click)="test3()">Test 3</button>
-
