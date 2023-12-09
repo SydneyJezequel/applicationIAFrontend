@@ -44,7 +44,7 @@ export class FaceRecognizerModelComponent implements OnInit {
   // Messages de retour - Valider le Modèle :
   public reponseModeleValidation !: boolean;
   public successValidation : string = "Modèle testé avec succès.";
-  public errorValidation : string = "Erreur de  l'entrainement du modèle.";
+  public errorValidation : string = "Erreur du test du modèle. Avez-vous bien entrainé le modèle auparavant ?";
   public successValidationModel !: string;
   public errorValidationModel !: string;
 
@@ -69,6 +69,16 @@ export class FaceRecognizerModelComponent implements OnInit {
   // Fichier de la photo à identifier :
   private faceIdentifyFile : File | null = null;
 
+  // Liste des modèles :
+  modelList !: string[];
+  selectedModel !: string;
+
+  // Messages de retour - Identification d'un visage :
+  public reponseSelectModel !: boolean;
+  public selectModelSuccess : string = "Modèle pris en compte.";
+  public selectModelError : string = "Erreur lors de la sélection du modèle.";
+  public successSelectModel !: string;
+  public errorSelectModel !: string;
 
 
 
@@ -84,7 +94,11 @@ export class FaceRecognizerModelComponent implements OnInit {
 
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
+    this.initializeFaceRecognizerModele();
+    this.getListModel();
   }
+
+
 
 
 
@@ -262,6 +276,59 @@ export class FaceRecognizerModelComponent implements OnInit {
   }
 
 
+
+  /**
+   * Méthode qui initialise le modèle de machine learning
+   * "hog" comme modèle par défaut pour la reconnaissance faciale.
+   * @return boolean : Opération réussie ou non.
+   */
+  public async initializeFaceRecognizerModele(): Promise<any>{
+    try {
+      let modeleInitialise = await this.iaService.initializeFaceRecognizerModele();
+      console.log("modele initialisé : "+ modeleInitialise);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui renvoie la liste des modèles de
+   * Machine Learning vers le front
+   * pour le menu déroulant.
+   *
+   */
+  public async getListModel(): Promise<any>{
+    try {
+      this.modelList = await this.iaService.getListModel();
+      console.log("liste des modèles : "+ this.modelList);
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui renvoie la liste des modèles de
+   * Machine Learning vers le front
+   * pour le menu déroulant.
+   *
+   */
+  public async selectModel(): Promise<any>{
+    try {
+      console.log("choix modèle CONTROLLER : "+this.selectedModel);
+      this.reponseSelectModel = await this.iaService.selectModel(this.selectedModel);
+      if (this.reponseSelectModel) {
+          this.successSelectModel = this.selectModelSuccess;
+        } else {
+          this.errorSelectModel = this.selectModelError;
+        }
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
 
 
 

@@ -34,13 +34,16 @@ export class IaService {
   private loadCsvDataSet: string = '/api/ia/iris/load-dataset-csv';
   private getIrisDataSetApiUrl: string = '/api/ia/iris/generate-iris-dataset-excel';
 
-  // Urls du modèle de classification des Iris :
+  // Urls du modèle de reconnaissance faciale :
   private loadTrainingSetFile: string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
   private loadValidationSetFile: string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
   private loadIdentifyFaceFile: string = '/api/ia/face-recognizer/process-identify-face-image';
   private recognizeFaceTrainingUrl : string = '/api/ia/face-recognizer/recognize-face-training';
   private recognizeFaceValidationUrl: string = '/api/ia/face-recognizer/recognize-face-test';
   private useRecognizeFaceModelUrl: string = '/api/ia/face-recognizer/use-recognize-face';
+  private initializeFaceRecognizerModeleUrl: string = '/api/ia/face-recognizer/initialize';
+  private getListModelUrl: string = '/api/ia/face-recognizer/liste-modele';
+  private selectModelUrl: string = '/api/ia/face-recognizer/selection-modele';
 
 
 
@@ -315,6 +318,58 @@ export class IaService {
   }
 
 
+
+  /**
+   * Méthode qui initialise le modèle de machine learning
+   * "hog" comme modèle par défaut pour la reconnaissance faciale.
+   * @return boolean : Opération réussie ou non.
+   */
+  public async initializeFaceRecognizerModele(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.initializeFaceRecognizerModeleUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui renvoie la liste des modèles de
+   * Machine Learning vers le front
+   * pour le menu déroulant.
+   *
+   */
+  public async getListModel(): Promise<any>{
+    try {
+      const response= await this.http.get<string>(this.getListModelUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui met à jour le modèle de machine learning
+   * en BDD. Ce choix sera utilisé lors de l'exécution du modèle
+   * de Machine Learning.
+   * @return boolean : Opération réussie ou non.
+   *
+   */public async selectModel(selectModel:string): Promise<any>{
+    try {
+      console.log("choix modèle SERVICE : "+selectModel);
+      const response= await this.http.post<boolean>(this.selectModelUrl, selectModel).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
 
 
 

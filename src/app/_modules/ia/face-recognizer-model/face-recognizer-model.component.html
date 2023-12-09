@@ -15,6 +15,29 @@
   <br>
   <br>
   <br>
+  <br>
+  <br><select [(ngModel)]="selectedModel">
+    <option value="Sélectionner un modèle" disabled selected>Sélectionner un modèle</option>
+    <option *ngFor="let model of modelList" [value]="model">{{ model.valueOf() }}</option>
+  </select>
+  <br>
+  <button (click)="selectModel()">Sélectionner le modèle de Machine Learning</button>
+  <p class="consignes">Choisissez le modèle de Machine Learning en charge de la reconnaissance faciale :
+  HOG est une technique de traitement d'image traditionnelle basée sur du Machine Learning.
+  CNN est une technique de traitement d'image plus moderne basée sur du Deep Learning.
+  Les temps de traitement du modèle CNN peuvent être très long (plusieurs minutes) par rapport à ceux de HOG.
+  </p>
+  <br>
+  <div *ngIf="successSelectModel">
+    <p class="success-message"> {{ successSelectModel }} </p>
+  </div>
+  <div *ngIf="errorSelectModel">
+    <p class="error-message"> {{ errorSelectModel }} </p>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
   <div>
     <input type="file" (change)="onTrainingSetFileSelected($event)" />
     <button (click)="uploadTrainingSetFile()">Charger les données</button>
@@ -23,6 +46,8 @@
     Ce fichier doit être nommé avec le prénom et le nom de la personne
     à identifier : "prenom_nom". Vous pouvez charger les listes de plusieurs personnes.
     Une fois les photos chargées, cliquer sur ENTRAINER LE MODELE.</p>
+  <br>
+  <br>
   <br>
   <br>
     <button (click)="entrainerLeModele()">Entrainer le modèle</button>
