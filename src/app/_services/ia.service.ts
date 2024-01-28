@@ -45,6 +45,10 @@ export class IaService {
   private getListModelUrl: string = '/api/ia/face-recognizer/liste-modele';
   private selectModelUrl: string = '/api/ia/face-recognizer/selection-modele';
 
+  // Urls du modèle de génération d'image GAN :
+  private generateGANImageUrl: string = '/api/ia/gan-image-generation/generate-faces';
+  private trainGANModelUrl: string = '/api/ia/gan-image-generation//train-gan-model';
+
 
 
 
@@ -58,7 +62,29 @@ export class IaService {
 
 
 
-  /************************************** Méthodes **************************************/
+  /************************************** Méthodes de l'API de chatGPT **************************************/
+
+  /**
+   * Méthode qui envoie une requête à chatGpt et récupère sa réponse.
+   *
+   */
+  public async sendMessage(message: string): Promise<string | undefined> {
+    try {
+      const response= await this.http.post<string>(this.sendMessageToChatGpt, message).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+      throw error;
+    }
+  }
+
+
+
+
+
+
+  /************************************** Méthodes du Modèle Random Forest **************************************/
 
   /**
    * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
@@ -87,23 +113,6 @@ export class IaService {
       return response;
     } catch (error) {
       console.error('Erreur : ', error);
-    }
-  }
-
-
-
-  /**
-   * Méthode qui envoie une requête à chatGpt et récupère sa réponse.
-   *
-   */
-  public async sendMessage(message: string): Promise<string | undefined> {
-    try {
-      const response= await this.http.post<string>(this.sendMessageToChatGpt, message).toPromise();
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.error('Erreur : ', error);
-      throw error;
     }
   }
 
@@ -161,7 +170,7 @@ export class IaService {
 
 
   /**
-   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   * Méthode qui génère un fichier Excel contenant les résultats stockées en BDD.
    *
    */
   public generateExcel() {
@@ -171,7 +180,7 @@ export class IaService {
 
 
   /**
-   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   * Méthode qui génère un fichier Excel les résultats stockés en BDD.
    *
    */
   public generateCsv() {
@@ -225,6 +234,11 @@ export class IaService {
   }
 
 
+
+
+
+
+  /************************************** Méthodes des Modèles de reconnaissances faciales (HOG & CNN) **************************************/
 
   /**
    * Méthode qui charge le set d'image d'entrainement du modèle.
@@ -370,6 +384,60 @@ export class IaService {
       console.error('Erreur : ', error);
     }
   }
+
+
+
+
+
+
+  /************************************** Méthodes du modèle de Génération d'images GAN **************************************/
+
+  /**
+   * Méthode qui utilise le modèle GAN pour
+   * générer des images.
+   *
+   */
+  public async generateImage(): Promise<any>{
+    try {
+      const response= await this.http.get<boolean>(this.generateGANImageUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui lance l'entrainement
+   * du modèle GAN.
+   *
+   */
+  public async trainGANModel(): Promise<any>{
+    try {
+      const nbEpochs = 1000;
+      const batchSize = 128;
+      const lr = 1e-4;
+      const zDim = 200;
+      const device = 'cpu';
+      const showStep = 35;
+      const saveStep = 35;
+
+      // Création de l'url :
+      const url = `${this.trainGANModelUrl}?nbEpochs=${nbEpochs}&batchSize=${batchSize}&lr=${lr}&zDim=${zDim}&device=${device}&showStep=${showStep}&saveStep=${saveStep}`;
+
+      // Exécution du Backend :
+      const response = await this.http.post<boolean>(url, {}).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
 
 
 

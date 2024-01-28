@@ -6,6 +6,7 @@ import { IrisModelComponent } from "./iris-model/iris-model.component";
 import { IrisModelResultsComponent } from "./iris-model-results/iris-model-results.component";
 import { IrisModelNewDatasetComponent } from "./iris-model-new-dataset/iris-model-new-dataset.component";
 import {FaceRecognizerModelComponent} from "./face-recognizer-model/face-recognizer-model.component";
+import {GanModelComponent} from "./gan-model/gan-model.component";
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'result-iris', component: IrisModelResultsComponent},
   { path: 'new-dataset', component: IrisModelNewDatasetComponent},
   { path: 'reconnaissance-faciale', component: FaceRecognizerModelComponent},
+  { path: 'gan-model', component: GanModelComponent},
 ];
 
 
