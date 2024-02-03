@@ -9,9 +9,46 @@
 
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
 
+<!--
 <button (click)="trainGANModel()">Entrainer le Modèle GAN</button>
+-->
+
+<h2>Entrainer le Modèle GAN</h2>
+
+<br>
+
+<div class="cadre">
+  <form (ngSubmit)="trainGANModel()">
+    <label for="n_epochs">Nombre d'itérations sur l'ensemble des images: </label>
+    <input id="n_epochs" [(ngModel)]="n_epochs" name="n_epochs" placeholder="nombre d'itérations sur le dataset">
+    <br>
+    <label for="batch_size">Taille des lots d'images: </label>
+    <input id="batch_size" [(ngModel)]="batch_size" name="batch_size" placeholder="taille_lot">
+    <br>
+    <label for="lr">Taux d'apprentissage: </label>
+    <input id="lr" [(ngModel)]="lr" name="lr" placeholder="taux_apprentissage">
+    <br>
+    <label for="z_dim">Dimensions de l'espace latent: </label>
+    <input id="z_dim" [(ngModel)]="z_dim" name="z_dim" placeholder="dimensions espace latent">
+    <br>
+    <label for="device">Dispositif / Appareil: </label>
+    <input id="device" [(ngModel)]="device" name="device" placeholder="dispositif utilisé">
+    <br>
+    <label for="show_step">Iterations affichées: </label>
+    <input id="show_step" [(ngModel)]="show_step" name="show_step" placeholder="etapes_affichees">
+    <br>
+    <label for="save_step">Itéations sauvegardées: </label>
+    <input id="save_step" [(ngModel)]="save_step" name="save_step" placeholder="etapes_sauvegardees">
+    <br>
+    <button type="submit">Enregistrer</button>
+  </form>
+</div>
 
 <br>
 <br>

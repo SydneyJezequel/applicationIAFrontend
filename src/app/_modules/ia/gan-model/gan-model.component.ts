@@ -34,8 +34,14 @@ export class GanModelComponent implements OnInit {
   public successTraining !: string;
   public errorTraining !: string;
 
-
-
+  // Champs du formulaire d'entrainement :
+  public n_epochs !: number;
+  public batch_size !: number;
+  public lr !: number;
+  public z_dim !: number;
+  public device !: string
+  public show_step !: number;
+  public save_step !: number;
 
 
 
@@ -86,7 +92,17 @@ export class GanModelComponent implements OnInit {
    */
   public async trainGANModel(): Promise<any>{
     try {
-      this.reponseTrainingGANModel = await this.iaService.trainGANModel();
+      console.log("*********** TEST ***********")
+      console.log(this.n_epochs)
+      console.log(this.batch_size)
+      console.log(this.lr)
+      console.log(this.z_dim)
+      console.log(this.device)
+      console.log(this.show_step)
+      console.log(this.save_step)
+      console.log("*********** TEST ***********")
+      this.reponseTrainingGANModel = await this.iaService.trainGANModel(this.n_epochs, this.batch_size, this.lr, this.z_dim, this.device, this.show_step , this.save_step);
+      // this.reponseTrainingGANModel = await this.iaService.trainGANModel();
       console.log(this.reponseTrainingGANModel);
       if (this.reponseTrainingGANModel) {
         this.successTraining = this.trainingSuccess;

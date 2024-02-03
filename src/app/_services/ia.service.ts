@@ -414,18 +414,10 @@ export class IaService {
    * du modèle GAN.
    *
    */
-  public async trainGANModel(): Promise<any>{
+  public async trainGANModel(n_epochs : number, batch_size : number, lr : number, z_dim : number, device : string, show_step : number, save_step:number): Promise<any>{
     try {
-      const nbEpochs = 1000;
-      const batchSize = 128;
-      const lr = 1e-4;
-      const zDim = 200;
-      const device = 'cpu';
-      const showStep = 35;
-      const saveStep = 35;
-
       // Création de l'url :
-      const url = `${this.trainGANModelUrl}?nbEpochs=${nbEpochs}&batchSize=${batchSize}&lr=${lr}&zDim=${zDim}&device=${device}&showStep=${showStep}&saveStep=${saveStep}`;
+      const url = `${this.trainGANModelUrl}?nbEpochs=${n_epochs}&batchSize=${batch_size}&lr=${lr}&zDim=${z_dim}&device=${device}&showStep=${show_step}&saveStep=${save_step}`;
 
       // Exécution du Backend :
       const response = await this.http.post<boolean>(url, {}).toPromise();
