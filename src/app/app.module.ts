@@ -9,6 +9,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { PersonneModule } from "./_modules/personne/personne.module";
 import { VilleModule } from "./_modules/ville/ville.module";
+import { IAModule } from "./_modules/ia/ia.module";
+
+
 
 
 
@@ -27,7 +30,8 @@ import { VilleModule } from "./_modules/ville/ville.module";
     FormsModule,
     HttpClientModule,
     PersonneModule,
-    VilleModule
+    VilleModule,
+    IAModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

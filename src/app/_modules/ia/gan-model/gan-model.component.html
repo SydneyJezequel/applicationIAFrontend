@@ -2,49 +2,51 @@
 <h2>Utilisation d'un modèle de Génération d'image GAN</h2>
 
 <br>
-<br>
-
-<!-- Accès à l'interface d'utilisation de chatGpt -->
-<button (click)="generateImage()">Générer des images avec le Modèle GAN</button>
-
-<br>
+<div class="cadre">
+  <!-- Accès à l'interface d'utilisation de chatGpt -->
+  <button (click)="generateImage()">Générer des images avec le Modèle GAN</button>
+</div>
 <br>
 <br>
 <br>
 <br>
 <br>
-
-
-<!--
-<button (click)="trainGANModel()">Entrainer le Modèle GAN</button>
--->
 
 <h2>Entrainer le Modèle GAN</h2>
 
 <br>
-
+<!-- Formulaire des Hyperparamètres du Modèle -->
 <div class="cadre">
+  <p>Hyperparamètres du Modèle :</p>
+  <br>
   <form (ngSubmit)="trainGANModel()">
-    <label for="n_epochs">Nombre d'itérations sur l'ensemble des images: </label>
-    <input id="n_epochs" [(ngModel)]="n_epochs" name="n_epochs" placeholder="nombre d'itérations sur le dataset">
+    <label for="n_epochs">Nombre d'itérations sur l'ensemble des images (Définit la durée de l'entrainement): </label>
+    <input id="n_epochs" [(ngModel)]="n_epochs" name="n_epochs" placeholder="Nombre de fois ou toutes les images sont traitées">
+    <br>
     <br>
     <label for="batch_size">Taille des lots d'images: </label>
-    <input id="batch_size" [(ngModel)]="batch_size" name="batch_size" placeholder="taille_lot">
+    <input id="batch_size" [(ngModel)]="batch_size" name="batch_size" placeholder="Les poids du modèles sont mis à jour à chaque lot">
+    <br>
     <br>
     <label for="lr">Taux d'apprentissage: </label>
-    <input id="lr" [(ngModel)]="lr" name="lr" placeholder="taux_apprentissage">
+    <input id="lr" [(ngModel)]="lr" name="lr" placeholder="Définit la vitesse de convergence du modèle">
     <br>
-    <label for="z_dim">Dimensions de l'espace latent: </label>
-    <input id="z_dim" [(ngModel)]="z_dim" name="z_dim" placeholder="dimensions espace latent">
     <br>
-    <label for="device">Dispositif / Appareil: </label>
-    <input id="device" [(ngModel)]="device" name="device" placeholder="dispositif utilisé">
+    <label for="z_dim">Nombre de dimensions de l'espace latent: </label>
+    <input id="z_dim" [(ngModel)]="z_dim" name="z_dim" placeholder="Capture la complexité des données">
+    <br>
+    <br>
+    <label for="device">Dispositif: </label>
+    <input id="device" [(ngModel)]="device" name="device" placeholder="Appareil sur lequel le modèle est entraîné">
+    <br>
     <br>
     <label for="show_step">Iterations affichées: </label>
-    <input id="show_step" [(ngModel)]="show_step" name="show_step" placeholder="etapes_affichees">
+    <input id="show_step" [(ngModel)]="show_step" name="show_step" placeholder="Fréquence d'affichage des images générées">
     <br>
-    <label for="save_step">Itéations sauvegardées: </label>
-    <input id="save_step" [(ngModel)]="save_step" name="save_step" placeholder="etapes_sauvegardees">
+    <br>
+    <label for="save_step">Itérations sauvegardées: </label>
+    <input id="save_step" [(ngModel)]="save_step" name="save_step" placeholder="Fréquence de sauvegarde des paramètres">
+    <br>
     <br>
     <button type="submit">Enregistrer</button>
   </form>
@@ -52,3 +54,10 @@
 
 <br>
 <br>
+
+<!-- Bouton de retour à la liste des IA -->
+<button [routerLink]="'/liste-ia'">Retour à la liste des IA </button>
+
+<br>
+<br>
+

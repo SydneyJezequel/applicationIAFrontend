@@ -16,6 +16,7 @@ import { GanModelComponent } from './gan-model/gan-model.component';
 
 
 
+
 /******************************* Module d'implémentation des IA *******************************/
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { GanModelComponent } from './gan-model/gan-model.component';
     IrisModelResultsComponent,
     IrisModelNewDatasetComponent,
     FaceRecognizerModelComponent,
-    GanModelComponent
+    GanModelComponent,
   ],
   imports: [
     CommonModule,
