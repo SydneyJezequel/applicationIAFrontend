@@ -46,6 +46,7 @@ export class IaService {
   private selectModelUrl: string = '/api/ia/face-recognizer/selection-modele';
 
   // Urls du modèle de génération d'image GAN :
+  private loadParametersGenFile: string = '/api/ia/gan-image-generation/process-parameters-gen-file';
   private generateGANImageUrl: string = '/api/ia/gan-image-generation/generate-faces';
   private trainGANModelUrl: string = '/api/ia/gan-image-generation//train-gan-model';
 
@@ -391,6 +392,21 @@ export class IaService {
 
 
   /************************************** Méthodes du modèle de Génération d'images GAN **************************************/
+
+  /**
+   * Méthode qui charge le fichier de paramètres du modèle Gan.
+   * @param file : Fichier .pkl qui contient les paramètres du modèle.
+   * Ce fichier est généré lors de l'entrainement du modèle.
+   *
+   */
+  public async processParameterGenFile(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log(file);
+    return this.http.post<boolean>(this.loadParametersGenFile, formData).toPromise();
+  }
+
+
 
   /**
    * Méthode qui utilise le modèle GAN pour

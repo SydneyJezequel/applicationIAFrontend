@@ -3,14 +3,48 @@
 
 <br>
 <div class="cadre">
+
+  <!-- Chargement du fichier de paramètres -->
+  <p>1- Charger le fichier de paramètres du Générateur :</p>
+  <div>
+    <input type="file" (change)="onParametersFileSelected($event)" />
+    <button (click)="uploadParametersGenFile()">Charger le fichier de paramètres</button>
+  </div>
+  <br>
+  <div *ngIf="parametersGenFileLoadSuccess">
+    <p class="success-message"> {{ parametersGenFileLoadSuccess }} </p>
+  </div>
+  <div *ngIf="parametersGenFileLoadError">
+    <p class="error-message"> {{ parametersGenFileLoadError }} </p>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
   <!-- Accès à l'interface d'utilisation de chatGpt -->
-  <button (click)="generateImage()">Générer des images avec le Modèle GAN</button>
+  <p>2- Générer des images avec le Modèle GAN à partir de ce fichier de paramètres :</p>
+  <button (click)="generateImage()">Générer des images</button>
+  <br>
+  <div *ngIf="successGeneration">
+    <p class="success-message"> {{ successGeneration }} </p>
+  </div>
+  <div *ngIf="errorGeneration">
+    <p class="error-message"> {{ errorGeneration }} </p>
+  </div>
+  <br>
+
 </div>
+
+
+
 <br>
 <br>
 <br>
 <br>
 <br>
+
+
 
 <h2>Entrainer le Modèle GAN</h2>
 
@@ -50,8 +84,16 @@
     <br>
     <button type="submit">Enregistrer</button>
   </form>
+  <br>
+  <div *ngIf="successTraining">
+    <p class="success-message"> {{ successTraining }} </p>
+  </div>
+  <div *ngIf="errorTraining">
+    <p class="error-message"> {{ errorTraining }} </p>
+  </div>
 </div>
 
+<br>
 <br>
 <br>
 

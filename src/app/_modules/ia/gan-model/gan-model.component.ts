@@ -21,19 +21,19 @@ export class GanModelComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  // Messages de retour - Identification d'un visage :
-  public reponseImageGeneration !: boolean;
-  public generationSuccess : string = "Génération d'images terminées.";
-  public generationError : string = "Erreur lors de la génération d'images.";
-  public successGeneration !: string;
-  public errorGeneration !: string;
-
-  // Messages de retour - Identification d'un visage :
+  // Messages de retour - Entrainement du Modèle :
   public reponseTrainingGANModel !: boolean;
   public trainingSuccess : string = "Entrainement du modèle terminé avec succès.";
   public trainingError : string = "Erreur lors de l'entrainement du modèle'.";
   public successTraining !: string;
   public errorTraining !: string;
+
+  // Messages de retour - Génération d'images:
+  public reponseImageGeneration !: boolean;
+  public generationSuccess : string = "Génération d'images terminées.";
+  public generationError : string = "Erreur lors de la génération d'images.";
+  public successGeneration !: string;
+  public errorGeneration !: string;
 
   // Champs du formulaire d'entrainement :
   public n_epochs !: number;
@@ -43,6 +43,17 @@ export class GanModelComponent implements OnInit {
   public device !: string
   public show_step !: number;
   public save_step !: number;
+
+  // Fichier de paramètres du générateur :
+  private parameterGenFile : File | null = null;
+  public reponseLoadFaceIdentify !: boolean;
+  public successLoadParametersGenFile : string = "Chargement du fichier de paramètres réalisé avec succès.";
+  public errorLoadFaceParametersGenFile : string = "Erreur lors du chargement du fichier de paramètres.";
+  public parametersGenFileLoadSuccess !: string;
+  public parametersGenFileLoadError !: string;
+
+
+
 
 
 
@@ -64,6 +75,41 @@ export class GanModelComponent implements OnInit {
 
 
   /******************************* Méthodes *******************************/
+
+  /**
+   * Méthode qui détecte le fichiers de paramètres du Modèle Gan.
+   * @return boolean
+   *
+   */
+  public onParametersFileSelected(event: any): void {
+    this.parameterGenFile  = event.target.files[0] as File;
+  }
+
+
+
+  /**
+   * Méthode qui intègre les fichiers image
+   * dans le modèle de Machine Learning FaceRecognizer.
+   * @return boolean
+   *
+   */
+  public async uploadParametersGenFile(): Promise<void> {
+    if (this.parameterGenFile) {
+      try {
+        this.reponseLoadFaceIdentify = await this.iaService.processParameterGenFile(this.parameterGenFile);
+        if (this.reponseLoadFaceIdentify) {
+          this.parametersGenFileLoadSuccess = this.successLoadParametersGenFile;
+        } else {
+          this.parametersGenFileLoadError = this.errorLoadFaceParametersGenFile;
+        }
+      } catch (error) {
+        console.error('Erreur : ', error);
+      }
+
+    }
+  }
+
+
 
   /**
    * Méthode qui utilise le modèle pour
