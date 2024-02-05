@@ -27,10 +27,10 @@ export class IrisModelNewDatasetComponent implements OnInit {
   public successGenerationCsv : string = 'Fichier d\'intégration Csv généré avec succès.';
   public successLoadingData: string = 'Données chargées. Modèle entrainé avec succès.';
   public displaySuccessMessageExcel !: string;
-  public errorMessageExcel : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes. Si le problème persiste, veuillez appelez votre informaticien préféré.';
+  public errorFileGeneration : string = 'Erreur lors de la génération du fichier. Si le problème persiste, veuillez appelez votre informaticien préféré.';
   public displayErrorMessageExcel !: string;
   public displaySuccessMessageCsv !: string;
-  public errorMessageCsv : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes. Si le problème persiste, veuillez appelez votre informaticien préféré.';
+  public errorFileLoading : string = 'Erreur lors de l\' enregistrement du fichier. Attention de bien renseigner des valeurs de type doubles dans les colonnes. Si le problème persiste, veuillez appelez votre informaticien préféré.';
   public displayErrorMessageCsv !: string;
   public selectedFile !: File;
 
@@ -69,7 +69,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
         if (this.generationFichierExcel) {
           this.displaySuccessMessageExcel = this.successGenerationExcel;
         } else {
-          this.displayErrorMessageExcel = this.errorMessageExcel;
+          this.displayErrorMessageExcel = this.errorFileGeneration;
         }
       }),
       (error:HttpErrorResponse) =>
@@ -92,9 +92,9 @@ export class IrisModelNewDatasetComponent implements OnInit {
         this.generationFichierCsv = response;
         console.log(this.generationFichierCsv);
         if (this.generationFichierCsv) {
-          this.displaySuccessMessageExcel = this.successGenerationCsv;
+          this.displaySuccessMessageCsv = this.successGenerationCsv;
         } else {
-          this.displayErrorMessageExcel = this.errorMessageExcel;
+          this.displayErrorMessageCsv = this.errorFileGeneration;
         }
       }),
       (error:HttpErrorResponse) =>
@@ -120,11 +120,11 @@ export class IrisModelNewDatasetComponent implements OnInit {
             if (this.integrationDataSetExcel) {
               this.displaySuccessMessageExcel = this.successLoadingData;
             } else {
-              this.displayErrorMessageExcel = this.errorMessageExcel;
+              this.displayErrorMessageExcel = this.errorFileLoading;
             }
           },
           (error) => {
-            this.displayErrorMessageExcel = this.errorMessageExcel;
+            this.displayErrorMessageExcel = this.errorFileLoading;
           }
         );
     } else {
@@ -149,11 +149,11 @@ export class IrisModelNewDatasetComponent implements OnInit {
             if (this.integrationDataSetCsv) {
               this.displaySuccessMessageCsv = this.successLoadingData;
             } else {
-              this.displayErrorMessageCsv = this.errorMessageCsv;
+              this.displayErrorMessageCsv = this.errorFileLoading;
             }
           },
           (error) => {
-            this.displayErrorMessageCsv = this.errorMessageCsv;
+            this.displayErrorMessageCsv = this.errorFileLoading;
           }
         );
     } else {
