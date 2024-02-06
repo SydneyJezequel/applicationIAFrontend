@@ -75,7 +75,7 @@ export class FaceRecognizerModelComponent implements OnInit {
 
   // Messages de retour - Identification d'un visage :
   public reponseSelectModel !: boolean;
-  public selectModelSuccess : string = "Modèle pris en compte.";
+  public selectModelSuccess : string = "Modèle sélectionné.";
   public selectModelError : string = "Erreur lors de la sélection du modèle.";
   public successSelectModel !: string;
   public errorSelectModel !: string;
