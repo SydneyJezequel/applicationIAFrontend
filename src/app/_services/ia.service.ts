@@ -7,7 +7,9 @@ import { Observable } from "rxjs";
 
 
 
-/******************************* Service qui gère les Villes *******************************/
+
+
+/******************************* Service qui gère les IA *******************************/
 @Injectable({
   providedIn: 'root'
 })
@@ -18,10 +20,12 @@ export class IaService {
 
 
 
-  /******************************* Urls du modèle de classificatio des Iris *******************************/
+  /******************************* Urls pour manipuler les modèles d'IA *******************************/
 
-  // Urls du modèle de classificatio des Iris :
-  private sendMessageToChatGpt: string = "/api/ia/chat-gpt/";
+  // Urls pour manipuler l'Api de Chat Gpt :
+  private sendMessageToChatGpt: string = '/api/ia/chat-gpt/send-prompt';
+
+  // Urls du modèle de classification des Iris :
   private irisModelRequestUrl: string = '/api/ia/iris/predict';
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
@@ -42,13 +46,13 @@ export class IaService {
   private recognizeFaceValidationUrl: string = '/api/ia/face-recognizer/recognize-face-test';
   private useRecognizeFaceModelUrl: string = '/api/ia/face-recognizer/use-recognize-face';
   private initializeFaceRecognizerModeleUrl: string = '/api/ia/face-recognizer/initialize';
-  private getListModelUrl: string = '/api/ia/face-recognizer/liste-modele';
-  private selectModelUrl: string = '/api/ia/face-recognizer/selection-modele';
+  private getListModelUrl: string = '/api/ia/face-recognizer/models-list';
+  private selectModelUrl: string = '/api/ia/face-recognizer/model-selection';
 
   // Urls du modèle de génération d'image GAN :
   private loadParametersGenFile: string = '/api/ia/gan-image-generation/process-parameters-gen-file';
   private generateGANImageUrl: string = '/api/ia/gan-image-generation/generate-faces';
-  private trainGANModelUrl: string = '/api/ia/gan-image-generation//train-gan-model';
+  private trainGANModelUrl: string = '/api/ia/gan-image-generation/train-gan-model';
 
 
 
