@@ -6,7 +6,9 @@ import { HttpErrorResponse } from "@angular/common/http";
 
 
 
-/******************************* Fonctionnalité qui affiche la liste des Prédictions générées *******************************/
+
+
+/******************************* Controller gérant les Prédictions générées par le modèle *******************************/
 @Component({
   selector: 'app-iris-model-results',
   templateUrl: './iris-model-results.component.html',
@@ -17,7 +19,9 @@ export class IrisModelResultsComponent implements OnInit {
 
 
 
+
   /******************************* Attributs *******************************/
+
   public listeResults !: IrisModelResponse[];
   public successInitialization : string = "Modèle ré-initialisé avec succès";
   public displaySuccessResultInitialization !: string;
@@ -47,6 +51,7 @@ export class IrisModelResultsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllPredictions();
   }
+
 
 
 
@@ -151,6 +156,7 @@ export class IrisModelResultsComponent implements OnInit {
         alert(error.message);
       }
   }
+
 
 
 

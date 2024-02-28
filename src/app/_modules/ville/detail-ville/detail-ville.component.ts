@@ -7,7 +7,9 @@ import { VilleService } from "../../../_services/ville.service";
 
 
 
-/******************************* Fonctionnalité qui détaille une Ville *******************************/
+
+
+/******************************* Controller qui affiche le détail d'une Ville *******************************/
 @Component({
   selector: 'app-detail-list-ville',
   templateUrl: './detail-ville.component.html',
@@ -18,20 +20,24 @@ export class DetailVilleComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public villeTrouve ?: Ville;
 
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private villeService : VilleService,
               private route : ActivatedRoute) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_ville');
     let no_ville = id as unknown as number;
@@ -43,8 +49,8 @@ export class DetailVilleComponent implements OnInit {
 
 
 
-/******************************* Méthodes *******************************/
 
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui renvoie une ville en fonction de son Id.
@@ -62,6 +68,7 @@ export class DetailVilleComponent implements OnInit {
         alert(error.message);
       }
   }
+
 
 
 

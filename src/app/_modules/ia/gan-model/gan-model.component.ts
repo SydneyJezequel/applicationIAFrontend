@@ -6,14 +6,13 @@ import { IaService } from "../../../_services/ia.service";
 
 
 
-/************************** Fonctionnalité qui manipule le Modèle de Génération d'images GAN **************************/
+/************************** Controller qui manipule le Modèle de Génération d'images GAN **************************/
 @Component({
   selector: 'app-gan-model',
   templateUrl: './gan-model.component.html',
   styleUrls: ['./gan-model.component.scss']
 })
 export class GanModelComponent implements OnInit {
-
 
 
 
@@ -56,10 +55,8 @@ export class GanModelComponent implements OnInit {
 
 
 
-
   /******************************* Constructeur *******************************/
   constructor(private iaService : IaService) { }
-
 
 
 
@@ -68,7 +65,6 @@ export class GanModelComponent implements OnInit {
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
-
 
 
 
@@ -160,7 +156,6 @@ export class GanModelComponent implements OnInit {
       console.error('Erreur : ', error);
     }
   }
-
 
 
 

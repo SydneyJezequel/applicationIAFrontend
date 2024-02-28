@@ -7,6 +7,7 @@ h2, th, td, label, button{
 }
 
 
+
 /* Mise en forme du tableau */
 .table-container {
   width: 100%;
@@ -47,12 +48,14 @@ button:hover {
 }
 
 
+
 /* Classe CSS pour le message de succès. */
 .success-message {
   color: green;
   font-weight: bold;
   margin-top: 10px;
 }
+
 
 
 /* Classe CSS pour le message d'erreur. */
@@ -64,11 +67,13 @@ button:hover {
 }
 
 
+
 /* Message de succès lors de la génération d'un fichier Excel ou Csv. */
 .success-message{
   font-family: Arial, sans-serif;
   color: #45a049;
 }
+
 
 
 /* Encadrement des fonctionnalités. */
@@ -78,3 +83,4 @@ button:hover {
   max-width: 400px;
   margin: 0 auto;
 }
+

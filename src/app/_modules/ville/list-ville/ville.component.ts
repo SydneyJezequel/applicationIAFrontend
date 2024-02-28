@@ -6,7 +6,9 @@ import { HttpErrorResponse } from "@angular/common/http";
 
 
 
-/******************************* Fonctionnalité qui liste les Villes *******************************/
+
+
+/******************************* Controller qui liste les Villes *******************************/
 @Component({
   selector: 'app-list-ville',
   templateUrl: './ville.component.html',
@@ -17,14 +19,16 @@ export class VilleComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public villes !: Ville[];
   public ville !: Ville;
 
 
 
 
-/******************************* Constructeur *******************************/
+  /******************************* Constructeur *******************************/
   constructor(private villeService : VilleService) {
     this.villeService = villeService;
   }
@@ -32,7 +36,8 @@ export class VilleComponent implements OnInit {
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
     this.getAllVille();
   }
@@ -40,7 +45,8 @@ export class VilleComponent implements OnInit {
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui charge les villes depuis l'API en BDD
@@ -121,6 +127,7 @@ export class VilleComponent implements OnInit {
     this.villeService.delete(no_ville);
     window.location.reload(); // Re-chargement de la fenêtre.
   }
+
 
 
 

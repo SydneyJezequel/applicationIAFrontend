@@ -6,7 +6,8 @@ import { Router } from "@angular/router";
 
 
 
-/************************** Fonctionnalité qui manipule le Modèle de Reconnaissance Faciale **************************/
+
+/************************** Controller qui manipule le Modèle de Reconnaissance Faciale **************************/
 @Component({
   selector: 'app-face-recognizer-model',
   templateUrl: './face-recognizer-model.component.html',
@@ -18,8 +19,8 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
 
-
   /******************************* Attributs *******************************/
+
   // Messages à charger - Chargement du DataSet d'entrainement & la Validation du modèle :
   public successLoading : string = "Set d'images chargé avec succès.";
   public errorLoading : string = "Erreur lors du chargement du Set d'images : Attention à bien charger un fichier .zip contenant des images au format Jpeg / Jpg.";
@@ -91,13 +92,11 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
 
-
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
     this.initializeFaceRecognizerModele();
     this.getListModel();
   }
-
 
 
 
@@ -329,6 +328,8 @@ export class FaceRecognizerModelComponent implements OnInit {
       console.error('Erreur : ', error);
     }
   }
+
+
 
 
 

@@ -6,7 +6,8 @@ import { IaService } from "../../../_services/ia.service";
 
 
 
-/******************************* Fonctionnalité qui charge des données et entraine le modèle de classification des Iris *******************************/
+
+/******************************* Controller qui charge des données et entraine le modèle Random Forest *******************************/
 @Component({
   selector: 'app-iris-model-new-dataset',
   templateUrl: './iris-model-new-dataset.component.html',
@@ -19,6 +20,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
 
 
   /******************************* Attributs *******************************/
+
   public generationFichierExcel !: boolean;
   public generationFichierCsv !: boolean;
   public integrationDataSetExcel !: boolean;
@@ -171,6 +173,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
   public onFileChange(event: any) {
     this.selectedFile = event.target.files[0];
   }
+
 
 
 

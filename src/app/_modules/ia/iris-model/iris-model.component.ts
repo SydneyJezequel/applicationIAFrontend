@@ -8,7 +8,8 @@ import { IrisModelResponse } from "../../../model/irisModelResponse";
 
 
 
-/******************************* Fonctionnalité qui Communique avec le Modèle de prédiction des Iris *******************************/
+
+/******************************* Controller qui manipule le Modèle de prédiction des Iris *******************************/
 @Component({
   selector: 'app-iris-model',
   templateUrl: './iris-model.component.html',
@@ -19,7 +20,9 @@ export class IrisModelComponent implements OnInit {
 
 
 
+
   /******************************* Attributs *******************************/
+
   public sepalLength : number = 5.3;
   public sepalWidth : number =  3.3;
   public petalLength : number =  2.3;
@@ -36,8 +39,10 @@ export class IrisModelComponent implements OnInit {
 
 
 
+
   /******************************* Constructeur *******************************/
   constructor(private iaService : IaService, private router: Router) { }
+
 
 
 
@@ -45,6 +50,7 @@ export class IrisModelComponent implements OnInit {
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
+
 
 
 
@@ -137,6 +143,7 @@ export class IrisModelComponent implements OnInit {
       console.error('Erreur : ', error);
     }
   }
+
 
 
 

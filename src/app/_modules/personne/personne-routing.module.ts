@@ -9,6 +9,8 @@ import { AddManyPersonnesComponent } from "./add-many-personnes/add-many-personn
 
 
 
+
+
 /******************************* Routes *******************************/
 const routes: Routes = [
   { path: '', redirectTo: 'personnes', pathMatch: 'full' },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'edit/:no_personne', component: EditPersonneComponent },
   { path: 'add/many-personnes', component: AddManyPersonnesComponent },
 ];
+
+
 
 
 

@@ -6,7 +6,9 @@ import { Email } from "../model/email.model";
 
 
 
-/******************************* Service qui gère les Email *******************************/
+
+
+/******************************* Service qui gère les Emails *******************************/
 @Injectable({
   providedIn: 'root'
 })
@@ -15,19 +17,23 @@ export class EmailService {
 
 
 
-/******************************* Urls *******************************/
+
+  /******************************* Urls *******************************/
+
   private sendingEmail : string = "/api/email/envoyer-email";
 
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private http : HttpClient) { }
 
 
 
 
-/******************************* Méthodes controlleur *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui fait suivre les mails au Backend pour envoi.
@@ -41,6 +47,8 @@ export class EmailService {
       console.error('Erreur : ', error);
     }
   }
+
+
 
 
 

@@ -19,7 +19,6 @@ export class IaService {
 
 
 
-
   /******************************* Urls pour manipuler les modèles d'IA *******************************/
 
   // Urls pour manipuler l'Api de Chat Gpt :
@@ -58,10 +57,8 @@ export class IaService {
 
 
 
-
   /******************************* Constructeur *******************************/
   constructor(private http: HttpClient) {}
-
 
 
 
@@ -83,7 +80,6 @@ export class IaService {
       throw error;
     }
   }
-
 
 
 
@@ -242,8 +238,7 @@ export class IaService {
 
 
 
-
-  /************************************** Méthodes des Modèles de reconnaissances faciales (HOG & CNN) **************************************/
+  /************************* Méthodes des Modèles de reconnaissances faciales (HOG & CNN) *************************/
 
   /**
    * Méthode qui charge le set d'image d'entrainement du modèle.
@@ -394,8 +389,7 @@ export class IaService {
 
 
 
-
-  /************************************** Méthodes du modèle de Génération d'images GAN **************************************/
+  /*********************** Méthodes du modèle GAN (Génération d'images) ***********************/
 
   /**
    * Méthode qui charge le fichier de paramètres du modèle Gan.

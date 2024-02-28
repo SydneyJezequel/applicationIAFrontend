@@ -1,16 +1,18 @@
 
 
+
 /* Police d'écriture */
 h2, h4, p, li, button, label, input {
   font-family: Arial, sans-serif;
-
 }
+
 
 
 /* Mise en forme des intitulés de cadres */
 label{
   font-weight: bold;
 }
+
 
 
 /* Mise en forme des boutons */
@@ -29,6 +31,7 @@ button:hover {
 }
 
 
+
 /* Mise en forme de l'image */
 .image-container {
   display: flex;
@@ -42,10 +45,12 @@ button:hover {
 }
 
 
+
 /* Alignement des paramètres */
 .inline-block-container {
   display: inline-block;
 }
+
 
 
 /* Mise en valeur du résultat */
@@ -54,12 +59,14 @@ button:hover {
 }
 
 
+
 /* Classe CSS pour le message de succès. */
 .success-message {
   color: green;
   font-weight: bold;
   margin-top: 10px;
 }
+
 
 
 /* Classe CSS pour le message d'erreur. */
@@ -71,11 +78,13 @@ button:hover {
 }
 
 
+
 /* Message de succès lors de la génération d'un fichier Excel ou Csv. */
 .success-message{
   font-family: Arial, sans-serif;
   color: #45a049;
 }
+
 
 
 /* Encadrement des fonctionnalités. */
@@ -87,7 +96,9 @@ button:hover {
 }
 
 
+
 /* Consignes pour manipuler le modèle. */
 .consignes{
   font-style: italic;
 }
+

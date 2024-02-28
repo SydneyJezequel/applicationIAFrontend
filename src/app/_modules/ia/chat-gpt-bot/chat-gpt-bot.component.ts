@@ -4,7 +4,9 @@ import { IaService } from "../../../_services/ia.service";
 
 
 
-/******************************* Fonctionnalité qui Communique avec chatGpt *******************************/
+
+
+/******************************* Controller qui gère les échanges avec chatGpt *******************************/
 @Component({
   selector: 'app-chat-gpt-bot',
   templateUrl: './chat-gpt-bot.component.html',
@@ -15,27 +17,32 @@ export class ChatGptBotComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public request : string = "";
   public reponse !: any;
 
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private iaService : IaService) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui envoie des requêtes à chatGpt et renvoie
@@ -51,6 +58,8 @@ export class ChatGptBotComponent implements OnInit {
       console.error('Erreur : ', error);
     }
   }
+
+
 
 
 

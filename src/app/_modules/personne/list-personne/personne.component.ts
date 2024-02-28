@@ -6,7 +6,9 @@ import { HttpErrorResponse } from "@angular/common/http";
 
 
 
-/******************************* Fonctionnalité qui liste les Personnes *******************************/
+
+
+/******************************* Controller qui liste les Personnes *******************************/
 @Component({
   selector: 'app-list-personne',
   templateUrl: './personne.component.html',
@@ -18,7 +20,9 @@ export class PersonneComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public personne !: Personne;
   public personnes !: Personne[];
   public no_personne !: number;
@@ -28,7 +32,8 @@ export class PersonneComponent implements OnInit {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService) {
     this.personneService = personneService;
   }
@@ -36,7 +41,8 @@ export class PersonneComponent implements OnInit {
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
     this.getAll();
   }
@@ -44,7 +50,8 @@ export class PersonneComponent implements OnInit {
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui renvoie la liste de toutes les personnes.
@@ -111,6 +118,7 @@ export class PersonneComponent implements OnInit {
         alert(error.message);
       }
   }
+
 
 
 

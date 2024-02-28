@@ -8,6 +8,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 
 
+
+
 /******************************* Routes *******************************/
 const routes: Routes = [
   { path: 'villes', component: VilleComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'villes/add', component: AddVilleComponent },
   { path: 'villes/edit/:no_ville', component: EditVilleComponent },
 ];
+
+
 
 
 

@@ -6,6 +6,8 @@ import { Personne } from "../model/personne.model";
 
 
 
+
+
 /******************************* Service qui gère les Personnes *******************************/
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class PersonneServiceService {
 
 
 
-/******************************* Urls *******************************/
+
+  /******************************* Urls *******************************/
+
   private getAll : string = "api/personne/all";
   private idPersonne : string = "api/personne/";
   private addPersonne : string = "api/personne/add-personne/";
@@ -29,13 +33,15 @@ export class PersonneServiceService {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private http : HttpClient) { }
 
 
 
 
-/******************************* Méthodes controlleur *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui renvoie la liste de toutes les personnes.
@@ -135,8 +141,6 @@ export class PersonneServiceService {
 
 
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
-  // *************************** TEST RECUPERER UNE IMAGE *************************** //
-  // *************************** TEST RECUPERER UNE IMAGE *************************** //
   /**
    * Méthode qui récupère une photo stocké en BDD.
    *
@@ -155,8 +159,8 @@ export class PersonneServiceService {
     });
   }
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
-  // *************************** TEST RECUPERER UNE IMAGE *************************** //
-  // *************************** TEST RECUPERER UNE IMAGE *************************** //
+
+
 
 
 

@@ -6,7 +6,9 @@ import { VilleService } from "../../../_services/ville.service";
 
 
 
-/******************************* Fonctionnalité d'Ajout d'une Ville *******************************/
+
+
+/******************************* Controller d'Ajout d'une Ville *******************************/
 @Component({
   selector: 'app-add-list-ville',
   templateUrl: './add-ville.component.html',
@@ -17,19 +19,23 @@ export class AddVilleComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
-  addVille: Ville = new Ville();
+
+  /******************************* Attributs *******************************/
+
+  public addVille: Ville = new Ville();
 
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private villeService : VilleService, private router: Router) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
 
   }
@@ -37,8 +43,8 @@ export class AddVilleComponent implements OnInit {
 
 
 
-/******************************* Méthodes *******************************/
 
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode d'exécution du Formulaire : Ajout d'une ville.
@@ -48,6 +54,7 @@ export class AddVilleComponent implements OnInit {
     this.villeService.addVille(this.addVille);
     this.router.navigate(['villes']);     // Redirection
   }
+
 
 
 

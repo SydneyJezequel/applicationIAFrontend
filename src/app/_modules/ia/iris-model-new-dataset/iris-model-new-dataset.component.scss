@@ -1,9 +1,11 @@
 
 
+
 /* Police d'écriture */
 h2, h3, button{
   font-family: Arial, sans-serif;
 }
+
 
 
 /* Mise en forme des boutons */
@@ -18,12 +20,14 @@ button {
 }
 
 
+
 /* Classe CSS pour le message de succès. */
 .success-message {
   color: green;
   font-weight: bold;
   margin-top: 10px;
 }
+
 
 
 /* Classe CSS pour le message d'erreur. */
@@ -35,8 +39,10 @@ button {
 }
 
 
+
 /* Message de succès lors de la génération d'un fichier Excel ou Csv. */
 .success-message{
   font-family: Arial, sans-serif;
   color: #45a049;
 }
+

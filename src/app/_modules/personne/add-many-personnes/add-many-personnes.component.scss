@@ -1,9 +1,11 @@
 
 
+
 /* Police d'écriture */
 h2, h3, p, div, button{
   font-family: Arial, sans-serif;
 }
+
 
 
 /* Classe CSS pour le message de succès. */
@@ -14,12 +16,14 @@ h2, h3, p, div, button{
 }
 
 
+
 /* Classe CSS pour le message d'erreur. */
 .error-message {
   color: red;
   font-weight: bold;
   margin-top: 10px;
 }
+
 
 
 /* Classe CSS de mise en forme des boutons. */

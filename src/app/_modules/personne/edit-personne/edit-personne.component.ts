@@ -9,7 +9,9 @@ import { DatePipe } from "@angular/common";
 
 
 
-/******************************* Fonctionnalité d'Edition d'une Personne *******************************/
+
+
+/******************************* Controller d'Edition d'une Personne *******************************/
 @Component({
   selector: 'app-edit-list-personne',
   templateUrl: './edit-personne.component.html',
@@ -20,7 +22,8 @@ export class EditPersonneComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
 
   public numero !: number;
   public file !: any;
@@ -30,21 +33,18 @@ export class EditPersonneComponent implements OnInit {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
 
   constructor(private route: ActivatedRoute, private personneService : PersonneServiceService, private router: Router) { }
-/*
-REMARQUE :
-  Route est utilisé pour configurer les routes dans l'application,
-  tandis que ActivatedRoute est utilisé
-  pour extraire des informations spécifiques à partir de la route
-  active dans un composant.
-*/
+  // Route est utilisé pour configurer les routes dans l'application.
+  // ActivatedRoute est utilisé pour extraire des informations spécifiques à partir de la route active dans un composant.
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
 
   ngOnInit(): void {
     // Récupération de la Personne en fonction de l'Id de la Personne passé dans l'url :
@@ -65,7 +65,8 @@ REMARQUE :
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode édite une Personne.
@@ -81,6 +82,7 @@ REMARQUE :
     }
     this.router.navigate(['personnes']);     // Redirection
   }
+
 
 
   /**
@@ -152,6 +154,7 @@ REMARQUE :
       reader.onerror = error => reject(error); // Résultat si échec.
     });
   }
+
 
 
 

@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { IaService } from './ia.service';
 
 describe('IaService', () => {

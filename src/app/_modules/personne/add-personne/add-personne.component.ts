@@ -7,7 +7,9 @@ import { Router } from "@angular/router";
 
 
 
-/******************************* Fonctionnalité d'Ajout d'une Personne *******************************/
+
+
+/******************************* Controller d'Ajout d'une Personne *******************************/
 @Component({
   selector: 'app-add-list-personne',
   templateUrl: './add-personne.component.html',
@@ -18,7 +20,9 @@ export class AddPersonneComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public addPerson: Personne = new Personne();
   public file !: any;
   public photoBase64String !: string;
@@ -26,20 +30,23 @@ export class AddPersonneComponent implements OnInit {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService, private router: Router) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode d'exécution du Formulaire.
@@ -124,6 +131,7 @@ export class AddPersonneComponent implements OnInit {
       reader.onerror = error => reject(error); // Résultat si échec.
     });
   }
+
 
 
 

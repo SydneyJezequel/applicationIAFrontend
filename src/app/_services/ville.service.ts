@@ -6,6 +6,8 @@ import { Ville } from "../model/ville.model";
 
 
 
+
+
 /******************************* Service qui gère les Villes *******************************/
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class VilleService {
 
 
 
-/******************************* Urls *******************************/
+
+  /******************************* Urls *******************************/
+
   private loadApiVille : string = "api/ville/load-api";
   private getAll : string = "api/ville/all";
   private idVille: string = "api/ville/";
@@ -25,13 +29,15 @@ export class VilleService {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private http : HttpClient) { }
 
 
 
 
-/******************************* Méthodes controlleur *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui charge les villes en BDD depuis une Api.
@@ -94,6 +100,8 @@ export class VilleService {
         console.error('Erreur : ', error);
       });
   }
+
+
 
 
 

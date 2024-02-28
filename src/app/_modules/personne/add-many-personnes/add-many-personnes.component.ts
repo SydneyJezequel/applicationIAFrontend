@@ -4,7 +4,9 @@ import { PersonneServiceService } from "../../../_services/personne-service.serv
 
 
 
-/******************************* Fonctionnalité d'Ajout de Personnes en masse *******************************/
+
+
+/*********************** Controller chargeant des Personnes en masse à partir d'un fichier ***********************/
 @Component({
   selector: 'app-add-many-personnes',
   templateUrl: './add-many-personnes.component.html',
@@ -15,7 +17,9 @@ export class AddManyPersonnesComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public successMessageExcel : string = 'Fichier Excel envoyé avec succès.';
   public displaySuccessMessageExcel !: string;
   public errorMessageExcel : string = 'Erreur lors de l\' enregistrement du fichier. Attention de respecter le format du fichier. ' +
@@ -33,21 +37,23 @@ export class AddManyPersonnesComponent implements OnInit {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private personneService : PersonneServiceService) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
 
 
 
-/******************************* Méthodes *******************************/
 
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode qui récupère le fichier de la vue.
@@ -115,6 +121,7 @@ export class AddManyPersonnesComponent implements OnInit {
       console.error('Aucun fichier sélectionné.');
     }
   }
+
 
 
 

@@ -5,7 +5,9 @@ import { Email } from "../model/email.model";
 
 
 
-/******************************* Formulaire de contact *******************************/
+
+
+/*********************** Controller gérant le Formulaire de contact ***********************/
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -16,7 +18,9 @@ export class ContactComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   email :Email = new Email();
   user!: string;
   message!: string;
@@ -24,7 +28,8 @@ export class ContactComponent implements OnInit {
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private emailService : EmailService) {
     this.emailService = emailService;
   }
@@ -32,14 +37,16 @@ export class ContactComponent implements OnInit {
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
   }
 
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
   onSubmit() {
     // Chargement des données :
     this.email.user = this.user;
@@ -47,6 +54,7 @@ export class ContactComponent implements OnInit {
     // Envoi de l'Email au serveur :
     this.emailService.sendEmailemail(this.email);
   }
+
 
 
 

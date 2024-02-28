@@ -7,7 +7,9 @@ import { HttpErrorResponse } from "@angular/common/http";
 
 
 
-/******************************* Fonctionnalité d'Edition d'une Ville *******************************/
+
+
+/******************************* Controller d'Edition d'une Ville *******************************/
 @Component({
   selector: 'app-edit-list-ville',
   templateUrl: './edit-ville.component.html',
@@ -18,20 +20,24 @@ export class EditVilleComponent implements OnInit {
 
 
 
-/******************************* Attributs *******************************/
+
+  /******************************* Attributs *******************************/
+
   public editVille !: Ville;
 
 
 
 
-/******************************* Constructeur *******************************/
+
+  /******************************* Constructeur *******************************/
   constructor(private villeService : VilleService,
               private route : ActivatedRoute, private router: Router) { }
 
 
 
 
-/******************************* Initialisation *******************************/
+
+  /******************************* Initialisation *******************************/
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_ville');
     let no_ville = id as unknown as number;
@@ -42,7 +48,8 @@ export class EditVilleComponent implements OnInit {
 
 
 
-/******************************* Méthodes *******************************/
+
+  /******************************* Méthodes *******************************/
 
   /**
    * Méthode d'exécution du Formulaire.
@@ -70,6 +77,7 @@ export class EditVilleComponent implements OnInit {
         alert(error.message);
       }
   }
+
 
 
 
