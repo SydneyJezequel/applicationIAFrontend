@@ -41,8 +41,8 @@ export class EditVilleComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_ville');
     let no_ville = id as unknown as number;
-    this.villeService.findVille(no_ville);
-    this.getOneVille(no_ville);
+    this.villeService.getVilleById(no_ville);
+    this.getVilleById(no_ville);
   }
 
 
@@ -55,19 +55,20 @@ export class EditVilleComponent implements OnInit {
    * Méthode d'exécution du Formulaire.
    */
   onEditVille(){
-    this.villeService.addVille(this.editVille);
+    this.villeService.createVille(this.editVille);
     this.router.navigate(['villes']);     // Redirection
   }
 
 
 
   /**
-   * Méthode qui renvoie une personne en fonction de son Id.
-   * @param no_personne
+   * Méthode qui récupère une ville.
+   * @param no_ville : id de la ville récupérée.
+   *
    */
-  getOneVille(no_ville : number){
+  getVilleById(no_ville : number){
     console.log(" numéro de personne : " + no_ville);
-    this.villeService.findVille(no_ville).subscribe(
+    this.villeService.getVilleById(no_ville).subscribe(
       (response) =>
       {
         this.editVille = response;

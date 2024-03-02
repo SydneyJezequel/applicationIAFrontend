@@ -39,7 +39,7 @@ export class VilleComponent implements OnInit {
 
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
-    this.getAllVille();
+    this.getAllVilles();
   }
 
 
@@ -49,8 +49,7 @@ export class VilleComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui charge les villes depuis l'API en BDD
-   * et les affiche.
+   * Méthode qui charge les villes en BDD depuis une Api puis les affiche.
    *
    */
   public loadApi():void
@@ -70,12 +69,12 @@ export class VilleComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie la liste de toutes les villes.
+   * Méthode qui récupère la liste de toutes les villes.
    *
    */
-  public getAllVille():void
+  public getAllVilles():void
   {
-    this.villeService.getAllVille().subscribe(
+    this.villeService.getAllVilles().subscribe(
     (response: Ville[]) =>
     {
       this.villes = response;
@@ -90,11 +89,12 @@ export class VilleComponent implements OnInit {
 
   /**
    * Méthode qui renvoie une ville en fonction de son Id.
+   * @param no_ville : id de la ville récupérée.
    *
    */
-  public findVille(no_ville:number):void
+  public getVilleById(no_ville:number):void
   {
-    this.villeService.findVille(no_ville).subscribe(
+    this.villeService.getVilleById(no_ville).subscribe(
     (response: Ville) =>
     {
       this.ville = response;
@@ -110,21 +110,23 @@ export class VilleComponent implements OnInit {
 
   /**
    * Méthode qui ajoute une ville.
+   * @param ville : ville ajoutée.
    *
    */
-  public async addVille(ville: Ville): Promise<void> {
-    return this.villeService.addVille(ville);
+  public async createVille(ville: Ville): Promise<void> {
+    return this.villeService.createVille(ville);
   }
 
 
 
   /**
-   * Méthode qui supprime une list-ville.
+   * Méthode qui supprime une ville.
+   * @param no_ville : id de la ville supprimée.
    *
    */
-  public delete(no_ville:number):void
+  public deleteVille(no_ville:number):void
   {
-    this.villeService.delete(no_ville);
+    this.villeService.deleteVille(no_ville);
     window.location.reload(); // Re-chargement de la fenêtre.
   }
 

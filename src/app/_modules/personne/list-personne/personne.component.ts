@@ -44,7 +44,7 @@ export class PersonneComponent implements OnInit {
 
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
-    this.getAll();
+    this.getAllPersonnes();
   }
 
 
@@ -54,12 +54,12 @@ export class PersonneComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui renvoie la liste de toutes les personnes.
+   * Méthode qui récupère la liste de toutes les personnes.
    *
    */
-  public getAll():void
+  public getAllPersonnes():void
   {
-    this.personneService.getAllPersonne().subscribe(
+    this.personneService.getAllPersonnes().subscribe(
       (response: Personne[]) =>
       {
         this.personnes = response;
@@ -74,21 +74,22 @@ export class PersonneComponent implements OnInit {
 
   /**
    * Méthode qui supprime une personne.
-   * @param no_personne
+   * @param no_personne : id de la personne supprimée.
+   *
    */
-  delete(no_personne : number){
-      this.personneService.delete(no_personne);
+  deletePersonne(no_personne : number){
+      this.personneService.deletePersonne(no_personne);
       window.location.reload(); // Re-chargement de la fenêtre.
   }
 
 
 
   /**
-   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   * Méthode qui génère un fichier Excel pour y charger une liste de personnes.
    *
    */
-  public generateExcel() {
-    this.personneService.generateExcel().subscribe(
+  public generateExcelFile() {
+    this.personneService.generateExcelFile().subscribe(
       (response: boolean) =>
       {
         this.generationFichierExcel = response;
@@ -103,11 +104,11 @@ export class PersonneComponent implements OnInit {
 
 
   /**
-   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   * Méthode qui génère un fichier Csv pour y charger une liste de personnes.
    *
    */
-  public generateCsv() {
-    this.personneService.generateCsv().subscribe(
+  public generateCsvFile() {
+    this.personneService.generateCsvFile().subscribe(
       (response: boolean) =>
       {
         this.generationFichierCsv = response;

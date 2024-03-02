@@ -29,7 +29,7 @@
     <td>{{personne.date_naissance}}</td>
     <td>{{personne.no_securite_sociale}}</td>
     <td>
-      <button (click)="delete(personne.no_personne)">Supprimer</button>
+      <button (click)="deletePersonne(personne.no_personne)">Supprimer</button>
       <button [routerLink]="'/edit/' + personne.no_personne">Modifier</button>
       <button [routerLink]="'/details/' + personne.no_personne">Afficher le détail</button>
     </td>
@@ -51,7 +51,7 @@
   Fichier Excel généré avec succès.
 </div>
 <div>
-  <button (click)="generateExcel()">Générer un fichier Excel</button>
+  <button (click)="generateExcelFile()">Générer un fichier Excel</button>
 </div>
 
 
@@ -61,7 +61,7 @@
   Fichier Csv généré avec succès.
 </div>
 <div>
-  <button (click)="generateCsv()">Générer un fichier Csv</button>
+  <button (click)="generateCsvFile()">Générer un fichier Csv</button>
 </div>
 <br>
 

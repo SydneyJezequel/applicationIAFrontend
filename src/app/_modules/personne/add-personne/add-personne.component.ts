@@ -54,7 +54,7 @@ export class AddPersonneComponent implements OnInit {
    */
   public onSubmitPersonne() {
     if (this.file) {
-      this.newPerson(this.addPerson);
+      this.createPersonne(this.addPerson);
     } else {
       console.error("No file selected.");
     }
@@ -63,15 +63,15 @@ export class AddPersonneComponent implements OnInit {
 
 
   /**
-   * Méthode d'ajout d'une personne.
-   * Cette méthode appelle le service pour créer une personne.
-   * @param personne
+   * Méthode qui ajoute une personne.
+   * @param personne : personne ajoutée.
    *
    */
-  public async newPerson(personne: Personne) {
+  public async createPersonne(personne: Personne) {
+    // Attributs :
     const datePipe = new DatePipe('en-US'); // Conversion de la date en format Java.
     const formattedDate = datePipe.transform(this.addPerson.date_naissance, 'yyyy-MM-dd');
-
+    // Traitements :
     try {
       this.photoBase64String = await this.fileToBase64(this.file); // On convertit le fichier en String base64.
       console.log(this.photoBase64String);
@@ -79,7 +79,6 @@ export class AddPersonneComponent implements OnInit {
       console.error(error);
       return;
     }
-
     // Controle de la date formatée :
     if (formattedDate !== null) {
       this.addPerson.date_naissance = new Date(formattedDate);
@@ -87,7 +86,7 @@ export class AddPersonneComponent implements OnInit {
 
     // Appel du service pour ajouter la personne avec la photo :
     try {
-      await this.personneService.addPerson(this.addPerson, this.photoBase64String);
+      await this.personneService.createPersonne(this.addPerson, this.photoBase64String);
       console.log("Personne ajoutée avec succès.");
 
       // Redirection après l'ajout de la personne.

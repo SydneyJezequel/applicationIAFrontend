@@ -50,7 +50,7 @@ export class EditPersonneComponent implements OnInit {
     // Récupération de la Personne en fonction de l'Id de la Personne passé dans l'url :
     this.route.params.subscribe( params => {
       this.numero = params['no_personne'];
-      this.personneService.findPersonne(this.numero).subscribe(
+      this.personneService.getPersonneById(this.numero).subscribe(
         (response) =>
         {
           this.editPerson = response;
@@ -110,7 +110,7 @@ export class EditPersonneComponent implements OnInit {
 
     // Appel du service pour ajouter la personne avec la photo :
     try {
-      await this.personneService.addPerson(this.editPerson, this.photoBase64String);
+      await this.personneService.createPersonne(this.editPerson, this.photoBase64String);
       console.log("Personne ajoutée avec succès.");
 
       // Redirection après l'ajout de la personne.

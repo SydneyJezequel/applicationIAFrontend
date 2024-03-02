@@ -56,8 +56,8 @@ export class AddManyPersonnesComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui récupère le fichier de la vue.
-   * @param event
+   * Méthode qui récupère un fichier déposé dans la vue.
+   * @param event : ajout d'un fichier dans la vue.
    *
    */
   public onFileChange(event: any) {
@@ -67,13 +67,12 @@ export class AddManyPersonnesComponent implements OnInit {
 
 
   /**
-   * Méthode qui charge le fichier Excel dans le backend.
-   * @param event
+   * Méthode qui charge un fichier Excel contenant une liste de personnes.
    *
    */
-  public uploadExcelFile() {
+  public importExcelFile() {
     if (this.selectedFile) {
-      this.personneService.uploadExcelFile(this.selectedFile)
+      this.personneService.importExcelFile(this.selectedFile)
         .subscribe(
           (response : boolean) => {
             this.integrationFichierExcel = response;
@@ -96,13 +95,12 @@ export class AddManyPersonnesComponent implements OnInit {
 
 
   /**
-   * Méthode qui charge le fichier Csv dans le backend.
-   * @param event
+   * Méthode qui charge un fichier Csv contenant une liste de personnes.
    *
    */
-  public uploadCsvFile() {
+  public importCsvFile() {
     if (this.selectedFile) {
-      this.personneService.uploadCsvFile(this.selectedFile)
+      this.personneService.importCsvFile(this.selectedFile)
         .subscribe(
           (response : boolean) => {
             this.integrationFichierCsv = response;

@@ -51,7 +51,7 @@ export class AddVilleComponent implements OnInit {
    */
   onAddVille(){
     console.log(this.addVille);
-    this.villeService.addVille(this.addVille);
+    this.villeService.createVille(this.addVille);
     this.router.navigate(['villes']);     // Redirection
   }
 

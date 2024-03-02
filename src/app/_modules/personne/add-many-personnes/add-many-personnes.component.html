@@ -16,7 +16,7 @@
 <!-- Formulaire pour intégrer le fichier Excel -->
 <div>
   <input type="file" (change)="onFileChange($event)" />
-  <button (click)="uploadExcelFile()">Upload Excel</button>
+  <button (click)="importExcelFile()">Upload Excel</button>
   <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageExcel" class="success-message">
     {{ displaySuccessMessageExcel }}
@@ -39,7 +39,7 @@
 <!-- Formulaire pour intégrer le fichier Csv -->
 <div>
   <input type="file" (change)="onFileChange($event)" />
-  <button (click)="uploadCsvFile()">Upload Csv</button>
+  <button (click)="importCsvFile()">Upload Csv</button>
   <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageCsv" class="success-message">
     {{ displaySuccessMessageCsv }}

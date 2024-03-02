@@ -20,15 +20,15 @@ export class PersonneServiceService {
 
   /******************************* Urls *******************************/
 
-  private getAll : string = "api/personne/all";
-  private idPersonne : string = "api/personne/";
-  private addPersonne : string = "api/personne/add-personne/";
-  private deletePersonne : string = "api/personne/delete/";
-  private addExcelPersonnes : string = 'api/personne/import/excel/';
-  private addCsvPersonnes : string = 'api/personne/import/csv/';
-  private generateExcelFile : string = "api/personne/generateExcel";
-  private generateCsvFile : string = "/api/personne/generateCsv";
-  private getPhoto = 'api/personne/image-base64';
+  private getAllUrl : string = "api/personne/all";
+  private idPersonneUrl : string = "api/personne/";
+  private addPersonneUrl : string = "api/personne/add-personne/";
+  private deletePersonneUrl : string = "api/personne/delete/";
+  private addExcelPersonnesUrl : string = 'api/personne/import/excel/';
+  private addCsvPersonnesUrl : string = 'api/personne/import/csv/';
+  private generateExcelFileUrl : string = "api/personne/generateExcel";
+  private generateCsvFileUrl : string = "/api/personne/generateCsv";
+  private getPhotoUrl : string = 'api/personne/image-base64';
 
 
 
@@ -48,9 +48,9 @@ export class PersonneServiceService {
    * @return Personne[] : Liste de toutes les personnes.
    *
    */
-  public getAllPersonne():Observable<Personne[]>
+  public getAllPersonnes():Observable<Personne[]>
   {
-    return this.http.get<Personne[]>(this.getAll);
+    return this.http.get<Personne[]>(this.getAllUrl);
   }
 
 
@@ -61,9 +61,9 @@ export class PersonneServiceService {
    * @return Personne : Personne récupérée.
    *
    */
-  public findPersonne(no_personne:number):Observable<Personne>
+  public getPersonneById(no_personne:number):Observable<Personne>
   {
-    return this.http.get<Personne>(this.idPersonne+no_personne);
+    return this.http.get<Personne>(this.idPersonneUrl+no_personne);
   }
 
 
@@ -74,9 +74,9 @@ export class PersonneServiceService {
    * @param photoBase64String : photo de la personne.
    *
    */
-  public async addPerson(personne: Personne, photoBase64String: string): Promise<void> {
+  public async createPersonne(personne: Personne, photoBase64String: string): Promise<void> {
     try {
-      const response = await this.http.post<Object>(this.addPersonne, { personne, photoBase64String }).toPromise();
+      const response = await this.http.post<Object>(this.addPersonneUrl, { personne, photoBase64String }).toPromise();
       console.log(response);
     } catch (error) {
       console.error('Erreur : ', error);
@@ -90,10 +90,10 @@ export class PersonneServiceService {
    * @param no_personne : id de la personne supprimée.
    *
    */
-  public delete(no_personne:number):void
+  public deletePersonne(no_personne:number):void
   {
-    console.log("Suppression : "+this.deletePersonne+no_personne);
-    this.http.delete(this.deletePersonne+no_personne).subscribe(
+    console.log("Suppression : "+this.deletePersonneUrl+no_personne);
+    this.http.delete(this.deletePersonneUrl+no_personne).subscribe(
       response => {},
         error => {
       console.error('Erreur : ', error);
@@ -108,10 +108,10 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public uploadExcelFile(file: File) {
+  public importExcelFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addExcelPersonnes, formData); // Envoi du formData vers le Back.
+    return this.http.post<boolean>(this.addExcelPersonnesUrl, formData); // Envoi du formData vers le Back.
   }
 
 
@@ -121,8 +121,8 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateExcel() {
-    return this.http.get<boolean>(this.generateExcelFile);
+  public generateExcelFile() {
+    return this.http.get<boolean>(this.generateExcelFileUrl);
   }
 
 
@@ -133,10 +133,10 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public uploadCsvFile(file: File) {
+  public importCsvFile(file: File) {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addCsvPersonnes, formData); // Envoi du formData vers le Back.
+    return this.http.post<boolean>(this.addCsvPersonnesUrl, formData); // Envoi du formData vers le Back.
   }
 
 
@@ -146,8 +146,8 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateCsv() {
-    return this.http.get<boolean>(this.generateCsvFile);
+  public generateCsvFile() {
+    return this.http.get<boolean>(this.generateCsvFileUrl);
   }
 
 
@@ -155,11 +155,12 @@ export class PersonneServiceService {
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   /**
    * Méthode qui récupère la photo d'une personne.
+   * @return String qui contient l'image.
    *
    */
-  public getPicture(): Promise<string> {
+  public getImagebase64(): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.http.get<string>(this.getPhoto).subscribe(
+      this.http.get<string>(this.getPhotoUrl).subscribe(
           (response: string) => {
             console.log("Réponse du service : " + response);
             resolve(response);

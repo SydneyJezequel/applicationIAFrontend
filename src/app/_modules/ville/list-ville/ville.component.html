@@ -31,7 +31,7 @@
     <td>{{ville.codeRegion}}</td>
     <td>{{ville.population}}</td>
     <td>
-      <button (click)="delete(ville.no_ville)">Supprimer</button>
+      <button (click)="deleteVille(ville.no_ville)">Supprimer</button>
       <button [routerLink]="'/villes/edit/' + ville.no_ville">Modifier</button>
       <button [routerLink]="'/villes/details/' + ville.no_ville">Afficher le détail</button>
     </td>

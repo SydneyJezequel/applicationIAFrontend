@@ -20,11 +20,11 @@ export class VilleService {
 
   /******************************* Urls *******************************/
 
-  private loadApiVille : string = "api/ville/load-api";
-  private getAll : string = "api/ville/all";
-  private idVille: string = "api/ville/";
-  private newVille : string = "api/ville/add-ville/";
-  private deleteVille : string = "api/ville/delete/";
+  private loadApiVilleUrl : string = "api/ville/load-api";
+  private getAllVillesUrl : string = "api/ville/all";
+  private idVilleUrl: string = "api/ville/";
+  private createVilleUrl : string = "api/ville/add-ville/";
+  private deleteVilleUrl : string = "api/ville/delete/";
 
 
 
@@ -45,7 +45,7 @@ export class VilleService {
    *
    */
   public loadApi(): Observable<Ville[]> {
-    return this.http.get<Ville[]>(this.loadApiVille);
+    return this.http.get<Ville[]>(this.loadApiVilleUrl);
   }
 
 
@@ -55,10 +55,10 @@ export class VilleService {
    * @return Ville[] : Liste des villes.
    *
    */
-  public getAllVille():Observable<Ville[]>
+  public getAllVilles():Observable<Ville[]>
   {
-    console.log(this.http.get<Ville[]>(this.getAll));
-    return this.http.get<Ville[]>(this.getAll);
+    console.log(this.http.get<Ville[]>(this.getAllVillesUrl));
+    return this.http.get<Ville[]>(this.getAllVillesUrl);
   }
 
 
@@ -69,9 +69,9 @@ export class VilleService {
    * @return Ville : ville récupérée.
    *
    */
-  public findVille(no_ville:number):Observable<Ville>
+  public getVilleById(no_ville:number):Observable<Ville>
   {
-    return this.http.get<Ville>(this.idVille+no_ville);
+    return this.http.get<Ville>(this.idVilleUrl+no_ville);
   }
 
 
@@ -81,9 +81,9 @@ export class VilleService {
    * @param ville : ville ajoutée.
    *
    */
-  public async addVille(ville: Ville): Promise<void> {
+  public async createVille(ville: Ville): Promise<void> {
     try {
-      const response = await this.http.post<Ville>(this.newVille, ville).toPromise();
+      const response = await this.http.post<Ville>(this.createVilleUrl, ville).toPromise();
       console.log(response);
     } catch (error) {
       console.error('Erreur : ', error);
@@ -97,10 +97,10 @@ export class VilleService {
    * @param no_ville : id de la ville supprimée.
    *
    */
-  public delete(no_ville:number):void
+  public deleteVille(no_ville:number):void
   {
-    console.log("Suppression : "+this.deleteVille+no_ville);
-    this.http.delete(this.deleteVille+no_ville).subscribe(
+    console.log("Suppression : "+this.deleteVilleUrl+no_ville);
+    this.http.delete(this.deleteVilleUrl+no_ville).subscribe(
       response => {},
       error => {
         console.error('Erreur : ', error);

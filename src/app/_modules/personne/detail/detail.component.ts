@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_personne');
     let no_personne = id as unknown as number;
-    this.personneService.findPersonne(no_personne);
+    this.personneService.getPersonneById(no_personne);
     this.getOnePersonne(no_personne);
     // ************ TEST AFFICHAGE PHOTO *********** //
     // this.getPhoto();
@@ -64,7 +64,7 @@ export class DetailComponent implements OnInit {
    */
   public getOnePersonne(no_personne : number){
     console.log(" numéro de personne : " + no_personne);
-    this.personneService.findPersonne(no_personne).subscribe(
+    this.personneService.getPersonneById(no_personne).subscribe(
       (response) =>
       {
         this.personneTrouve = response;   // Récupération de l'objet Personne.
@@ -111,11 +111,11 @@ export class DetailComponent implements OnInit {
 
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //
   /**
-   * Méthode qui récupère une image.
+   * Méthode qui récupère la photo d'une personne.
    *
    */
-  public async getPhoto() {
-    this.base64String = await this.personneService.getPicture();
+  public async getImagebase64() {
+    this.base64String = await this.personneService.getImagebase64();
     console.log("base64String : " + this.base64String);
   }
   // *************************** TEST RECUPERER ET AFFICHER UNE IMAGE *************************** //

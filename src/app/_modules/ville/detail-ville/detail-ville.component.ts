@@ -41,7 +41,7 @@ export class DetailVilleComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('no_ville');
     let no_ville = id as unknown as number;
-    this.villeService.findVille(no_ville)
+    this.villeService.getVilleById(no_ville)
     this.getOneVille(no_ville);
 
   }
@@ -58,7 +58,7 @@ export class DetailVilleComponent implements OnInit {
    */
   getOneVille(no_ville : number){
     console.log(" numéro de list-ville : " + no_ville);
-    this.villeService.findVille(no_ville).subscribe(
+    this.villeService.getVilleById(no_ville).subscribe(
       (response) =>
       {
         this.villeTrouve = response;
