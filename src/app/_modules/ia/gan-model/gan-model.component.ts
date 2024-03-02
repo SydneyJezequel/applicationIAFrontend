@@ -74,7 +74,8 @@ export class GanModelComponent implements OnInit {
 
   /**
    * Méthode qui détecte le fichiers de paramètres du Modèle Gan.
-   * @return boolean
+   * @param event : Ajout du fichier de paramètre.
+   * @return booléen : succès/échec de l'exécution.
    *
    */
   public onParametersFileSelected(event: any): void {
@@ -84,15 +85,14 @@ export class GanModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui intègre les fichiers image
-   * dans le modèle de Machine Learning FaceRecognizer.
-   * @return boolean
+   * Méthode pour charger le fichier de paramètres du modèle GAN.
+   * Ce fichier est généré lors de l'entrainement du modèle.
    *
    */
-  public async uploadParametersGenFile(): Promise<void> {
+  public async loadParametersGenFile(): Promise<void> {
     if (this.parameterGenFile) {
       try {
-        this.reponseLoadFaceIdentify = await this.iaService.processParameterGenFile(this.parameterGenFile);
+        this.reponseLoadFaceIdentify = await this.iaService.loadParametersGenFile(this.parameterGenFile);
         if (this.reponseLoadFaceIdentify) {
           this.parametersGenFileLoadSuccess = this.successLoadParametersGenFile;
         } else {
@@ -108,8 +108,7 @@ export class GanModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui utilise le modèle pour
-   * générer des images.
+   * Méthode qui exécute le modèle GAN pour générer des images.
    *
    */
   public async generateImage(): Promise<any>{
@@ -129,8 +128,7 @@ export class GanModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui lance l'entrainement
-   * du modèle GAN.
+   * Méthode pour entrainer le modèle GAN.
    *
    */
   public async trainGANModel(): Promise<any>{
@@ -145,7 +143,6 @@ export class GanModelComponent implements OnInit {
       console.log(this.save_step)
       console.log("*********** TEST ***********")
       this.reponseTrainingGANModel = await this.iaService.trainGANModel(this.n_epochs, this.batch_size, this.lr, this.z_dim, this.device, this.show_step , this.save_step);
-      // this.reponseTrainingGANModel = await this.iaService.trainGANModel();
       console.log(this.reponseTrainingGANModel);
       if (this.reponseTrainingGANModel) {
         this.successTraining = this.trainingSuccess;

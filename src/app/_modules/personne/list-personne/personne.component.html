@@ -6,9 +6,10 @@
 <br>
 <br>
 
-<!-- Affichage de la liste des personnes sous forme de tableau -->
-<table>
 
+<!-- Affichage des personnes sous forme de tableau -->
+<table>
+  <!-- En-tête -->
   <thead>
     <tr>
       <th>numero</th>
@@ -19,8 +20,7 @@
       <th>actions</th>
     </tr>
   </thead>
-
-  <!-- Informations et boutons pour manipuler les Entités Personnes -->
+  <!-- Données -->
   <tbody>
   <tr *ngFor="let personne of personnes">
     <td>{{personne.no_personne}}</td>
@@ -35,17 +35,16 @@
     </td>
   </tr>
   </tbody>
-
 </table>
 
 
+<!-- Bouton pour accéder à la fonctionnalité d'Ajout d'une personne. -->
 <br>
 <br>
 <button [routerLink]="'/add'">Ajouter une nouvelle personne</button>
 
 
-
-<!-- Bouton pour générer un fichier Excel qui contient la liste des personnes en BDD. -->
+<!-- Bouton pour générer un fichier Excel qui contient la liste des personnes. -->
 <br>
 <br>
 <div class="success-message" *ngIf="generationFichierExcel">
@@ -55,7 +54,8 @@
   <button (click)="generateExcel()">Générer un fichier Excel</button>
 </div>
 
-<!-- Bouton pour générer un fichier Csv qui contient la liste des personnes en BDD. -->
+
+<!-- Bouton pour générer un fichier Csv qui contient la liste des personnes. -->
 <br>
 <div class="success-message" *ngIf="generationFichierCsv">
   Fichier Csv généré avec succès.
@@ -64,5 +64,4 @@
   <button (click)="generateCsv()">Générer un fichier Csv</button>
 </div>
 <br>
-
 

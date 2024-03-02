@@ -4,11 +4,11 @@
 <br>
 <div class="cadre">
 
-  <!-- Chargement du fichier de paramètres -->
+  <!-- Section pour charger le fichier de paramètres -->
   <p>1- Charger le fichier de paramètres du Générateur :</p>
   <div>
     <input type="file" (change)="onParametersFileSelected($event)" />
-    <button (click)="uploadParametersGenFile()">Charger le fichier de paramètres</button>
+    <button (click)="loadParametersGenFile()">Charger le fichier de paramètres</button>
   </div>
   <br>
   <div *ngIf="parametersGenFileLoadSuccess">
@@ -22,7 +22,7 @@
   <br>
   <br>
 
-  <!-- Accès à l'interface d'utilisation de chatGpt -->
+  <!-- Section pour générer des images -->
   <p>2- Générer des images avec le Modèle GAN à partir de ce fichier de paramètres :</p>
   <button (click)="generateImage()">Générer des images</button>
   <br>
@@ -49,7 +49,8 @@
 <h2>Entrainer le Modèle GAN</h2>
 
 <br>
-<!-- Formulaire des Hyperparamètres du Modèle -->
+
+<!-- Formulaire pour configurer les Hyperparamètres du modèle -->
 <div class="cadre">
   <p>Hyperparamètres du Modèle :</p>
   <br>

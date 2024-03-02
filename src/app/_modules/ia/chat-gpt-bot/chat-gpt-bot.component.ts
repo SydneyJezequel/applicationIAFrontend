@@ -45,14 +45,14 @@ export class ChatGptBotComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui envoie des requêtes à chatGpt et renvoie
-   * ses réponses.
+   * Méthode qui envoie le prompt à l'Api de chatGpt et renvoie sa réponse.
+   * @return response : réponse.
    *
    */
-   public async sendMessage(){
+   public async chat(){
     console.log("sendMessage appelée");
     try {
-      this.reponse = await this.iaService.sendMessage(this.request);
+      this.reponse = await this.iaService.chat(this.request);
       console.log("Résultat" + this.reponse);
     } catch (error) {
       console.error('Erreur : ', error);

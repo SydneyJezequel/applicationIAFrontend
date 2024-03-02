@@ -4,15 +4,16 @@
 
 <br>
 <br>
+<!-- Boutons des autres fonctionnalités -->
 <button [routerLink]="'/villes/add'">Ajouter une nouvelle ville</button>
 <button (click)="loadApi()">Recharger les données depuis le site du gouvernement</button>
 <br>
 <br>
 
 
-<!-- Affichage de la liste des villees sous forme de tableau -->
+<!-- Affichage des villes sous forme de tableau -->
 <table *ngIf="villes && villes!=null">
-
+  <!-- En-tête -->
   <thead>
   <tr>
     <th>nom</th>
@@ -22,8 +23,7 @@
     <th>actions</th>
   </tr>
   </thead>
-
-  <!-- Informations et boutons pour manipuler les Entités Personnes -->
+  <!-- Données -->
   <tbody>
   <tr *ngFor="let ville of villes">
     <td>{{ville.nom}}</td>
@@ -37,8 +37,8 @@
     </td>
   </tr>
   </tbody>
-
 </table>
+
 
 <!-- Message d'erreur -->
 <div *ngIf="!(villes && villes==null)">Aucune ville trouvée.</div>

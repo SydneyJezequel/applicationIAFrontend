@@ -10,13 +10,14 @@
 <br>
 
 
+
 <h3>Intégration d'un fichier Excel</h3>
 <br>
-<!--Formulaire d'intégration du fichier-->
+<!-- Formulaire pour intégrer le fichier Excel -->
 <div>
   <input type="file" (change)="onFileChange($event)" />
   <button (click)="uploadExcelFile()">Upload Excel</button>
-  <!--Affichage du message de succès ou d'erreur -->
+  <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageExcel" class="success-message">
     {{ displaySuccessMessageExcel }}
   </div>
@@ -26,8 +27,6 @@
 </div>
 
 
-
-
 <br>
 <br>
 <br>
@@ -35,16 +34,13 @@
 <br>
 
 
-
-
-<!-- Intégration d'un fichier CSV -->
 <h3>Intégration d'un fichier Csv</h3>
 <br>
-<!-- Formulaire d'intégration du fichier -->
+<!-- Formulaire pour intégrer le fichier Csv -->
 <div>
   <input type="file" (change)="onFileChange($event)" />
   <button (click)="uploadCsvFile()">Upload Csv</button>
-  <!--Affichage du message de succès ou d'erreur -->
+  <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageCsv" class="success-message">
     {{ displaySuccessMessageCsv }}
   </div>
@@ -62,6 +58,7 @@
 <!-- Bouton de retour à la page principale -->
 <button [routerLink]="''">Retour à la liste des Personnes</button>
 
+
 <br>
 <br>
 <br>
@@ -72,3 +69,4 @@
 <br>
 <br>
 <br>
+

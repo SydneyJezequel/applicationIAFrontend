@@ -94,7 +94,7 @@ export class FaceRecognizerModelComponent implements OnInit {
 
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
-    this.initializeFaceRecognizerModele();
+    this.initializeFaceRecognizerModel();
     this.getListModel();
   }
 
@@ -117,15 +117,13 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui intègre les fichiers image sous forme Zip
-   * dans le modèle de Machine Learning FaceRecognizer.
-   * @return boolean
+   * Méthode pour charger un fichier .zip contenant les photos d'entrainement du modèle.
    *
    */
-  public async uploadTrainingSetFile(): Promise<void> {
+  public async loadTrainingDataSetZip(): Promise<void> {
     if (this.selectedTrainingSetFile) {
       try {
-        this.reponseLoadTrainingDataSet = await this.iaService.processTrainingSetImageZip(this.selectedTrainingSetFile);
+        this.reponseLoadTrainingDataSet = await this.iaService.loadTrainingDataSetZip(this.selectedTrainingSetFile);
         console.log(this.reponseLoadTrainingDataSet);
         if (this.reponseLoadTrainingDataSet) {
           this.loadTrainingDataSetResultSuccess = this.successLoading;
@@ -154,15 +152,13 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui intègre les fichiers image sous forme Zip
-   * dans le modèle de Machine Learning FaceRecognizer.
-   * @return boolean
+   * Méthode pour charger un fichier .zip contenant les photos de validation du modèle.
    *
    */
-  public async uploadValidationSetFile(): Promise<void> {
+  public async loadValidationDataSetZip(): Promise<void> {
     if (this.selectedValidationSetFile) {
       try {
-        this.reponseLoadValidationDataSet = await this.iaService.processValidationSetImageZip(this.selectedValidationSetFile);
+        this.reponseLoadValidationDataSet = await this.iaService.loadValidationDataSetZip(this.selectedValidationSetFile);
         console.log(this.reponseLoadValidationDataSet);
         if (this.reponseLoadValidationDataSet) {
           this.loadValidationDataSetResultSuccess = this.successLoading;
@@ -191,15 +187,13 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui intègre les fichiers image
-   * dans le modèle de Machine Learning FaceRecognizer.
-   * @return boolean
+   * Méthode pour charger une photo à identifier.
    *
    */
-  public async uploadFaceIdentify(): Promise<void> {
+  public async loadFaceIdentifyFile(): Promise<void> {
     if (this.faceIdentifyFile) {
       try {
-        this.reponseLoadFaceIdentify = await this.iaService.processFaceIdentify(this.faceIdentifyFile);
+        this.reponseLoadFaceIdentify = await this.iaService.loadFaceIdentifyFile(this.faceIdentifyFile);
         if (this.reponseLoadFaceIdentify) {
           this.successLoadFaceIdentify = this.identifyLoadSuccess;
         } else {
@@ -215,14 +209,13 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui encode les photos et entraine le modèle
-   * avec les photos encodées.
+   * Méthode pour encoder les photos et entrainer le modèle.
    *
    */
-  public async entrainerLeModele() {
+  public async trainFaceRecognizerModel() {
     // Exécution de la requête :
     try {
-      this.reponseTrainingModele= await this.iaService.entrainerLeModele();
+      this.reponseTrainingModele= await this.iaService.trainFaceRecognizerModel();
       if (this.reponseTrainingModele) {
         this.successTrainingDataSet = this.successTraining;
       } else {
@@ -236,13 +229,12 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui teste le modèle avec un set
-   * de photos d'entrainement.
+   * Méthode qui teste le modèle.
    *
    */
-  public async validerLeModele() {
+  public async validateFaceRecognizerModel() {
     try {
-      this.reponseModeleValidation = await this.iaService.validerLeModele();
+      this.reponseModeleValidation = await this.iaService.validateFaceRecognizerModel();
       if (this.reponseModeleValidation) {
         this.successValidationModel = this.successValidation;
       } else {
@@ -256,13 +248,12 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui utilise le modèle pour
-   * reconnaitre le visage d'une personne.
+   * Méthode qui exécute le modèle pour identifier un visage.
    *
    */
-  public async faceIdentify(): Promise<any>{
+  public async executeFaceRecognizerModel(): Promise<any>{
     try {
-      this.reponseFaceIdentify = await this.iaService.faceIdentify();
+      this.reponseFaceIdentify = await this.iaService.executeFaceRecognizerModel();
         console.log(this.reponseFaceIdentify);
       if (this.reponseFaceIdentify) {
         this.successFaceIdentify = this.identifySuccess
@@ -277,13 +268,13 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui initialise le modèle de machine learning
-   * "hog" comme modèle par défaut pour la reconnaissance faciale.
-   * @return boolean : Opération réussie ou non.
+   * Méthode qui initialise le modèle.
+   * Le modèle de reconnaissance utilisé par défaut est le modèle "HOG".
+   *
    */
-  public async initializeFaceRecognizerModele(): Promise<any>{
+  public async initializeFaceRecognizerModel(): Promise<any>{
     try {
-      let modeleInitialise = await this.iaService.initializeFaceRecognizerModele();
+      let modeleInitialise = await this.iaService.initializeFaceRecognizerModel();
       console.log("modele initialisé : "+ modeleInitialise);
     } catch (error) {
       console.error('Erreur : ', error);
@@ -293,9 +284,7 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie la liste des modèles de
-   * Machine Learning vers le front
-   * pour le menu déroulant.
+   * Méthode qui renvoie la liste des modèles (HOG, CNN).
    *
    */
   public async getListModel(): Promise<any>{
@@ -310,9 +299,7 @@ export class FaceRecognizerModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie la liste des modèles de
-   * Machine Learning vers le front
-   * pour le menu déroulant.
+   * Méthode qui sélectionne le modèle de machine learning.
    *
    */
   public async selectModel(): Promise<any>{

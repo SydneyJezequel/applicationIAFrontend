@@ -49,7 +49,7 @@ export class IrisModelResultsComponent implements OnInit {
 
   /******************************* Initialisation *******************************/
   ngOnInit(): void {
-    this.getAllPredictions();
+    this.getAllIrisModelPredictions();
   }
 
 
@@ -59,7 +59,8 @@ export class IrisModelResultsComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   * Méthode qui initialise le modèle de Machine Learning Random Forest.
+   * Par défaut, ce modèle est utilisé sur le dataset de classification du type d'Iris.
    *
    */
   public initializeModelPrediction(): void {
@@ -82,13 +83,12 @@ export class IrisModelResultsComponent implements OnInit {
 
 
   /**
-   * Méthode qui génère un fichier Excel qui contient
-   * le DataSet du modèle des Iris.
+   * Méthode qui génère le fichier Excel contenant les données du DataSet Iris.
    *
    */
   public async getIrisDataSet() {
     try {
-      this.getIrisDataSetResult = await this.iaService.getIrisDataSet();
+      this.getIrisDataSetResult = await this.iaService.generateExcelFileForIrisDataSet();
       console.log(this.getIrisDataSetResult);
       if (this.getIrisDataSetResult) {
         this.displaySuccessGetDataSet = this.successGetDataSet;
@@ -103,13 +103,13 @@ export class IrisModelResultsComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie la liste des résultats du modèle de machine Learning
-   * qui prédit le type des Iris.
+   * Méthode qui renvoie la liste des prédictions générées par le modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public getAllPredictions(): void {
+  public getAllIrisModelPredictions(): void {
     try {
-      this.iaService.getAllPredictions().then((response) => {
+      this.iaService.getAllIrisModelPredictions().then((response) => {
         this.listeResults = response;
         console.log(response);
       });
@@ -122,11 +122,12 @@ export class IrisModelResultsComponent implements OnInit {
 
 
   /**
-   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   * Méthode qui génère un fichier Excel contenant les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateExcel() {
-    this.iaService.generateExcel().subscribe(
+  public generateExcelFileForPredictions() {
+    this.iaService.generateExcelFileForPredictions().subscribe(
       (response: boolean) =>
       {
         this.generationFichierExcel = response;
@@ -141,11 +142,12 @@ export class IrisModelResultsComponent implements OnInit {
 
 
   /**
-   * Méthode qui génère un fichier Excel qui contient les données de la BDD.
+   * Méthode qui génère un fichier Csv contenant les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateCsv() {
-    this.iaService.generateCsv().subscribe(
+  public generateCsvFileForPredictions() {
+    this.iaService.generateCsvFileForPredictions().subscribe(
       (response: boolean) =>
       {
         this.generationFichierCsv = response;

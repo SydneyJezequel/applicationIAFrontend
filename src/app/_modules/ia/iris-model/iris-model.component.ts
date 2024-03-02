@@ -57,8 +57,12 @@ export class IrisModelComponent implements OnInit {
 
   /******************************* Méthodes *******************************/
 
-  public async predict() {
-
+  /**
+   * Méthode qui exécute le modèle de machine Learning Random Forest.
+   * Par défaut, ce modèle est utilisé pour prédire du type d'Iris.
+   *
+   */
+  public async getIrisModelPrediction() {
     // Initialisation de la requête :
     let sepal_length : number = this.sepalLength;
     let sepal_width : number = this.sepalWidth;
@@ -70,12 +74,11 @@ export class IrisModelComponent implements OnInit {
       petal_length,
       petal_width
     };
-
     // Exécution de la requête :
     try {
       console.log("controller du Modele Iris appelé");
       console.log("Objet" + request);
-      this.iaService.getPrediction(request).then((response) => {
+      this.iaService.getIrisModelPrediction(request).then((response) => {
         this.reponseModeleIris = response.forecast.response;
         console.log(response);
         });
@@ -89,12 +92,11 @@ export class IrisModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui enregistre la prédiction réalisée en BDD
-   * et renvoie vers la liste des prédictions enregistrées.
+   * Méthode qui sauvegarde les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public savePrediction(): void {
-
+  public saveIrisModelPrediction(): void {
     // Initialisation de la réponse à enregistrer :
     let sepal_length : number = this.sepalLength;
     let sepal_width : number = this.sepalWidth;
@@ -108,11 +110,10 @@ export class IrisModelComponent implements OnInit {
       petal_width,
       prediction
     };
-
     // Enregistrement :
     try {
         // Enregistrement en BDD :
-        this.iaService.savePrediction(resultToSave);
+        this.iaService.saveIrisModelPrediction(resultToSave);
         // Redirection après l'ajout de l'enregistrement :
         this.router.navigate(['result-iris']);
       } catch (error) {
@@ -124,7 +125,8 @@ export class IrisModelComponent implements OnInit {
 
 
   /**
-   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   * Méthode qui initialise le modèle de Machine Learning Random Forest.
+   * Par défaut, ce modèle est utilisé sur le dataset de classification du type d'Iris.
    *
    */
   public initializeModelPrediction(): void {

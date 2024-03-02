@@ -41,6 +41,7 @@ export class VilleService {
 
   /**
    * Méthode qui charge les villes en BDD depuis une Api.
+   * @return Ville[] : Liste des villes.
    *
    */
   public loadApi(): Observable<Ville[]> {
@@ -50,7 +51,8 @@ export class VilleService {
 
 
   /**
-   * Méthode qui renvoie toutes les villes.
+   * Méthode qui récupère la liste de toutes les villes.
+   * @return Ville[] : Liste des villes.
    *
    */
   public getAllVille():Observable<Ville[]>
@@ -62,7 +64,9 @@ export class VilleService {
 
 
   /**
-   * Méthode qui renvoie une ville en fonction de son Id.
+   * Méthode qui récupère une ville.
+   * @param no_ville : id de la ville récupérée.
+   * @return Ville : ville récupérée.
    *
    */
   public findVille(no_ville:number):Observable<Ville>
@@ -74,6 +78,7 @@ export class VilleService {
 
   /**
    * Méthode qui ajoute une ville.
+   * @param ville : ville ajoutée.
    *
    */
   public async addVille(ville: Ville): Promise<void> {
@@ -89,6 +94,7 @@ export class VilleService {
 
   /**
    * Méthode qui supprime une ville.
+   * @param no_ville : id de la ville supprimée.
    *
    */
   public delete(no_ville:number):void

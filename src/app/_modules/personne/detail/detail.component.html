@@ -1,6 +1,8 @@
 <br>
 <br>
-<!-- Affichage des informations de la Personne -->
+
+
+<!-- Affichage du détail d'une Personne -->
 <div *ngIf="personneTrouve">
   <h2>Détails de la personne </h2>
   <p>Matricule : {{ personneTrouve.no_personne }}</p>
@@ -14,26 +16,12 @@
 </div>
 
 
-
 <br>
 <br>
 <!-- Bouton de retour à la page principale -->
 <button [routerLink]="''">Retour à la liste des Personnes</button>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- ************** TEST AFFICHAGE IMAGE ************** -->
-<!-- ************** TEST AFFICHAGE IMAGE ************** -->
 <!-- ************** TEST AFFICHAGE IMAGE ************** -->
 <br>
 <br>
@@ -41,11 +29,4 @@
 <h4>TEST AFFICHAGE PHOTO : </h4>
 <img [src]="base64String" alt="Image">
 <!-- ************** TEST AFFICHAGE IMAGE ************** -->
-<!-- ************** TEST AFFICHAGE IMAGE ************** -->
-<!-- ************** TEST AFFICHAGE IMAGE ************** -->
-
-
-
-
-
 

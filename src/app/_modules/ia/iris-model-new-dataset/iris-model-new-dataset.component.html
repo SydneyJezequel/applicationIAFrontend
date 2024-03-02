@@ -1,20 +1,19 @@
 
 <br>
-<h2>Intégrer un nouveau jeu de données </h2>
+<h2>Intégrer un nouveau jeu de données</h2>
 <br>
 <br>
 
-
-
-<!--Intégration d'un dataSet sous format Excel -->
-<h3>Intégrer un nouveau jeu de données Excel </h3>
+<!-- Section générant un ficher Excel pour intégrer un nouveau DataSet -->
+<h3>Intégrer un nouveau jeu de données Excel</h3>
 <br>
-<button (click)="generateTemplateExcelForDataSet()">Générer un template Excel pour intégrer les données</button>
-<!--Formulaire d'intégration du fichier-->
+<button (click)="generateExcelFileTemplateForDataset()">Générer un template Excel pour intégrer les données</button>
+
+<!-- Formulaire pour intégrer un nouveau DataSet au format Excel -->
 <div>
-  <button (click)="uploadDataSetExcelFile()">Intégrer les nouvelles données sous format Excel</button>
+  <button (click)="importExcelTemplateDataSetFile()">Intégrer les nouvelles données sous format Excel</button>
   <input type="file" (change)="onFileChange($event)" />
-  <!--Affichage du message de succès ou d'erreur -->
+  <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageExcel" class="success-message">
     {{ displaySuccessMessageExcel }}
   </div>
@@ -25,7 +24,6 @@
 
 
 
-
 <br>
 <br>
 <br>
@@ -35,19 +33,17 @@
 
 
 
-
-<!--Intégration d'un dataSet sous format Csv -->
+<!-- Section générant un ficher Csv pour intégrer un nouveau DataSet -->
 <h3>Intégrer un nouveau jeu de données Csv </h3>
 <br>
-
-<button (click)="generateTemplateCsvForDataSet()">Générer un template csv pour intégrer les données</button>
+<button (click)="generateCsvFileTemplateForDataset()">Générer un template csv pour intégrer les données</button>
 <br>
 
-<!--Formulaire d'intégration du fichier-->
+<!-- Formulaire pour intégrer un nouveau DataSet au format Csv -->
 <div>
-  <button (click)="uploadDataSetCsvFile()">Intégrer les nouvelles données sous format Csv</button>
+  <button (click)="importCsvTemplateDataSetFile()">Intégrer les nouvelles données sous format Csv</button>
   <input type="file" (change)="onFileChange($event)" />
-  <!--Affichage du message de succès ou d'erreur -->
+  <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessMessageCsv" class="success-message">
     {{ displaySuccessMessageCsv }}
   </div>

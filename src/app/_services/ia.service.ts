@@ -29,18 +29,18 @@ export class IaService {
   private irisModelsaveResponseUrl: string = '/api/ia/iris/save-predict';
   private irisModelResultsUrl: string = '/api/ia/iris/all-predict';
   private initializeModelIrisApiUrl: string = '/api/ia/iris/load-predict-in-model';
-  private generateExcelFile: string = '/api/ia/iris/generate-excel';
-  private generateCsvFile: string = '/api/ia/iris/generate-csv';
-  private generateTemplateForExcelDataSet: string = '/api/ia/iris/generate-template-excel-dataset';
-  private loadExcelDataSet: string = '/api/ia/iris/load-dataset-excel';
-  private generateTemplateForCsvDataSet: string = '/api/ia/iris/generate-template-csv-dataset';
-  private loadCsvDataSet: string = '/api/ia/iris/load-dataset-csv';
+  private generateExcelFileUrl: string = '/api/ia/iris/generate-excel';
+  private generateCsvFileUrl: string = '/api/ia/iris/generate-csv';
+  private generateTemplateForExcelDataSetUrl: string = '/api/ia/iris/generate-template-excel-dataset';
+  private loadExcelDataSetUrl: string = '/api/ia/iris/load-dataset-excel';
+  private generateTemplateForCsvDataSetUrl: string = '/api/ia/iris/generate-template-csv-dataset';
+  private loadCsvDataSetUrl: string = '/api/ia/iris/load-dataset-csv';
   private getIrisDataSetApiUrl: string = '/api/ia/iris/generate-iris-dataset-excel';
 
   // Urls du modèle de reconnaissance faciale :
-  private loadTrainingSetFile: string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
-  private loadValidationSetFile: string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
-  private loadIdentifyFaceFile: string = '/api/ia/face-recognizer/process-identify-face-image';
+  private loadTrainingSetFileUrl: string = '/api/ia/face-recognizer/process-training-set-file-image-zip';
+  private loadValidationSetFileUrl: string = '/api/ia/face-recognizer/process-validation-set-file-image-zip';
+  private loadIdentifyFaceFileUrl: string = '/api/ia/face-recognizer/process-identify-face-image';
   private recognizeFaceTrainingUrl : string = '/api/ia/face-recognizer/recognize-face-training';
   private recognizeFaceValidationUrl: string = '/api/ia/face-recognizer/recognize-face-test';
   private useRecognizeFaceModelUrl: string = '/api/ia/face-recognizer/use-recognize-face';
@@ -49,7 +49,7 @@ export class IaService {
   private selectModelUrl: string = '/api/ia/face-recognizer/model-selection';
 
   // Urls du modèle de génération d'image GAN :
-  private loadParametersGenFile: string = '/api/ia/gan-image-generation/process-parameters-gen-file';
+  private loadParametersGenFileUrl: string = '/api/ia/gan-image-generation/process-parameters-gen-file';
   private generateGANImageUrl: string = '/api/ia/gan-image-generation/generate-faces';
   private trainGANModelUrl: string = '/api/ia/gan-image-generation/train-gan-model';
 
@@ -67,12 +67,14 @@ export class IaService {
   /************************************** Méthodes de l'API de chatGPT **************************************/
 
   /**
-   * Méthode qui envoie une requête à chatGpt et récupère sa réponse.
+   * Méthode qui envoie le prompt à l'Api de chatGpt et renvoie sa réponse.
+   * @param prompt : message envoyé à chatGpt.
+   * @return response : réponse.
    *
    */
-  public async sendMessage(message: string): Promise<string | undefined> {
+  public async chat(prompt: string): Promise<string | undefined> {
     try {
-      const response= await this.http.post<string>(this.sendMessageToChatGpt, message).toPromise();
+      const response= await this.http.post<string>(this.sendMessageToChatGpt, prompt).toPromise();
       console.log(response);
       return response;
     } catch (error) {
@@ -88,7 +90,9 @@ export class IaService {
   /************************************** Méthodes du Modèle Random Forest **************************************/
 
   /**
-   * Méthode qui initialise le modèle de Machine Learning qui classe les Iris.
+   * Méthode qui initialise le modèle de Machine Learning Random Forest.
+   * Par défaut, ce modèle est utilisé sur le dataset de classification du type d'Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public async initializeModelPrediction(): Promise<any>{
@@ -104,10 +108,11 @@ export class IaService {
 
 
   /**
-   * Méthode qui envoie une requête à chatGpt et récupère sa réponse.
+   * Méthode qui génère le fichier Excel contenant les données du DataSet Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async getIrisDataSet(): Promise<any>{
+  public async generateExcelFileForIrisDataSet(): Promise<any>{
     try {
       const response= await this.http.get<boolean>(this.getIrisDataSetApiUrl).toPromise();
       console.log(response);
@@ -120,10 +125,13 @@ export class IaService {
 
 
   /**
-   * Méthode qui envoie une requête au modèle de machine Learning qui prédit le type des Iris.
+   * Méthode qui exécute le modèle de machine Learning Random Forest.
+   * Par défaut, ce modèle est utilisé pour prédire du type d'Iris
+   * @param IrisModelRequest request : Paramètres du modèle.
+   * @return String : Prédiction générée.
    *
    */
-  public async getPrediction(request: IrisModelRequest): Promise<any>{
+  public async getIrisModelPrediction(request: IrisModelRequest): Promise<any>{
     try {
       const response= await this.http.post<string>(this.irisModelRequestUrl, request).toPromise();
       console.log(response);
@@ -136,11 +144,13 @@ export class IaService {
 
 
   /**
-   * Méthode qui enregistre le résultat du modèle de machine Learning
-   * qui prédit le type des Iris.
+   * Méthode qui sauvegarde les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @param irisModelResponse : paramètres passés aux modèles et prédiction réalisée.
+   * @return irisModelResponse : paramètres passés aux modèles et prédiction réalisée.
    *
    */
-  public async savePrediction(reponseModeleIris: IrisModelResponse) {
+  public async saveIrisModelPrediction(reponseModeleIris: IrisModelResponse) {
     try {
       console.log("Objet : ");
       console.log(reponseModeleIris);
@@ -154,11 +164,12 @@ export class IaService {
 
 
   /**
-   * Méthode qui renvoie la liste des résultats du modèle de machine Learning
-   * qui prédit le type des Iris.
+   * Méthode qui renvoie la liste des prédictions générées par le modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @return IrisModelResponse[] : La liste des prédictions.
    *
    */
-  public async getAllPredictions(): Promise<any>{
+  public async getAllIrisModelPredictions(): Promise<any>{
     try {
       const response= await this.http.get<IrisModelResponse[]>(this.irisModelResultsUrl).toPromise();
       console.log(response);
@@ -171,67 +182,79 @@ export class IaService {
 
 
   /**
-   * Méthode qui génère un fichier Excel contenant les résultats stockées en BDD.
+   * Méthode qui génère un fichier Excel contenant les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateExcel() {
-    return this.http.get<boolean>(this.generateExcelFile);
+  public generateExcelFileForPredictions() {
+    return this.http.get<boolean>(this.generateExcelFileUrl);
   }
 
 
 
   /**
-   * Méthode qui génère un fichier Excel les résultats stockés en BDD.
+   * Méthode qui génère un fichier Csv contenant les prédictions du modèle.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateCsv() {
-    return this.http.get<boolean>(this.generateCsvFile);
+  public generateCsvFileForPredictions() {
+    return this.http.get<boolean>(this.generateCsvFileUrl);
   }
 
 
 
   /**
-   * Méthode qui intègre un fichier Excel contenant un nouveau set de données.
+   * Méthode qui charge le dataSet d'entrainement du modèle au format Excel.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @param file : fichier Excel contenant le jeu de données.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async uploadExcelFile(file: File): Promise<any> {
+  public async importExcelTemplateDataSetFile(file: File): Promise<any> {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.loadExcelDataSet, formData).toPromise(); // Envoi du formData vers le Back.
+    return this.http.post<boolean>(this.loadExcelDataSetUrl, formData).toPromise(); // Envoi du formData vers le Back.
   }
 
 
 
   /**
-   * Méthode qui génère un fichier de Template Excel
-   * pour intégrer un nouveau jeu de données.
+   * Méthode qui génère le fichier Excel de chargement du dataSet d'entrainement.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateTemplateExcelForDataSet(): Observable<boolean> {
-    return this.http.get<boolean>(this.generateTemplateForExcelDataSet);
+  public generateExcelFileTemplateForDataset(): Observable<boolean> {
+    return this.http.get<boolean>(this.generateTemplateForExcelDataSetUrl);
   }
 
 
 
   /**
-   * Méthode qui intègre un fichier Csv contenant un nouveau set de données.
+   * Méthode qui charge le dataSet d'entrainement du modèle au format Csv.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @param file : fichier Csv contenant le jeu de données.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public uploadCsvTemplateFile(file: File): Promise<any> {
+  public importCsvTemplateDataSetFile(file: File): Promise<any> {
     const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
     formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.loadCsvDataSet, formData).toPromise(); // Envoi du formData vers le Back.
+    return this.http.post<boolean>(this.loadCsvDataSetUrl, formData).toPromise(); // Envoi du formData vers le Back.
   }
 
 
 
   /**
-   * Méthode qui génère un fichier de Template Csv
-   * pour intégrer un nouveau jeu de données.
+   * Méthode qui génère le fichier csv de chargement du dataSet d'entrainement.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateTemplateCsvForDataSet(): Observable<boolean>  {
-    return this.http.get<boolean>(this.generateTemplateForCsvDataSet);
+  public generateCsvFileTemplateForDataset(): Observable<boolean>  {
+    return this.http.get<boolean>(this.generateTemplateForCsvDataSetUrl);
   }
 
 
@@ -241,53 +264,56 @@ export class IaService {
   /************************* Méthodes des Modèles de reconnaissances faciales (HOG & CNN) *************************/
 
   /**
-   * Méthode qui charge le set d'image d'entrainement du modèle.
-   * @param file : Fichier .zip qui contient le set d'image d'entrainement.
+   * Méthode pour charger un fichier .zip contenant les photos d'entrainement du modèle.
+   * @param file : fichier .zip contenant le set d'image d'entrainement.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async processTrainingSetImageZip(file: File): Promise<any> {
+  public async loadTrainingDataSetZip(file: File): Promise<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     console.log("Fichier d'images intégré : " +file);
-    return this.http.post<boolean>(this.loadTrainingSetFile, formData).toPromise();
+    return this.http.post<boolean>(this.loadTrainingSetFileUrl, formData).toPromise();
   }
 
 
 
   /**
-   * Méthode qui charge le set d'image de validation du modèle.
-   * @param file : Fichier .zip qui contient le set d'image de validation.
+   * Méthode pour charger un fichier .zip contenant les photos de validation du modèle.
+   * @param file : fichier .zip contenant le set d'image de validation.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async processValidationSetImageZip(file: File): Promise<any> {
+  public async loadValidationDataSetZip(file: File): Promise<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     console.log("Fichier d'images intégré : " +file);
-    return this.http.post<boolean>(this.loadValidationSetFile, formData).toPromise();
+    return this.http.post<boolean>(this.loadValidationSetFileUrl, formData).toPromise();
   }
 
 
 
   /**
-   * Méthode qui charge le set d'image de validation du modèle.
-   * @param file : Fichier .zip qui contient le set d'image de validation.
+   * Méthode pour charger une photo à identifier.
+   * @param file : fichier .zip qui contient l'image à identifier.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async processFaceIdentify(file: File): Promise<any> {
+  public async loadFaceIdentifyFile(file: File): Promise<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     console.log("Fichier de l'image à reconnaitre : " +file);
-    return this.http.post<boolean>(this.loadIdentifyFaceFile, formData).toPromise();
+    return this.http.post<boolean>(this.loadIdentifyFaceFileUrl, formData).toPromise();
   }
 
 
 
   /**
-   * Méthode qui encode les photos et entraine le modèle
-   * avec les photos encodées.
+   * Méthode pour encoder les photos et entrainer le modèle.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async entrainerLeModele(): Promise<any>{
+  public async trainFaceRecognizerModel(): Promise<any>{
     try {
       const response= await this.http.get<string>(this.recognizeFaceTrainingUrl).toPromise();
       console.log(response);
@@ -300,11 +326,11 @@ export class IaService {
 
 
   /**
-   * Méthode qui teste le modèle avec un set
-   * de photos d'entrainement.
+   * Méthode qui teste le modèle.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async validerLeModele(): Promise<any>{
+  public async validateFaceRecognizerModel(): Promise<any>{
     try {
       const response= await this.http.get<string>(this.recognizeFaceValidationUrl).toPromise();
       console.log(response);
@@ -317,11 +343,11 @@ export class IaService {
 
 
   /**
-   * Méthode qui utilise le modèle pour
-   * reconnaitre le visage d'une personne.
+   * Méthode qui exécute le modèle pour identifier un visage.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async faceIdentify(): Promise<any>{
+  public async executeFaceRecognizerModel(): Promise<any>{
     try {
       const response= await this.http.get<string>(this.useRecognizeFaceModelUrl).toPromise();
       console.log(response);
@@ -334,11 +360,12 @@ export class IaService {
 
 
   /**
-   * Méthode qui initialise le modèle de machine learning
-   * "hog" comme modèle par défaut pour la reconnaissance faciale.
-   * @return boolean : Opération réussie ou non.
+   * Méthode qui initialise le modèle.
+   * Le modèle de reconnaissance utilisé par défaut est le modèle "HOG".
+   * @return boolean : succès/échec de l'exécution.
+   *
    */
-  public async initializeFaceRecognizerModele(): Promise<any>{
+  public async initializeFaceRecognizerModel(): Promise<any>{
     try {
       const response= await this.http.get<string>(this.initializeFaceRecognizerModeleUrl).toPromise();
       console.log(response);
@@ -351,9 +378,8 @@ export class IaService {
 
 
   /**
-   * Méthode qui renvoie la liste des modèles de
-   * Machine Learning vers le front
-   * pour le menu déroulant.
+   * Méthode qui renvoie la liste des modèles (HOG, CNN).
+   * @return List<String> : liste des modèles.
    *
    */
   public async getListModel(): Promise<any>{
@@ -369,12 +395,11 @@ export class IaService {
 
 
   /**
-   * Méthode qui met à jour le modèle de machine learning
-   * en BDD. Ce choix sera utilisé lors de l'exécution du modèle
-   * de Machine Learning.
-   * @return boolean : Opération réussie ou non.
+   * Méthode qui sélectionne le modèle de machine learning.
+   * @return boolean : succès/échec de l'exécution.
    *
-   */public async selectModel(selectModel:string): Promise<any>{
+   */
+  public async selectModel(selectModel:string): Promise<any>{
     try {
       console.log("choix modèle SERVICE : "+selectModel);
       const response= await this.http.post<boolean>(this.selectModelUrl, selectModel).toPromise();
@@ -392,23 +417,24 @@ export class IaService {
   /*********************** Méthodes du modèle GAN (Génération d'images) ***********************/
 
   /**
-   * Méthode qui charge le fichier de paramètres du modèle Gan.
-   * @param file : Fichier .pkl qui contient les paramètres du modèle.
+   * Méthode pour charger le fichier de paramètres du modèle GAN.
    * Ce fichier est généré lors de l'entrainement du modèle.
+   * @param file : fichier .pkl contenant les paramètres du modèle.
+   * @return booléen : succès/échec de l'exécution.
    *
    */
-  public async processParameterGenFile(file: File): Promise<any> {
+  public async loadParametersGenFile(file: File): Promise<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     console.log(file);
-    return this.http.post<boolean>(this.loadParametersGenFile, formData).toPromise();
+    return this.http.post<boolean>(this.loadParametersGenFileUrl, formData).toPromise();
   }
 
 
 
   /**
-   * Méthode qui utilise le modèle GAN pour
-   * générer des images.
+   * Méthode qui exécute le modèle GAN pour générer des images.
+   * @return boolean : Opération réussie ou non.
    *
    */
   public async generateImage(): Promise<any>{
@@ -424,8 +450,15 @@ export class IaService {
 
 
   /**
-   * Méthode qui lance l'entrainement
-   * du modèle GAN.
+   * Méthode pour entrainer le modèle GAN.
+   * @param n_epochs : nombre d'itération sur l'ensemble du jeu de test.
+   * @param batch_size : taille des lots d'images.
+   * @param lr : taux d'apprentissage.
+   * @param z_dim : dimensions de l'Espace Latent.
+   * @param device : hardware utilisé.
+   * @param show_step : étapes affichées.
+   * @param save_step : étapes sauvegardées.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public async trainGANModel(n_epochs : number, batch_size : number, lr : number, z_dim : number, device : string, show_step : number, save_step:number): Promise<any>{

@@ -10,6 +10,7 @@
 <br>
 <br>
 
+<!-- Section pour charger le dataSet d'entrainement du modèle -->
 <div class="cadre">
   <label> Charger le jeu de données d'entrainement : </label>
   <br>
@@ -40,7 +41,7 @@
   <br>
   <div>
     <input type="file" (change)="onTrainingSetFileSelected($event)" />
-    <button (click)="uploadTrainingSetFile()">Charger les données</button>
+    <button (click)="loadTrainingDataSetZip()">Charger les données</button>
   </div>
   <p class="consignes">La liste de photos doit être stockée dans un fichier zip.
     Ce fichier doit être nommé avec le prénom et le nom de la personne
@@ -50,7 +51,7 @@
   <br>
   <br>
   <br>
-    <button (click)="entrainerLeModele()">Entrainer le modèle</button>
+    <button (click)="trainFaceRecognizerModel()">Entrainer le modèle</button>
   <br>
   <p class="consignes">L'entrainement du modèle peut prendre quelques minutes :
     Attendez le message de l'application.</p>
@@ -67,6 +68,7 @@
 <br>
 <br>
 
+<!-- Section pour charger le dataSet de validation du modèle -->
 <div class="cadre">
   <label> Chargement le jeu de données de validation : </label>
   <br>
@@ -74,7 +76,7 @@
   <br>
   <div>
     <input type="file" (change)="onValidationSetFileSelected($event)" />
-    <button (click)="uploadValidationSetFile()">Charger les données</button>
+    <button (click)="loadValidationDataSetZip()">Charger les données</button>
   </div>
   <p class="consignes">La liste de photos à tester doit être un fichier zip.
     Une fois les photos chargées, cliquer sur TESTER LE MODELE.</p>
@@ -87,7 +89,7 @@
   </div>
   <br>
   <br>
-  <button (click)="validerLeModele()">Tester le modèle</button>
+  <button (click)="validateFaceRecognizerModel()">Tester le modèle</button>
   <br>
   <p class="consignes">La validation du modèle prend quelques minutes :
     Les photos du jeu de test seront affichées avec le nom de la personne.</p>
@@ -104,6 +106,7 @@
 <br>
 <br>
 
+<!-- Section pour charger l'image à identifier -->
 <div class="cadre">
   <label> Reconnaissance faciale : </label>
   <br>
@@ -111,7 +114,7 @@
   <br>
   <div>
     <input type="file" (change)="onFaceIdentifyFileSelected($event)" />
-    <button (click)="uploadFaceIdentify()">Charger les données</button>
+    <button (click)="loadFaceIdentifyFile()">Charger les données</button>
   </div>
   <p class="consignes">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
   <br>
@@ -123,7 +126,7 @@
   </div>
   <br>
   <br>
-  <button (click)="faceIdentify()">Reconnaitre une personne</button>
+  <button (click)="executeFaceRecognizerModel()">Reconnaitre une personne</button>
   <p class="consignes">Identifier le visage de la personne sur la photo.
   Cette action peut prendre quelques minutes : Attendez le retour
   de l'application.</p>

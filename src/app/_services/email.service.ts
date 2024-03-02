@@ -36,7 +36,7 @@ export class EmailService {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui fait suivre les mails au Backend pour envoi.
+   * Méthode qui envoie les emails.
    *
    */
   public async sendEmailemail(email : Email): Promise<void> {

@@ -58,12 +58,12 @@ export class IrisModelNewDatasetComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui génère un fichier de Template Excel
-   * pour charger un Dataset dans le modèle de classification des Iris.
+   * Méthode qui génère le fichier Excel de chargement du dataSet d'entrainement.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateTemplateExcelForDataSet() {
-    this.iaService.generateTemplateExcelForDataSet().subscribe(
+  public generateExcelFileTemplateForDataset() {
+    this.iaService.generateExcelFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
         this.generationFichierExcel = response;
@@ -83,12 +83,12 @@ export class IrisModelNewDatasetComponent implements OnInit {
 
 
   /**
-   * Méthode qui génère un fichier de Template Csv
-   * pour charger un Dataset dans le modèle de classification des Iris.
+   * Méthode qui génère le fichier csv de chargement du dataSet d'entrainement.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateTemplateCsvForDataSet() {
-    this.iaService.generateTemplateCsvForDataSet().subscribe(
+  public generateCsvFileTemplateForDataset() {
+    this.iaService.generateCsvFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
         this.generationFichierCsv = response;
@@ -108,16 +108,16 @@ export class IrisModelNewDatasetComponent implements OnInit {
 
 
   /**
-   * Méthode qui charge le fichier Excel du nouveau DataSet.
-   * @param event
+   * Méthode qui charge le dataSet d'entrainement du modèle au format Excel.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public uploadDataSetExcelFile() {
+  public importExcelTemplateDataSetFile() {
     if (this.selectedFile) {
-      this.iaService.uploadExcelFile(this.selectedFile)
+      this.iaService.importExcelTemplateDataSetFile(this.selectedFile)
         .then(
           (response : boolean) => {
-            this.integrationDataSetExcel= response;
+            this.integrationDataSetExcel = response;
             // Affichage des messages de succès ou d'erreur :
             if (this.integrationDataSetExcel) {
               this.displaySuccessMessageExcel = this.successLoadingData;
@@ -137,13 +137,13 @@ export class IrisModelNewDatasetComponent implements OnInit {
 
 
   /**
-   * Méthode qui charge le fichier Csv du nouveau DataSet.
-   * @param event
+   * Méthode qui charge le dataSet d'entrainement du modèle au format Csv.
+   * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public uploadDataSetCsvFile() {
+  public importCsvTemplateDataSetFile() {
     if (this.selectedFile) {
-      this.iaService.uploadCsvTemplateFile(this.selectedFile)
+      this.iaService.importCsvTemplateDataSetFile(this.selectedFile)
         .then(
           (response : boolean) => {
             this.integrationDataSetCsv= response;

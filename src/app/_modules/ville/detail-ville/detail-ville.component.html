@@ -1,6 +1,8 @@
 <br>
 <br>
-<!-- Affichage des informations de la Personne -->
+
+
+<!-- Affichage du détail d'une Ville -->
 <div *ngIf="villeTrouve">
   <h2>Détails de la ville </h2>
   <p>Nom : {{ villeTrouve.nom }}</p>
@@ -12,8 +14,8 @@
 </div>
 
 
-
 <br>
 <br>
 <!-- Bouton de retour à la page principale -->
 <button [routerLink]="'/villes'">Retour à la liste des Villes</button>
+

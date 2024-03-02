@@ -4,7 +4,9 @@
 
 <br>
 <br>
-<!-- Formulaire d'ajout d'une Personne -->
+
+
+<!-- Formulaire pour ajouter une Ville -->
 <form (ngSubmit)="onEditVille()">
   <label for="nom">nom: </label>
   <input id="nom" [(ngModel)]="editVille.nom" name="nom" placeholder="nom">
@@ -30,8 +32,8 @@
 </form>
 
 
-
 <br>
 <br>
 <!-- Bouton de retour à la page principale -->
 <button [routerLink]="'/villes'">Retour à la liste des Villes</button>
+

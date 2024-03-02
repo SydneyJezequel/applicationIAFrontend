@@ -14,12 +14,12 @@
 <br>
 
 
-
-<!--  NOUVELLE VERSION : -->
-
+<!-- Section pour définir les paramètres et générer la prédiction -->
 <div>
   <p>Ce modèle prédit le type de fleur d'Iris en fonction des paramètres suivants :</p>
   <br>
+
+  <!-- Curseur pour définir le paramètre "petalLength" -->
   <div class="inline-block-container">
     <label>Longueur du Sépal</label>
     <input type="range" id="sepalLength" [(ngModel)]="sepalLength" min="4.3" max="7.9" step="0.1">
@@ -30,6 +30,7 @@
 
   <br>
 
+  <!-- Curseur pour définir le paramètre "sepalWidth" -->
   <div class="inline-block-container">
     <label>Largeur du Sépal</label>
     <input type="range" id="sepalWidth" [(ngModel)]="sepalWidth" min="2.0" max="4.4" step="0.1">
@@ -40,6 +41,7 @@
 
   <br>
 
+  <!-- Curseur pour définir le paramètre "petalLength" -->
   <div class="inline-block-container">
     <label>Longueur du Pétale</label>
     <input type="range" id="petalLength" [(ngModel)]="petalLength" min="1.0" max="6.9" step="0.1">
@@ -50,6 +52,7 @@
 
   <br>
 
+  <!-- Curseur pour définir le paramètre "petalWidth" -->
   <div class="inline-block-container">
     <label>Largeur du Pétale</label>
     <input type="range" id="petalWidth" [(ngModel)]="petalWidth" min="0.1" max="2.5" step="0.1">
@@ -61,11 +64,12 @@
   <br>
   <br>
 
-  <button (click)="predict()">Predict</button>
+  <!-- Boutons pour manipuler le modèle -->
+  <button (click)="getIrisModelPrediction()">Predict</button>
   <button [routerLink]="'/result-iris'">Afficher les résultats du modèle</button>
   <button [routerLink]="'/new-dataset'">Intégrer un nouveau jeu de données</button>
   <button (click)="initializeModelPrediction()">Ré-initialiser le modèle de classification des Iris</button>
-  <!--Affichage du message de succès ou d'erreur -->
+  <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessResultInitialization" class="success-message">
     {{ displaySuccessResultInitialization }}
   </div>
@@ -75,12 +79,13 @@
   <br>
   <br>
 
+  <!-- Bouton pour enregistrer la prédiction générée -->
   <div *ngIf="reponseModeleIris">
     <p class="result"> Type de fleur : {{ reponseModeleIris }} </p>
-    <button (click)="savePrediction()">Enregistrer cette prédiction</button>
+    <button (click)="saveIrisModelPrediction()">Enregistrer cette prédiction</button>
   </div>
 
   <br>
   <br>
-
+</div>
 

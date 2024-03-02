@@ -3,12 +3,12 @@
 <br>
 <br>
 
-<!-- Réaction de la requête et reception de la réponse. -->
+<!-- Réaction de la requête et affichage de la réponse. -->
 <div>
   <!-- Champ pour rédiger la requête -->
   <textarea id="chatMessage" placeholder="Tapez votre message" [(ngModel)]="request" ></textarea>
-  <!-- Bouton pour envoyer la requête -->
-  <button (click)="sendMessage()">Envoyer</button>
+  <!-- Bouton d'envoi -->
+  <button (click)="chat()">Envoyer</button>
   <!-- Affichage de la réponse -->
   <div *ngIf="reponse">
     <p>{{ reponse }}</p>

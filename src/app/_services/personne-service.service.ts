@@ -44,7 +44,8 @@ export class PersonneServiceService {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui renvoie la liste de toutes les personnes.
+   * Méthode qui récupère la liste de toutes les personnes.
+   * @return Personne[] : Liste de toutes les personnes.
    *
    */
   public getAllPersonne():Observable<Personne[]>
@@ -55,7 +56,9 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui renvoie une personne en fonction de son Id.
+   * Méthode qui récupère une personne.
+   * @param no_personne : id de la personne récupérée.
+   * @return Personne : Personne récupérée.
    *
    */
   public findPersonne(no_personne:number):Observable<Personne>
@@ -67,6 +70,8 @@ export class PersonneServiceService {
 
   /**
    * Méthode qui ajoute une personne.
+   * @param personne : personne ajoutée.
+   * @param photoBase64String : photo de la personne.
    *
    */
   public async addPerson(personne: Personne, photoBase64String: string): Promise<void> {
@@ -82,6 +87,7 @@ export class PersonneServiceService {
 
   /**
    * Méthode qui supprime une personne.
+   * @param no_personne : id de la personne supprimée.
    *
    */
   public delete(no_personne:number):void
@@ -97,7 +103,9 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui intègre un fichier Excel contenant une liste de personnes
+   * Méthode qui charge un fichier Excel contenant une liste de personnes.
+   * @param file: fichier Excel qui contient la liste des personnes.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public uploadExcelFile(file: File) {
@@ -109,7 +117,8 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   * Méthode qui génère un fichier Excel pour y charger une liste de personnes.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public generateExcel() {
@@ -119,7 +128,9 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui intègre un fichier Csv contenant une liste de personnes.
+   * Méthode qui charge un fichier Csv contenant une liste de personnes.
+   * @param file : fichier Csv qui contient la liste des personnes.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public uploadCsvFile(file: File) {
@@ -131,7 +142,8 @@ export class PersonneServiceService {
 
 
   /**
-   * Méthode qui génère un fichier Excel contenant les personnes stockées en BDD.
+   * Méthode qui génère un fichier Csv pour y charger une liste de personnes.
+   * @return boolean : succès/échec de l'exécution.
    *
    */
   public generateCsv() {
@@ -142,7 +154,7 @@ export class PersonneServiceService {
 
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   /**
-   * Méthode qui récupère une photo stocké en BDD.
+   * Méthode qui récupère la photo d'une personne.
    *
    */
   public getPicture(): Promise<string> {
