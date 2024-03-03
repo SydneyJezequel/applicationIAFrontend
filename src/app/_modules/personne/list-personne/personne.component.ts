@@ -57,8 +57,7 @@ export class PersonneComponent implements OnInit {
    * Méthode qui récupère la liste de toutes les personnes.
    *
    */
-  public getAllPersonnes():void
-  {
+  public getAllPersonnes(): void {
     this.personneService.getAllPersonnes().subscribe(
       (response: Personne[]) =>
       {
@@ -77,10 +76,10 @@ export class PersonneComponent implements OnInit {
    * @param no_personne : id de la personne supprimée.
    *
    */
-  deletePersonne(no_personne : number){
-      this.personneService.deletePersonne(no_personne);
+  public deletePersonne(no_personne : number): void {
+    this.personneService.deletePersonne(no_personne);
     // Re-chargement de la fenêtre :
-      window.location.reload();
+    window.location.reload();
   }
 
 
@@ -89,7 +88,7 @@ export class PersonneComponent implements OnInit {
    * Méthode qui génère un fichier Excel pour y charger une liste de personnes.
    *
    */
-  public generateExcelFile() {
+  public generateExcelFile(): void {
     this.personneService.generateExcelFile().subscribe(
       (response: boolean) =>
       {
@@ -108,7 +107,7 @@ export class PersonneComponent implements OnInit {
    * Méthode qui génère un fichier Csv pour y charger une liste de personnes.
    *
    */
-  public generateCsvFile() {
+  public generateCsvFile(): void {
     this.personneService.generateCsvFile().subscribe(
       (response: boolean) =>
       {

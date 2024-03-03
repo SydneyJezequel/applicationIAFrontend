@@ -55,8 +55,7 @@ export class VilleService {
    * @return Ville[] : Liste des villes.
    *
    */
-  public getAllVilles():Observable<Ville[]>
-  {
+  public getAllVilles(): Observable<Ville[]> {
     console.log(this.http.get<Ville[]>(this.getAllVillesUrl));
     return this.http.get<Ville[]>(this.getAllVillesUrl);
   }
@@ -69,8 +68,7 @@ export class VilleService {
    * @return Ville : ville récupérée.
    *
    */
-  public getVilleById(no_ville:number):Observable<Ville>
-  {
+  public getVilleById(no_ville:number): Observable<Ville> {
     return this.http.get<Ville>(this.idVilleUrl+no_ville);
   }
 
@@ -97,8 +95,7 @@ export class VilleService {
    * @param no_ville : id de la ville supprimée.
    *
    */
-  public deleteVille(no_ville:number):void
-  {
+  public deleteVille(no_ville:number): void {
     console.log("Suppression : "+this.deleteVilleUrl+no_ville);
     this.http.delete(this.deleteVilleUrl+no_ville).subscribe(
       response => {},

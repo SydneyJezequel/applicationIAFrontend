@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  email :Email = new Email();
+  email: Email = new Email();
   user!: string;
   message!: string;
 
@@ -47,7 +47,7 @@ export class ContactComponent implements OnInit {
 
 
   /******************************* Méthodes *******************************/
-  onSubmit() {
+  public onSubmit(): void {
     // Chargement des données :
     this.email.user = this.user;
     this.email.message = this.message;

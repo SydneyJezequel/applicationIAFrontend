@@ -52,8 +52,7 @@ export class VilleComponent implements OnInit {
    * Méthode qui charge les villes en BDD depuis une Api puis les affiche.
    *
    */
-  public loadApi():void
-  {
+  public loadApi(): void {
     this.villeService.loadApi().subscribe(
       (response: Ville[]) =>
       {
@@ -73,8 +72,7 @@ export class VilleComponent implements OnInit {
    * Méthode qui récupère la liste de toutes les villes.
    *
    */
-  public getAllVilles():void
-  {
+  public getAllVilles(): void {
     this.villeService.getAllVilles().subscribe(
     (response: Ville[]) =>
     {
@@ -93,8 +91,7 @@ export class VilleComponent implements OnInit {
    * @param no_ville : id de la ville récupérée.
    *
    */
-  public getVilleById(no_ville:number):void
-  {
+  public getVilleById(no_ville:number): void {
     this.villeService.getVilleById(no_ville).subscribe(
     (response: Ville) =>
     {
@@ -124,8 +121,7 @@ export class VilleComponent implements OnInit {
    * @param no_ville : id de la ville supprimée.
    *
    */
-  public deleteVille(no_ville:number):void
-  {
+  public deleteVille(no_ville:number): void {
     this.villeService.deleteVille(no_ville);
     // Re-chargement de la fenêtre :
     window.location.reload();

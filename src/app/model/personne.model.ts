@@ -7,6 +7,6 @@ export class Personne {
   prenom!: string;
   date_naissance!: Date;
   no_securite_sociale!: number;
-  photo!: number[]; // Le type File définit le fichier image
+  photo!: number[];
 }
 

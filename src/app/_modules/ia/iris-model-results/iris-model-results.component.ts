@@ -86,7 +86,7 @@ export class IrisModelResultsComponent implements OnInit {
    * Méthode qui génère le fichier Excel contenant les données du DataSet Iris.
    *
    */
-  public async getIrisDataSet() {
+  public async getIrisDataSet(): Promise<void> {
     try {
       this.getIrisDataSetResult = await this.iaService.generateExcelFileForIrisDataSet();
       console.log(this.getIrisDataSetResult);
@@ -126,7 +126,7 @@ export class IrisModelResultsComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateExcelFileForPredictions() {
+  public generateExcelFileForPredictions(): void {
     this.iaService.generateExcelFileForPredictions().subscribe(
       (response: boolean) =>
       {
@@ -146,7 +146,7 @@ export class IrisModelResultsComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateCsvFileForPredictions() {
+  public generateCsvFileForPredictions(): void {
     this.iaService.generateCsvFileForPredictions().subscribe(
       (response: boolean) =>
       {

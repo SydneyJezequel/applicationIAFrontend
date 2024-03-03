@@ -74,7 +74,7 @@ export class EditPersonneComponent implements OnInit {
    * @param editPersonne : Personne modifiée.
    *
    */
-  public onEditPersonne(){
+  public onEditPersonne(): void {
     if (this.file) {
       this.changePerson(this.editPersonne);
     } else {
@@ -92,7 +92,7 @@ export class EditPersonneComponent implements OnInit {
    * @param personne
    *
    */
-  public async changePerson(personne: Personne) {
+  public async changePerson(personne: Personne): Promise<void> {
     // Attributs :
     // Conversion de la date en format Java :
     const datePipe = new DatePipe('en-US');
@@ -118,7 +118,6 @@ export class EditPersonneComponent implements OnInit {
     } catch (error) {
       console.error('Erreur lors de l\'ajout de la personne : ', error);
     }
-
   }
 
 
@@ -128,7 +127,7 @@ export class EditPersonneComponent implements OnInit {
    * @param event d'ajout de la photo.
    *
    */
-  public onFileSelected(event: Event) {
+  public onFileSelected(event: Event): void {
     // Attributs :
     const inputElement = event.target as HTMLInputElement;
     const fileList: FileList | null = inputElement.files;

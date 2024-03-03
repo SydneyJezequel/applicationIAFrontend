@@ -95,7 +95,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async initializeModelPrediction(): Promise<any>{
+  public async initializeModelPrediction(): Promise<any> {
     try {
       const response= await this.http.get<boolean>(this.initializeModelIrisApiUrl).toPromise();
       console.log(response);
@@ -112,7 +112,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async generateExcelFileForIrisDataSet(): Promise<any>{
+  public async generateExcelFileForIrisDataSet(): Promise<any> {
     try {
       const response= await this.http.get<boolean>(this.getIrisDataSetApiUrl).toPromise();
       console.log(response);
@@ -131,7 +131,7 @@ export class IaService {
    * @return String : Prédiction générée.
    *
    */
-  public async getIrisModelPrediction(request: IrisModelRequest): Promise<any>{
+  public async getIrisModelPrediction(request: IrisModelRequest): Promise<any> {
     try {
       const response= await this.http.post<string>(this.irisModelRequestUrl, request).toPromise();
       console.log(response);
@@ -149,7 +149,7 @@ export class IaService {
    * @param irisModelResponse : Paramètres passés aux modèles et prédiction réalisée.
    *
    */
-  public async saveIrisModelPrediction(reponseModeleIris: IrisModelResponse) {
+  public async saveIrisModelPrediction(reponseModeleIris: IrisModelResponse): Promise<void> {
     try {
       console.log("Objet : ");
       console.log(reponseModeleIris);
@@ -168,7 +168,7 @@ export class IaService {
    * @return IrisModelResponse[] : La liste des prédictions.
    *
    */
-  public async getAllIrisModelPredictions(): Promise<any>{
+  public async getAllIrisModelPredictions(): Promise<any> {
     try {
       const response= await this.http.get<IrisModelResponse[]>(this.irisModelResultsUrl).toPromise();
       console.log(response);
@@ -186,7 +186,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateExcelFileForPredictions() {
+  public generateExcelFileForPredictions(): Observable<boolean> {
     return this.http.get<boolean>(this.generateExcelFileUrl);
   }
 
@@ -198,7 +198,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateCsvFileForPredictions() {
+  public generateCsvFileForPredictions(): Observable<boolean> {
     return this.http.get<boolean>(this.generateCsvFileUrl);
   }
 
@@ -212,7 +212,7 @@ export class IaService {
    *
    */
   public async importExcelTemplateDataSetFile(file: File): Promise<any> {
-    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    // Création d'un objet FormData. Utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
     const formData: FormData = new FormData();
     // Ajout du fichier à l'objet FormData :
     formData.append('file', file, file.name);
@@ -241,7 +241,7 @@ export class IaService {
    *
    */
   public importCsvTemplateDataSetFile(file: File): Promise<any> {
-    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    // Création d'un objet FormData. Utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
     const formData: FormData = new FormData();
     // Ajout du fichier à l'objet FormData :
     formData.append('file', file, file.name);
@@ -256,7 +256,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateCsvFileTemplateForDataset(): Observable<boolean>  {
+  public generateCsvFileTemplateForDataset(): Observable<boolean> {
     return this.http.get<boolean>(this.generateTemplateForCsvDataSetUrl);
   }
 
@@ -316,7 +316,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async trainFaceRecognizerModel(): Promise<any>{
+  public async trainFaceRecognizerModel(): Promise<any> {
     try {
       const response= await this.http.get<string>(this.recognizeFaceTrainingUrl).toPromise();
       console.log(response);
@@ -333,7 +333,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async validateFaceRecognizerModel(): Promise<any>{
+  public async validateFaceRecognizerModel(): Promise<any> {
     try {
       const response= await this.http.get<string>(this.recognizeFaceValidationUrl).toPromise();
       console.log(response);
@@ -350,7 +350,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async executeFaceRecognizerModel(): Promise<any>{
+  public async executeFaceRecognizerModel(): Promise<any> {
     try {
       const response= await this.http.get<string>(this.useRecognizeFaceModelUrl).toPromise();
       console.log(response);
@@ -368,7 +368,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async initializeFaceRecognizerModel(): Promise<any>{
+  public async initializeFaceRecognizerModel(): Promise<any> {
     try {
       const response= await this.http.get<string>(this.initializeFaceRecognizerModelUrl).toPromise();
       console.log(response);
@@ -385,7 +385,7 @@ export class IaService {
    * @return List<String> : liste des modèles.
    *
    */
-  public async getListModel(): Promise<any>{
+  public async getListModel(): Promise<any> {
     try {
       const response= await this.http.get<string>(this.getListModelUrl).toPromise();
       console.log(response);
@@ -402,7 +402,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async selectModel(selectModel:string): Promise<any>{
+  public async selectModel(selectModel:string): Promise<any> {
     try {
       console.log("choix modèle SERVICE : "+selectModel);
       const response= await this.http.post<boolean>(this.selectModelUrl, selectModel).toPromise();
@@ -440,7 +440,7 @@ export class IaService {
    * @return boolean : Opération réussie ou non.
    *
    */
-  public async generateImage(): Promise<any>{
+  public async generateImage(): Promise<any> {
     try {
       const response= await this.http.get<boolean>(this.generateGANImageUrl).toPromise();
       console.log(response);
@@ -464,7 +464,7 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async trainGANModel(n_epochs : number, batch_size : number, lr : number, z_dim : number, device : string, show_step : number, save_step:number): Promise<any>{
+  public async trainGANModel(n_epochs : number, batch_size : number, lr : number, z_dim : number, device : string, show_step : number, save_step:number): Promise<any> {
     try {
       // Création de l'url :
       const url = `${this.trainGANModelUrl}?nbEpochs=${n_epochs}&batchSize=${batch_size}&lr=${lr}&zDim=${z_dim}&device=${device}&showStep=${show_step}&saveStep=${save_step}`;

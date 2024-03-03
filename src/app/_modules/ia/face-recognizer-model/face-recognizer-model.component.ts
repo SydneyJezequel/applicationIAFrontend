@@ -125,6 +125,7 @@ export class FaceRecognizerModelComponent implements OnInit {
       try {
         this.reponseLoadTrainingDataSet = await this.iaService.loadTrainingDataSetZip(this.selectedTrainingSetFile);
         console.log(this.reponseLoadTrainingDataSet);
+        // Affichage des messages de succès ou d'erreur :
         if (this.reponseLoadTrainingDataSet) {
           this.loadTrainingDataSetResultSuccess = this.successLoading;
         } else {
@@ -160,6 +161,7 @@ export class FaceRecognizerModelComponent implements OnInit {
       try {
         this.reponseLoadValidationDataSet = await this.iaService.loadValidationDataSetZip(this.selectedValidationSetFile);
         console.log(this.reponseLoadValidationDataSet);
+        // Affichage des messages de succès ou d'erreur :
         if (this.reponseLoadValidationDataSet) {
           this.loadValidationDataSetResultSuccess = this.successLoading;
         } else {
@@ -194,6 +196,7 @@ export class FaceRecognizerModelComponent implements OnInit {
     if (this.faceIdentifyFile) {
       try {
         this.reponseLoadFaceIdentify = await this.iaService.loadFaceIdentifyFile(this.faceIdentifyFile);
+        // Affichage des messages de succès ou d'erreur :
         if (this.reponseLoadFaceIdentify) {
           this.successLoadFaceIdentify = this.identifyLoadSuccess;
         } else {
@@ -212,10 +215,11 @@ export class FaceRecognizerModelComponent implements OnInit {
    * Méthode pour encoder les photos et entrainer le modèle.
    *
    */
-  public async trainFaceRecognizerModel() {
+  public async trainFaceRecognizerModel(): Promise<void> {
     // Exécution de la requête :
     try {
       this.reponseTrainingModel = await this.iaService.trainFaceRecognizerModel();
+      // Affichage des messages de succès ou d'erreur :
       if (this.reponseTrainingModel) {
         this.successTrainingDataSet = this.successTraining;
       } else {
@@ -232,9 +236,10 @@ export class FaceRecognizerModelComponent implements OnInit {
    * Méthode qui teste le modèle.
    *
    */
-  public async validateFaceRecognizerModel() {
+  public async validateFaceRecognizerModel(): Promise<void> {
     try {
       this.reponseValidationModel = await this.iaService.validateFaceRecognizerModel();
+      // Affichage des messages de succès ou d'erreur :
       if (this.reponseValidationModel) {
         this.successValidationModel = this.successValidation;
       } else {
@@ -254,7 +259,8 @@ export class FaceRecognizerModelComponent implements OnInit {
   public async executeFaceRecognizerModel(): Promise<any>{
     try {
       this.reponseFaceIdentify = await this.iaService.executeFaceRecognizerModel();
-        console.log(this.reponseFaceIdentify);
+      console.log(this.reponseFaceIdentify);
+      // Affichage des messages de succès ou d'erreur :
       if (this.reponseFaceIdentify) {
         this.successFaceIdentify = this.identifySuccess
       } else {
@@ -306,6 +312,7 @@ export class FaceRecognizerModelComponent implements OnInit {
     try {
       console.log("choix modèle CONTROLLER : "+this.selectedModel);
       this.reponseSelectModel = await this.iaService.selectModel(this.selectedModel);
+      // Affichage des messages de succès ou d'erreur :
       if (this.reponseSelectModel) {
           this.successSelectModel = this.selectModelSuccess;
         } else {

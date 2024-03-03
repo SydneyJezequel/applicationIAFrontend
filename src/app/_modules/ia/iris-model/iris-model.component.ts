@@ -62,7 +62,7 @@ export class IrisModelComponent implements OnInit {
    * Par défaut, ce modèle est utilisé pour prédire du type d'Iris.
    *
    */
-  public async getIrisModelPrediction() {
+  public async getIrisModelPrediction(): Promise<void> {
     // Initialisation de la requête :
     let sepal_length : number = this.sepalLength;
     let sepal_width : number = this.sepalWidth;
@@ -114,7 +114,7 @@ export class IrisModelComponent implements OnInit {
     try {
         // Enregistrement en BDD :
         this.iaService.saveIrisModelPrediction(resultToSave);
-        // Redirection après l'ajout de l'enregistrement :
+        // Redirection :
         this.router.navigate(['result-iris']);
       } catch (error) {
         console.error('Erreur : ', error);

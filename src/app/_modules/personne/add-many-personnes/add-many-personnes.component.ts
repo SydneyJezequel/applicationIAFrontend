@@ -60,7 +60,7 @@ export class AddManyPersonnesComponent implements OnInit {
    * @param event : ajout d'un fichier dans la vue.
    *
    */
-  public onFileChange(event: any) {
+  public onFileChange(event: any): void {
     this.selectedFile = event.target.files[0];
   }
 
@@ -70,7 +70,7 @@ export class AddManyPersonnesComponent implements OnInit {
    * Méthode qui charge un fichier Excel contenant une liste de personnes.
    *
    */
-  public importExcelFile() {
+  public importExcelFile(): void {
     if (this.selectedFile) {
       this.personneService.importExcelFile(this.selectedFile)
         .subscribe(
@@ -98,7 +98,7 @@ export class AddManyPersonnesComponent implements OnInit {
    * Méthode qui charge un fichier Csv contenant une liste de personnes.
    *
    */
-  public importCsvFile() {
+  public importCsvFile(): void {
     if (this.selectedFile) {
       this.personneService.importCsvFile(this.selectedFile)
         .subscribe(

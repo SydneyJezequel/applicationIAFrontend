@@ -49,7 +49,7 @@ export class AddVilleComponent implements OnInit {
   /**
    * Méthode d'exécution du Formulaire : Ajout d'une ville.
    */
-  onAddVille(){
+  public onAddVille(): void {
     console.log(this.addVille);
     this.villeService.createVille(this.addVille);
     // Redirection :

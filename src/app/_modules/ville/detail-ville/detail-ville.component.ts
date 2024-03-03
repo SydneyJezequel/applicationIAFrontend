@@ -56,7 +56,7 @@ export class DetailVilleComponent implements OnInit {
    * Méthode qui renvoie une ville en fonction de son Id.
    * @param no_ville
    */
-  getOneVille(no_ville : number){
+  public getOneVille(no_ville : number): void {
     console.log(" numéro de list-ville : " + no_ville);
     this.villeService.getVilleById(no_ville).subscribe(
       (response) =>

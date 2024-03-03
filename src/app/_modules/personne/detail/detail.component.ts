@@ -59,7 +59,7 @@ export class DetailComponent implements OnInit {
    * Méthode qui renvoie une personne en fonction de son Id.
    * @param no_personne
    */
-  public getOnePersonne(no_personne : number){
+  public getOnePersonne(no_personne : number): void {
     console.log(" numéro de personne : " + no_personne);
     this.personneService.getPersonneById(no_personne).subscribe(
       (response) =>
@@ -94,13 +94,13 @@ export class DetailComponent implements OnInit {
    * Méthode qui convertit le Blob en photo affichable.
    *
    */
-  public convertBlobToPhoto(photo: number[]){
+  public convertBlobToPhoto(photo: number[]): void {
     // Conversion de l'array Number en Blob :
     const blob: Blob = this.convertNumberArrayToBlob(photo);
     const reader = new FileReader();
     // Parcours les donnnées stockées sous forme d'URL de données :
     reader.onloadend = () => {
-      // Stocke l'URL de données dans la variable "imageDataUrl" :
+      // Stocke l'URL de données :
       this.imageDataUrl = reader.result;
     };
     // Conversion du Blob en photo affichable :
@@ -115,7 +115,7 @@ export class DetailComponent implements OnInit {
    * Méthode qui récupère la photo d'une personne.
    *
    */
-  public async getImagebase64() {
+  public async getImagebase64(): Promise<void> {
     this.base64String = await this.personneService.getImagebase64();
     console.log("base64String : " + this.base64String);
   }

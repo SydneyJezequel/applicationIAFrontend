@@ -48,8 +48,7 @@ export class PersonneServiceService {
    * @return Personne[] : Liste de toutes les personnes.
    *
    */
-  public getAllPersonnes():Observable<Personne[]>
-  {
+  public getAllPersonnes(): Observable<Personne[]> {
     return this.http.get<Personne[]>(this.getAllUrl);
   }
 
@@ -61,8 +60,7 @@ export class PersonneServiceService {
    * @return Personne : Personne récupérée.
    *
    */
-  public getPersonneById(no_personne:number):Observable<Personne>
-  {
+  public getPersonneById(no_personne:number): Observable<Personne> {
     return this.http.get<Personne>(this.idPersonneUrl+no_personne);
   }
 
@@ -90,8 +88,7 @@ export class PersonneServiceService {
    * @param no_personne : id de la personne supprimée.
    *
    */
-  public deletePersonne(no_personne:number):void
-  {
+  public deletePersonne(no_personne:number): void {
     console.log("Suppression : "+this.deletePersonneUrl+no_personne);
     this.http.delete(this.deletePersonneUrl+no_personne).subscribe(
       response => {},
@@ -108,8 +105,8 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public importExcelFile(file: File) {
-    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+  public importExcelFile(file: File): Observable<boolean> {
+    // Création d'un objet FormData. Utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
     const formData: FormData = new FormData();
     // Ajout du fichier à l'objet FormData :
     formData.append('file', file, file.name);
@@ -123,7 +120,7 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateExcelFile() {
+  public generateExcelFile(): Observable<boolean> {
     return this.http.get<boolean>(this.generateExcelFileUrl);
   }
 
@@ -135,8 +132,8 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public importCsvFile(file: File) {
-    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+  public importCsvFile(file: File): Observable<boolean> {
+    // Création d'un objet FormData : Utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
     const formData: FormData = new FormData();
     // Ajout du fichier à l'objet FormData :
     formData.append('file', file, file.name);
@@ -150,7 +147,7 @@ export class PersonneServiceService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public generateCsvFile() {
+  public generateCsvFile(): Observable<boolean> {
     return this.http.get<boolean>(this.generateCsvFileUrl);
   }
 

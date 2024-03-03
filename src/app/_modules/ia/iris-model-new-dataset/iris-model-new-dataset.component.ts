@@ -62,12 +62,13 @@ export class IrisModelNewDatasetComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateExcelFileTemplateForDataset() {
+  public generateExcelFileTemplateForDataset(): void {
     this.iaService.generateExcelFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
         this.generationExcelFile = response;
         console.log(this.generationExcelFile);
+        // Affichage des messages de succès ou d'erreur :
         if (this.generationExcelFile) {
           this.displaySuccessMessageExcel = this.successGenerationExcel;
         } else {
@@ -87,12 +88,13 @@ export class IrisModelNewDatasetComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public generateCsvFileTemplateForDataset() {
+  public generateCsvFileTemplateForDataset(): void {
     this.iaService.generateCsvFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
         this.generationCsvFile = response;
         console.log(this.generationCsvFile);
+        // Affichage des messages de succès ou d'erreur :
         if (this.generationCsvFile) {
           this.displaySuccessMessageCsv = this.successGenerationCsv;
         } else {
@@ -112,7 +114,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public importExcelTemplateDataSetFile() {
+  public importExcelTemplateDataSetFile(): void {
     if (this.selectedFile) {
       this.iaService.importExcelTemplateDataSetFile(this.selectedFile)
         .then(
@@ -141,7 +143,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
    *
    */
-  public importCsvTemplateDataSetFile() {
+  public importCsvTemplateDataSetFile(): void {
     if (this.selectedFile) {
       this.iaService.importCsvTemplateDataSetFile(this.selectedFile)
         .then(
@@ -170,7 +172,7 @@ export class IrisModelNewDatasetComponent implements OnInit {
    * @param event
    *
    */
-  public onFileChange(event: any) {
+  public onFileChange(event: any): void {
     this.selectedFile = event.target.files[0];
   }
 

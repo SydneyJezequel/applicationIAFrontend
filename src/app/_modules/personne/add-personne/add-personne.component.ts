@@ -52,7 +52,7 @@ export class AddPersonneComponent implements OnInit {
    * Méthode d'exécution du Formulaire.
    *
    */
-  public onSubmitPersonne() {
+  public onSubmitPersonne(): void {
     if (this.file) {
       this.createPersonne(this.addPersonne);
     } else {
@@ -67,7 +67,7 @@ export class AddPersonneComponent implements OnInit {
    * @param personne : personne ajoutée.
    *
    */
-  public async createPersonne(personne: Personne) {
+  public async createPersonne(personne: Personne): Promise<void> {
     // Attributs :
     // Conversion de la date en format Java :
     const datePipe = new DatePipe('en-US');
@@ -104,7 +104,7 @@ export class AddPersonneComponent implements OnInit {
    * @param event d'ajout de la photo.
    *
    */
-  public onFileSelected(event: Event) {
+  public onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     const fileList: FileList | null = inputElement.files;
 

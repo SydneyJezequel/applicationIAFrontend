@@ -54,7 +54,7 @@ export class EditVilleComponent implements OnInit {
   /**
    * Méthode d'exécution du Formulaire.
    */
-  onEditVille(){
+  public onEditVille(): void {
     this.villeService.createVille(this.editVille);
     // Redirection :
     this.router.navigate(['villes']);
@@ -67,7 +67,7 @@ export class EditVilleComponent implements OnInit {
    * @param no_ville : id de la ville récupérée.
    *
    */
-  getVilleById(no_ville : number){
+  public getVilleById(no_ville : number): void {
     console.log(" numéro de personne : " + no_ville);
     this.villeService.getVilleById(no_ville).subscribe(
       (response) =>
