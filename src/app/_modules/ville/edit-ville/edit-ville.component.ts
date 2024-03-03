@@ -56,7 +56,8 @@ export class EditVilleComponent implements OnInit {
    */
   onEditVille(){
     this.villeService.createVille(this.editVille);
-    this.router.navigate(['villes']);     // Redirection
+    // Redirection :
+    this.router.navigate(['villes']);
   }
 
 

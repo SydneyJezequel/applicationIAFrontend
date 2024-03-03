@@ -39,7 +39,7 @@ export class EmailService {
    * Méthode qui envoie les emails.
    *
    */
-  public async sendEmailemail(email : Email): Promise<void> {
+  public async sendEmail(email : Email): Promise<void> {
     try {
       const response = await this.http.post<Ville>(this.sendingEmail, email).toPromise();
       console.log(response);

@@ -21,8 +21,8 @@ export class IrisModelNewDatasetComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  public generationFichierExcel !: boolean;
-  public generationFichierCsv !: boolean;
+  public generationExcelFile !: boolean;
+  public generationCsvFile !: boolean;
   public integrationDataSetExcel !: boolean;
   public integrationDataSetCsv !: boolean;
   public successGenerationExcel : string = 'Fichier d\'intégration Excel généré avec succès.';
@@ -66,9 +66,9 @@ export class IrisModelNewDatasetComponent implements OnInit {
     this.iaService.generateExcelFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierExcel = response;
-        console.log(this.generationFichierExcel);
-        if (this.generationFichierExcel) {
+        this.generationExcelFile = response;
+        console.log(this.generationExcelFile);
+        if (this.generationExcelFile) {
           this.displaySuccessMessageExcel = this.successGenerationExcel;
         } else {
           this.displayErrorMessageExcel = this.errorFileGeneration;
@@ -91,9 +91,9 @@ export class IrisModelNewDatasetComponent implements OnInit {
     this.iaService.generateCsvFileTemplateForDataset().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierCsv = response;
-        console.log(this.generationFichierCsv);
-        if (this.generationFichierCsv) {
+        this.generationCsvFile = response;
+        console.log(this.generationCsvFile);
+        if (this.generationCsvFile) {
           this.displaySuccessMessageCsv = this.successGenerationCsv;
         } else {
           this.displayErrorMessageCsv = this.errorFileGeneration;

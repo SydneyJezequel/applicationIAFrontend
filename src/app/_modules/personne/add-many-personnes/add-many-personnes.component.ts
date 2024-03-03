@@ -31,8 +31,8 @@ export class AddManyPersonnesComponent implements OnInit {
   'Pas de nom de colonnes sur la première ligne. Format des lignes : "date naissance","no securite sociale","nom","prenom"';
   public displayErrorMessageCsv !: string;
   public selectedFile !: File;
-  public integrationFichierExcel : boolean = false;
-  public integrationFichierCsv : boolean = false;
+  public integrationExcelFile : boolean = false;
+  public integrationCsvFile : boolean = false;
 
 
 
@@ -75,9 +75,9 @@ export class AddManyPersonnesComponent implements OnInit {
       this.personneService.importExcelFile(this.selectedFile)
         .subscribe(
           (response : boolean) => {
-            this.integrationFichierExcel = response;
+            this.integrationExcelFile = response;
             // Affichage des messages de succès ou d'erreur :
-            if (this.integrationFichierExcel) {
+            if (this.integrationExcelFile) {
               this.displaySuccessMessageExcel = this.successMessageExcel;
             } else {
               this.displayErrorMessageExcel = this.errorMessageExcel;
@@ -103,9 +103,9 @@ export class AddManyPersonnesComponent implements OnInit {
       this.personneService.importCsvFile(this.selectedFile)
         .subscribe(
           (response : boolean) => {
-            this.integrationFichierCsv = response;
+            this.integrationCsvFile = response;
             // Affichage des messages de succès ou d'erreur :
-            if (this.integrationFichierCsv) {
+            if (this.integrationCsvFile) {
               this.displaySuccessMessageCsv = this.successMessageCsv;
             } else {
               this.displayErrorMessageCsv = this.errorMessageCsv;

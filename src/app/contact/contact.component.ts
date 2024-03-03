@@ -52,7 +52,7 @@ export class ContactComponent implements OnInit {
     this.email.user = this.user;
     this.email.message = this.message;
     // Envoi de l'Email au serveur :
-    this.emailService.sendEmailemail(this.email);
+    this.emailService.sendEmail(this.email);
   }
 
 

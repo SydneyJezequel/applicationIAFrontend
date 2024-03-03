@@ -23,7 +23,7 @@ export class AddPersonneComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  public addPerson: Personne = new Personne();
+  public addPersonne: Personne = new Personne();
   public file !: any;
   public photoBase64String !: string;
 
@@ -54,7 +54,7 @@ export class AddPersonneComponent implements OnInit {
    */
   public onSubmitPersonne() {
     if (this.file) {
-      this.createPersonne(this.addPerson);
+      this.createPersonne(this.addPersonne);
     } else {
       console.error("No file selected.");
     }
@@ -69,11 +69,13 @@ export class AddPersonneComponent implements OnInit {
    */
   public async createPersonne(personne: Personne) {
     // Attributs :
-    const datePipe = new DatePipe('en-US'); // Conversion de la date en format Java.
-    const formattedDate = datePipe.transform(this.addPerson.date_naissance, 'yyyy-MM-dd');
+    // Conversion de la date en format Java :
+    const datePipe = new DatePipe('en-US');
+    const formattedDate = datePipe.transform(this.addPersonne.date_naissance, 'yyyy-MM-dd');
     // Traitements :
     try {
-      this.photoBase64String = await this.fileToBase64(this.file); // On convertit le fichier en String base64.
+      // On convertit le fichier en String base64 :
+      this.photoBase64String = await this.fileToBase64(this.file);
       console.log(this.photoBase64String);
     } catch (error) {
       console.error(error);
@@ -81,15 +83,13 @@ export class AddPersonneComponent implements OnInit {
     }
     // Controle de la date formatée :
     if (formattedDate !== null) {
-      this.addPerson.date_naissance = new Date(formattedDate);
+      this.addPersonne.date_naissance = new Date(formattedDate);
     }
-
     // Appel du service pour ajouter la personne avec la photo :
     try {
-      await this.personneService.createPersonne(this.addPerson, this.photoBase64String);
+      await this.personneService.createPersonne(this.addPersonne, this.photoBase64String);
       console.log("Personne ajoutée avec succès.");
-
-      // Redirection après l'ajout de la personne.
+      // Redirection après l'ajout de la personne :
       this.router.navigate(['personnes']);
     } catch (error) {
       console.error('Erreur lors de l\'ajout de la personne : ', error);
@@ -123,11 +123,14 @@ export class AddPersonneComponent implements OnInit {
    *
    */
   public async fileToBase64(file: File): Promise<string> {
-    return new Promise<string>((resolve, reject) => { // Renvoie une promesse (string si succès / null si échec)
-      const reader = new FileReader(); // On créé un objet de type FileReader pour parcourir le fichier.
+    return new Promise<string>((resolve, reject) => {
+      // On créé un objet de type FileReader pour parcourir le fichier :
+      const reader = new FileReader();
+      // On parcourt le fichier :
       reader.readAsDataURL(file); // On parcourt le fichier.
-      reader.onload = () => resolve(reader.result as string); // Résultat si succès.
-      reader.onerror = error => reject(error); // Résultat si échec.
+      // Résultats en cas de succès ou d'erreur :
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
     });
   }
 

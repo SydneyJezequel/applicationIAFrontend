@@ -26,8 +26,8 @@ export class PersonneComponent implements OnInit {
   public personne !: Personne;
   public personnes !: Personne[];
   public no_personne !: number;
-  public generationFichierExcel !: boolean;
-  public generationFichierCsv !: boolean;
+  public generationExcelFile !: boolean;
+  public generationCsvFile !: boolean;
 
 
 
@@ -79,7 +79,8 @@ export class PersonneComponent implements OnInit {
    */
   deletePersonne(no_personne : number){
       this.personneService.deletePersonne(no_personne);
-      window.location.reload(); // Re-chargement de la fenêtre.
+    // Re-chargement de la fenêtre :
+      window.location.reload();
   }
 
 
@@ -92,8 +93,8 @@ export class PersonneComponent implements OnInit {
     this.personneService.generateExcelFile().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierExcel = response;
-        console.log(this.generationFichierExcel);
+        this.generationExcelFile = response;
+        console.log(this.generationExcelFile);
       }),
       (error:HttpErrorResponse) =>
       {
@@ -111,8 +112,8 @@ export class PersonneComponent implements OnInit {
     this.personneService.generateCsvFile().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierCsv = response;
-        console.log(this.generationFichierCsv);
+        this.generationCsvFile = response;
+        console.log(this.generationCsvFile);
       }),
       (error:HttpErrorResponse) =>
       {

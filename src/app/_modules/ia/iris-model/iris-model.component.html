@@ -80,8 +80,8 @@
   <br>
 
   <!-- Bouton pour enregistrer la prédiction générée -->
-  <div *ngIf="reponseModeleIris">
-    <p class="result"> Type de fleur : {{ reponseModeleIris }} </p>
+  <div *ngIf="reponseIrisModel">
+    <p class="result"> Type de fleur : {{ reponseIrisModel }} </p>
     <button (click)="saveIrisModelPrediction()">Enregistrer cette prédiction</button>
   </div>
 

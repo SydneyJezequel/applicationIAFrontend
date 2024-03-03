@@ -29,10 +29,10 @@ export class IrisModelComponent implements OnInit {
   public petalWidth : number = 1.3;
   public request : string = "";
   public reponse !: any;
-  public reponseModeleIris ?: string;
+  public reponseIrisModel ?: string;
   public successInitialization : string = "Modèle ré-initialisé avec succès";
-  public displaySuccessResultInitialization !: string;
   public errorInitialization : string = "Echec lors de la ré-initialisation. Appelez votre informaticien préféré.";
+  public displaySuccessResultInitialization !: string;
   public displayErrorInitialization !: string;
   public initializeResult !: boolean;
 
@@ -79,10 +79,10 @@ export class IrisModelComponent implements OnInit {
       console.log("controller du Modele Iris appelé");
       console.log("Objet" + request);
       this.iaService.getIrisModelPrediction(request).then((response) => {
-        this.reponseModeleIris = response.forecast.response;
+        this.reponseIrisModel = response.forecast.response;
         console.log(response);
         });
-        console.log("Résultat :" + this.reponseModeleIris);
+        console.log("Résultat :" + this.reponseIrisModel);
     } catch (error) {
         console.error('Erreur : ', error);
       }
@@ -102,7 +102,7 @@ export class IrisModelComponent implements OnInit {
     let sepal_width : number = this.sepalWidth;
     let petal_length : number = this.petalLength;
     let petal_width : number = this.petalWidth;
-    let prediction : string | undefined = this.reponseModeleIris;
+    let prediction : string | undefined = this.reponseIrisModel;
     const resultToSave: IrisModelResponse = {
       sepal_length,
       sepal_width,

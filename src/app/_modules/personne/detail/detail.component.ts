@@ -47,9 +47,6 @@ export class DetailComponent implements OnInit {
     let no_personne = id as unknown as number;
     this.personneService.getPersonneById(no_personne);
     this.getOnePersonne(no_personne);
-    // ************ TEST AFFICHAGE PHOTO *********** //
-    // this.getPhoto();
-    // ************ TEST AFFICHAGE PHOTO *********** //
   }
 
 
@@ -67,11 +64,11 @@ export class DetailComponent implements OnInit {
     this.personneService.getPersonneById(no_personne).subscribe(
       (response) =>
       {
-        this.personneTrouve = response;   // Récupération de l'objet Personne.
-        // ***************************** TEST ***************************** //
+        // Récupération de l'objet Personne :
+        this.personneTrouve = response;
         console.log("AFFICHAGE DE LA PHOTO : " + this.personneTrouve.photo)
-        // ***************************** TEST ***************************** //
-        this.convertBlobToPhoto(this.personneTrouve.photo);   // Conversion du number[] en Blob puis en photo.
+        // Conversion du number[] en Blob puis en photo :
+        this.convertBlobToPhoto(this.personneTrouve.photo);
       }),
       (error:HttpErrorResponse) =>
       {
@@ -88,7 +85,7 @@ export class DetailComponent implements OnInit {
    */
   public convertNumberArrayToBlob(photo: number[]): Blob {
     const uint8Array = new Uint8Array(photo);
-    return new Blob([uint8Array], { type: 'image/png' }); // Remplacez 'image/jpeg' par le type MIME de votre image si nécessaire
+    return new Blob([uint8Array], { type: 'image/png' });
   }
 
 
@@ -98,12 +95,16 @@ export class DetailComponent implements OnInit {
    *
    */
   public convertBlobToPhoto(photo: number[]){
-    const blob: Blob = this.convertNumberArrayToBlob(photo); // Conversion de l'array Number en Blob.
+    // Conversion de l'array Number en Blob :
+    const blob: Blob = this.convertNumberArrayToBlob(photo);
     const reader = new FileReader();
-    reader.onloadend = () => { // Parcours les donnnées stockées sous forme d'URL de données.
-      this.imageDataUrl = reader.result; // Stocke l'URL de données dans la variable "imageDataUrl".
+    // Parcours les donnnées stockées sous forme d'URL de données :
+    reader.onloadend = () => {
+      // Stocke l'URL de données dans la variable "imageDataUrl" :
+      this.imageDataUrl = reader.result;
     };
-    reader.readAsDataURL(blob); // Conversion du Blob en photo affichable.
+    // Conversion du Blob en photo affichable :
+    reader.readAsDataURL(blob);
   }
   // *************************** ANCIENNE VERSION - RECUPERER ET AFFICHER UNE IMAGE *************************** //
 

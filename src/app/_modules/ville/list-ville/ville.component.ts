@@ -63,7 +63,8 @@ export class VilleComponent implements OnInit {
       {
         alert(error.message);
       }
-     window.location.reload(); // Re-chargement de la fenêtre.
+     // Re-chargement de la fenêtre :
+     window.location.reload();
   }
 
 
@@ -103,7 +104,6 @@ export class VilleComponent implements OnInit {
     {
       alert(error.message);
     }
-    // ******** TEST ******** //
   }
 
 
@@ -127,7 +127,8 @@ export class VilleComponent implements OnInit {
   public deleteVille(no_ville:number):void
   {
     this.villeService.deleteVille(no_ville);
-    window.location.reload(); // Re-chargement de la fenêtre.
+    // Re-chargement de la fenêtre :
+    window.location.reload();
   }
 
 

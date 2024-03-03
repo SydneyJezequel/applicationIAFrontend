@@ -36,14 +36,14 @@ export class FaceRecognizerModelComponent implements OnInit {
   public loadValidationDataSetResultError !: string;
 
   // Messages de retour - Entrainement du Modèle :
-  public reponseTrainingModele !: boolean;
+  public reponseTrainingModel !: boolean;
   public successTraining : string = "Modèle entrainé avec succès.";
   public errorTraining : string = "Erreur de  l'entrainement du modèle.";
   public successTrainingDataSet !: string;
   public errorTrainingDataSet !: string;
 
   // Messages de retour - Valider le Modèle :
-  public reponseModeleValidation !: boolean;
+  public reponseValidationModel !: boolean;
   public successValidation : string = "Modèle testé avec succès.";
   public errorValidation : string = "Erreur du test du modèle. Avez-vous bien entrainé le modèle auparavant ?";
   public successValidationModel !: string;
@@ -215,8 +215,8 @@ export class FaceRecognizerModelComponent implements OnInit {
   public async trainFaceRecognizerModel() {
     // Exécution de la requête :
     try {
-      this.reponseTrainingModele= await this.iaService.trainFaceRecognizerModel();
-      if (this.reponseTrainingModele) {
+      this.reponseTrainingModel = await this.iaService.trainFaceRecognizerModel();
+      if (this.reponseTrainingModel) {
         this.successTrainingDataSet = this.successTraining;
       } else {
         this.errorTrainingDataSet = this.errorTraining;
@@ -234,8 +234,8 @@ export class FaceRecognizerModelComponent implements OnInit {
    */
   public async validateFaceRecognizerModel() {
     try {
-      this.reponseModeleValidation = await this.iaService.validateFaceRecognizerModel();
-      if (this.reponseModeleValidation) {
+      this.reponseValidationModel = await this.iaService.validateFaceRecognizerModel();
+      if (this.reponseValidationModel) {
         this.successValidationModel = this.successValidation;
       } else {
         this.errorValidationModel = this.errorValidation;
@@ -274,8 +274,8 @@ export class FaceRecognizerModelComponent implements OnInit {
    */
   public async initializeFaceRecognizerModel(): Promise<any>{
     try {
-      let modeleInitialise = await this.iaService.initializeFaceRecognizerModel();
-      console.log("modele initialisé : "+ modeleInitialise);
+      let modeleInitialize = await this.iaService.initializeFaceRecognizerModel();
+      console.log("modele initialisé : "+ modeleInitialize);
     } catch (error) {
       console.error('Erreur : ', error);
     }

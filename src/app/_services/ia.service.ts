@@ -44,7 +44,7 @@ export class IaService {
   private recognizeFaceTrainingUrl : string = '/api/ia/face-recognizer/recognize-face-training';
   private recognizeFaceValidationUrl: string = '/api/ia/face-recognizer/recognize-face-test';
   private useRecognizeFaceModelUrl: string = '/api/ia/face-recognizer/use-recognize-face';
-  private initializeFaceRecognizerModeleUrl: string = '/api/ia/face-recognizer/initialize';
+  private initializeFaceRecognizerModelUrl: string = '/api/ia/face-recognizer/initialize';
   private getListModelUrl: string = '/api/ia/face-recognizer/models-list';
   private selectModelUrl: string = '/api/ia/face-recognizer/model-selection';
 
@@ -146,8 +146,7 @@ export class IaService {
   /**
    * Méthode qui sauvegarde les prédictions du modèle.
    * Par défaut, le modèle Random Forest est utilisé sur le dataset de classification du type d'Iris.
-   * @param irisModelResponse : paramètres passés aux modèles et prédiction réalisée.
-   * @return irisModelResponse : paramètres passés aux modèles et prédiction réalisée.
+   * @param irisModelResponse : Paramètres passés aux modèles et prédiction réalisée.
    *
    */
   public async saveIrisModelPrediction(reponseModeleIris: IrisModelResponse) {
@@ -213,9 +212,11 @@ export class IaService {
    *
    */
   public async importExcelTemplateDataSetFile(file: File): Promise<any> {
-    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
-    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.loadExcelDataSetUrl, formData).toPromise(); // Envoi du formData vers le Back.
+    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    const formData: FormData = new FormData();
+    // Ajout du fichier à l'objet FormData :
+    formData.append('file', file, file.name);
+    return this.http.post<boolean>(this.loadExcelDataSetUrl, formData).toPromise();
   }
 
 
@@ -240,9 +241,11 @@ export class IaService {
    *
    */
   public importCsvTemplateDataSetFile(file: File): Promise<any> {
-    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
-    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.loadCsvDataSetUrl, formData).toPromise(); // Envoi du formData vers le Back.
+    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    const formData: FormData = new FormData();
+    // Ajout du fichier à l'objet FormData :
+    formData.append('file', file, file.name);
+    return this.http.post<boolean>(this.loadCsvDataSetUrl, formData).toPromise();
   }
 
 
@@ -367,7 +370,7 @@ export class IaService {
    */
   public async initializeFaceRecognizerModel(): Promise<any>{
     try {
-      const response= await this.http.get<string>(this.initializeFaceRecognizerModeleUrl).toPromise();
+      const response= await this.http.get<string>(this.initializeFaceRecognizerModelUrl).toPromise();
       console.log(response);
       return response;
     } catch (error) {
@@ -465,7 +468,6 @@ export class IaService {
     try {
       // Création de l'url :
       const url = `${this.trainGANModelUrl}?nbEpochs=${n_epochs}&batchSize=${batch_size}&lr=${lr}&zDim=${z_dim}&device=${device}&showStep=${show_step}&saveStep=${save_step}`;
-
       // Exécution du Backend :
       const response = await this.http.post<boolean>(url, {}).toPromise();
       console.log(response);

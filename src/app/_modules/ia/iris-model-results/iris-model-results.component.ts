@@ -22,13 +22,13 @@ export class IrisModelResultsComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  public listeResults !: IrisModelResponse[];
+  public resultsList !: IrisModelResponse[];
   public successInitialization : string = "Modèle ré-initialisé avec succès";
   public displaySuccessResultInitialization !: string;
   public errorInitialization : string = "Echec lors de la ré-initialisation. Appelez votre informaticien préféré.";
   public displayErrorInitialization !: string;
-  public generationFichierExcel !: boolean;
-  public generationFichierCsv !: boolean;
+  public generationExcelFile !: boolean;
+  public generationCsvFile !: boolean;
   public initializeResult !: boolean;
   public getIrisDataSetResult !: boolean;
   public successGetDataSet : string = "Fichier excel du dataSet généré avec succès";
@@ -110,10 +110,10 @@ export class IrisModelResultsComponent implements OnInit {
   public getAllIrisModelPredictions(): void {
     try {
       this.iaService.getAllIrisModelPredictions().then((response) => {
-        this.listeResults = response;
+        this.resultsList = response;
         console.log(response);
       });
-      console.log("Résultat :" + this.listeResults);
+      console.log("Résultat :" + this.resultsList);
     } catch (error) {
       console.error('Erreur : ', error);
     }
@@ -130,8 +130,8 @@ export class IrisModelResultsComponent implements OnInit {
     this.iaService.generateExcelFileForPredictions().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierExcel = response;
-        console.log(this.generationFichierExcel);
+        this.generationExcelFile = response;
+        console.log(this.generationExcelFile);
       }),
       (error:HttpErrorResponse) =>
       {
@@ -150,8 +150,8 @@ export class IrisModelResultsComponent implements OnInit {
     this.iaService.generateCsvFileForPredictions().subscribe(
       (response: boolean) =>
       {
-        this.generationFichierCsv = response;
-        console.log(this.generationFichierCsv);
+        this.generationCsvFile = response;
+        console.log(this.generationCsvFile);
       }),
       (error:HttpErrorResponse) =>
       {

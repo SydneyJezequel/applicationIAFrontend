@@ -109,9 +109,11 @@ export class PersonneServiceService {
    *
    */
   public importExcelFile(file: File) {
-    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
-    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addExcelPersonnesUrl, formData); // Envoi du formData vers le Back.
+    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    const formData: FormData = new FormData();
+    // Ajout du fichier à l'objet FormData :
+    formData.append('file', file, file.name);
+    return this.http.post<boolean>(this.addExcelPersonnesUrl, formData);
   }
 
 
@@ -134,9 +136,11 @@ export class PersonneServiceService {
    *
    */
   public importCsvFile(file: File) {
-    const formData: FormData = new FormData(); // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST.
-    formData.append('file', file, file.name); // Ajout du fichier à l'objet FormData.
-    return this.http.post<boolean>(this.addCsvPersonnesUrl, formData); // Envoi du formData vers le Back.
+    // Création d'un objet FormData. Il est utilisé pour envoyer des données de formulaire (ex : fichiers) via une requête HTTP POST :
+    const formData: FormData = new FormData();
+    // Ajout du fichier à l'objet FormData :
+    formData.append('file', file, file.name);
+    return this.http.post<boolean>(this.addCsvPersonnesUrl, formData);
   }
 
 

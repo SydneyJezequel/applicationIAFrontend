@@ -7,16 +7,16 @@
 <!-- Formulaire pour ajouter une Personne -->
 <form (ngSubmit)="onSubmitPersonne()">
   <label for="nom">nom: </label>
-  <input id="nom" [(ngModel)]="addPerson.nom" name="nom" placeholder="nom">
+  <input id="nom" [(ngModel)]="addPersonne.nom" name="nom" placeholder="nom">
   <br>
   <label for="prenom">prenom: </label>
-  <input id="prenom" [(ngModel)]="addPerson.prenom" name="prenom" placeholder="prenom">
+  <input id="prenom" [(ngModel)]="addPersonne.prenom" name="prenom" placeholder="prenom">
   <br>
   <label for="date_naissance">date de naissance: </label>
-  <input id="date_naissance" [(ngModel)]="addPerson.date_naissance" name="date_naissance" placeholder="date_naissance">
+  <input id="date_naissance" [(ngModel)]="addPersonne.date_naissance" name="date_naissance" placeholder="date_naissance">
   <br>
   <label for="no_securite_sociale">no de sécurite sociale: </label>
-  <input id="no_securite_sociale" [(ngModel)]="addPerson.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
+  <input id="no_securite_sociale" [(ngModel)]="addPersonne.no_securite_sociale" name="no_securite_sociale" placeholder="no_securite_sociale">
   <br>
   <label for="photo">photo: </label>
   <input id="photo" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
