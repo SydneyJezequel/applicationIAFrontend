@@ -16,7 +16,7 @@ import { GanModelComponent } from "./gan-model/gan-model.component";
 /******************************* Routes *******************************/
 const routes: Routes = [
   { path: 'chat-bot', component: ChatGptBotComponent },
-  { path: 'liste-ia', component: ListIaComponent },
+  { path: 'ia-list', component: ListIaComponent },
   { path: 'iris', component: IrisModelComponent },
   { path: 'result-iris', component: IrisModelResultsComponent},
   { path: 'new-dataset', component: IrisModelNewDatasetComponent},

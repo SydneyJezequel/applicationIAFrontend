@@ -1,0 +1,51 @@
+<h2>Liste des villes</h2>
+
+
+
+<br>
+<br>
+<!-- Boutons des autres fonctionnalités -->
+<button [routerLink]="'/cities/add'">Ajouter une nouvelle ville</button>
+<button (click)="loadApi()">Recharger les données depuis le site du gouvernement</button>
+<br>
+<br>
+
+
+<!-- Affichage des villes sous forme de tableau -->
+<table *ngIf="cities && cities!=null">
+  <!-- En-tête -->
+  <thead>
+  <tr>
+    <th>nom</th>
+    <th>population</th>
+    <!--
+    <th>code Postaux</th>
+    -->
+    <th>code de département</th>
+    <th>code région</th>
+    <th>actions</th>
+  </tr>
+  </thead>
+  <!-- Données -->
+  <tbody>
+  <tr *ngFor="let city of cities">
+    <td>{{city.name}}</td>
+    <td>{{city.population}}</td>
+    <!--
+    <td>{{city.postal_codes}}</td>
+    -->
+    <td>{{city.department_code}}</td>
+    <td>{{city.region_code}}</td>
+    <td>
+      <button (click)="deleteCity(city.no_city)">Supprimer</button>
+      <button [routerLink]="'/cities/edit/' + city.no_city">Modifier</button>
+      <button [routerLink]="'/cities/details/' + city.no_city">Afficher le détail</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!-- Message d'erreur -->
+<div *ngIf="!cities || cities.length === 0">Aucune ville trouvée</div>
+

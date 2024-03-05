@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VilleModule } from "./_modules/ville/ville.module";
-import { PersonneModule } from "./_modules/personne/personne.module";
+import { CityModule } from "./_modules/city/city.module";
+import { PersonModule } from "./_modules/person/person.module";
 import { ContactComponent } from "./contact/contact.component";
 import { IAModule } from "./_modules/ia/ia.module";
 
@@ -24,8 +24,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    VilleModule,
-    PersonneModule,
+    CityModule,
+    PersonModule,
     IAModule
   ],
   exports: [RouterModule]

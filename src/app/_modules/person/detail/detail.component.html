@@ -1,0 +1,32 @@
+<br>
+<br>
+
+
+<!-- Affichage du détail d'une Personne -->
+<div *ngIf="foundPerson">
+  <h2>Détails de la personne </h2>
+  <p>Matricule : {{ foundPerson.no_person }}</p>
+  <p>Nom : {{ foundPerson.name }}</p>
+  <p>Prénom : {{ foundPerson.surname }}</p>
+  <p>Date de naissance : {{ foundPerson.birth_date }}</p>
+  <p>Numéro de sécurité sociale : {{ foundPerson.no_social_safety }}</p>
+  <div *ngIf="imageDataUrl">
+    <img [src]="imageDataUrl" alt="Image">
+  </div>
+</div>
+
+
+<br>
+<br>
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="''">Retour à la liste des Personnes</button>
+
+
+<!-- ************** TEST AFFICHAGE IMAGE ************** -->
+<br>
+<br>
+<br>
+<h4>TEST AFFICHAGE PHOTO : </h4>
+<img [src]="base64String" alt="Image">
+<!-- ************** TEST AFFICHAGE IMAGE ************** -->
+

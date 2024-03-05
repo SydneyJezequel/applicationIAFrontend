@@ -1,0 +1,42 @@
+<h2>Ajout d'une Ville</h2>
+
+
+
+<br>
+<br>
+
+<!-- Formulaire pour ajouter une Personne -->
+<form (ngSubmit)="onAddCity()">
+  <label for="name">nom: </label>
+  <input id="name" [(ngModel)]="addCity.name" name="name" placeholder="nom">
+  <br>
+  <label for="population">population: </label>
+  <input id="population" [(ngModel)]="addCity.population" name="population" placeholder="population">
+  <br>
+  <!--
+  <label for="postal_codes">codes postaux: </label>
+  <input id="postal_codes" [(ngModel)]="addCity.postal_codes" name="postal_codes" placeholder="codesPostaux">
+  <br>
+  -->
+  <label for="department_code">code departement: </label>
+  <input id="department_code" [(ngModel)]="addCity.department_code" name="department_code" placeholder="codeDepartement">
+  <br>
+  <br>
+  <label for="region_code">code region: </label>
+  <input id="region_code" [(ngModel)]="addCity.region_code" name="region_code" placeholder="codeRegion">
+  <br>
+  <br>
+  <label for="siren">siren: </label>
+  <input id="siren" [(ngModel)]="addCity.siren" name="siren" placeholder="siren">
+  <br>
+  <button type="submit">Enregistrer</button>
+</form>
+
+
+
+<br>
+<br>
+
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="'/cities'">Retour à la liste des Villes</button>
+

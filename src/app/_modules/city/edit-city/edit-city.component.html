@@ -1,0 +1,41 @@
+<h2>Edition d'une Ville</h2>
+
+
+
+<br>
+<br>
+
+
+<!-- Formulaire pour ajouter une Ville -->
+<form (ngSubmit)="onEditCity()">
+  <label for="name">nom: </label>
+  <input id="name" [(ngModel)]="editCity.name" name="name" placeholder="nom">
+  <br>
+  <label for="population">population: </label>
+  <input id="population" [(ngModel)]="editCity.population" name="population" placeholder="population">
+  <br>
+  <!--
+  <label for="postal_codes">codes postaux: </label>
+  <input id="postal_codes" [(ngModel)]="editCity.postal_codes" name="postal_codes" placeholder="codesPostaux">
+  <br>
+  -->
+  <label for="department_code">code departement: </label>
+  <input id="department_code" [(ngModel)]="editCity.department_code" name="department_code" placeholder="codeDepartement">
+  <br>
+  <br>
+  <label for="region_code">code region: </label>
+  <input id="region_code" [(ngModel)]="editCity.region_code" name="region_code" placeholder="codeRegion">
+  <br>
+  <br>
+  <label for="siren">siren: </label>
+  <input id="siren" [(ngModel)]="editCity.siren" name="siren" placeholder="siren">
+  <br>
+  <button type="submit">Enregistrer</button>
+</form>
+
+
+<br>
+<br>
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="'/cities'">Retour à la liste des Villes</button>
+

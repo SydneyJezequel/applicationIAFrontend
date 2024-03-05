@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Ville } from "../model/ville.model";
+import { City } from "../model/city.model";
 import { Email } from "../model/email.model";
 
 
@@ -41,7 +41,7 @@ export class EmailService {
    */
   public async sendEmail(email : Email): Promise<void> {
     try {
-      const response = await this.http.post<Ville>(this.sendingEmail, email).toPromise();
+      const response = await this.http.post<City>(this.sendingEmail, email).toPromise();
       console.log(response);
     } catch (error) {
       console.error('Erreur : ', error);

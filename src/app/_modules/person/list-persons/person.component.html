@@ -1,0 +1,67 @@
+<!-- Page principale de l'application -->
+<h2>Liste des personnes</h2>
+
+
+
+<br>
+<br>
+
+
+<!-- Affichage des personnes sous forme de tableau -->
+<table>
+  <!-- En-tête -->
+  <thead>
+    <tr>
+      <th>numero</th>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>naissance</th>
+      <th>securite sociale</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <!-- Données -->
+  <tbody>
+  <tr *ngFor="let person of persons">
+    <td>{{person.no_person}}</td>
+    <td>{{person.name}}</td>
+    <td>{{person.surname}}</td>
+    <td>{{person.birth_date}}</td>
+    <td>{{person.no_social_safety}}</td>
+    <td>
+      <button (click)="deletePerson(person.no_person)">Supprimer</button>
+      <button [routerLink]="'/edit/' + person.no_person">Modifier</button>
+      <button [routerLink]="'/details/' + person.no_person">Afficher le détail</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!-- Bouton pour accéder à la fonctionnalité d'Ajout d'une person. -->
+<br>
+<br>
+<button [routerLink]="'/add'">Ajouter une nouvelle personne</button>
+
+
+<!-- Bouton pour générer un fichier Excel qui contient la liste des personnes. -->
+<br>
+<br>
+<div class="success-message" *ngIf="generationExcelFile">
+  Fichier Excel généré avec succès.
+</div>
+<div>
+  <button (click)="generateExcelFile()">Générer un fichier Excel</button>
+</div>
+
+
+<!-- Bouton pour générer un fichier Csv qui contient la liste des personnes. -->
+<br>
+<div class="success-message" *ngIf="generationCsvFile">
+  Fichier Csv généré avec succès.
+</div>
+<div>
+  <button (click)="generateCsvFile()">Générer un fichier Csv</button>
+</div>
+<br>
+

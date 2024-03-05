@@ -7,8 +7,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
-import { PersonneModule } from "./_modules/personne/personne.module";
-import { VilleModule } from "./_modules/ville/ville.module";
+import { PersonModule } from "./_modules/person/person.module";
+import { CityModule } from "./_modules/city/city.module";
 import { IAModule } from "./_modules/ia/ia.module";
 
 
@@ -29,8 +29,8 @@ import { IAModule } from "./_modules/ia/ia.module";
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    PersonneModule,
-    VilleModule,
+    PersonModule,
+    CityModule,
     IAModule,
   ],
   providers: [],

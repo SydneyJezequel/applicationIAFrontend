@@ -1,0 +1,34 @@
+<h2>Edition d'une Personne</h2>
+
+
+
+<br>
+<br>
+
+
+<!-- Formulaire pour ajouter une Personne -->
+<form (ngSubmit)="onEditPerson()">
+  <label for="name">nom: </label>
+  <input id="name" [(ngModel)]="editPerson.name" name="name" placeholder="nom">
+  <br>
+  <label for="surname">prenom: </label>
+  <input id="surname" [(ngModel)]="editPerson.surname" name="surname" placeholder="prenom">
+  <br>
+  <label for="birth_date">date de naissance: </label>
+  <input id="birth_date" [(ngModel)]="editPerson.birth_date" name="birth_date" placeholder="date_naissance">
+  <br>
+  <label for="no_social_safety">no de sécurite sociale: </label>
+  <input id="no_social_safety" [(ngModel)]="editPerson.no_social_safety" name="no_social_safety" placeholder="no_securite_sociale">
+  <br>
+  <label for="photo">photo: </label>
+  <input id="photo" name="photo" placeholder="photo" type="file" (change)="onFileSelected($event)">
+  <br>
+  <button type="submit">Enregistrer</button>
+</form>
+
+
+<br>
+<br>
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="''">Retour à la liste des Personnes</button>
+

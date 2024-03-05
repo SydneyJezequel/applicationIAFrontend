@@ -1,0 +1,23 @@
+<br>
+<br>
+
+
+<!-- Affichage du détail d'une Ville -->
+<div *ngIf="foundCity">
+  <h2>Détails de la ville </h2>
+  <p>Nom : {{ foundCity.name }}</p>
+  <p>Population : {{ foundCity.population }}</p>
+  <!--
+  <p>Code Postaux : {{ foundCity.postal_codes }}</p>
+  -->
+  <p>Code de Département : {{ foundCity.department_code }}</p>
+  <p>Code de Region : {{ foundCity.region_code }}</p>
+  <p>Siren : {{ foundCity.siren }}</p>
+</div>
+
+
+<br>
+<br>
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="'/cities'">Retour à la liste des Villes</button>
+
