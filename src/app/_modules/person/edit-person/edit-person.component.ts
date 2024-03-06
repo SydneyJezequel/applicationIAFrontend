@@ -86,7 +86,7 @@ export class EditPersonComponent implements OnInit {
   /**
    * Méthode d'édition d'une Personne.
    * Cette méthode appelle le service pour créer une personne.
-   * @param person : Personne à modifier.
+   * @param Person : personne à modifier.
    *
    */
   public async changePerson(person: Person): Promise<void> {
@@ -121,7 +121,7 @@ export class EditPersonComponent implements OnInit {
 
   /**
    * Méthode qui se déclenche quand le fichier est ajoutée.
-   * @param event d'ajout de la photo.
+   * @param Event : Evènement d'ajout de la photo.
    *
    */
   public onFileSelected(event: Event): void {
@@ -140,7 +140,7 @@ export class EditPersonComponent implements OnInit {
 
   /**
    * Méthode qui convertit un fichier en string Base64.
-   * @param file : Fichier de l'image.
+   * @param File : fichier contenant l'image.
    *
    */
   public async fileToBase64(file: File): Promise<string> {

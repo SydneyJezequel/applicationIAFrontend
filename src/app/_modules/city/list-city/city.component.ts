@@ -78,19 +78,6 @@ export class CityComponent implements OnInit {
     (response: City[]) =>
     {
       this.cities = response;
-      // ***************** TEST ***************** //
-      console.log("AFFICHAGE GET ALL : ");
-      for(let a = 0; a<this.cities.length; a++){
-        console.log("AFFICHAGE ELEMENT : " + a);
-        console.log(this.cities[a].no_city);
-        console.log(this.cities[a].postal_codes);
-        console.log(this.cities[a].name);
-        console.log(this.cities[a].region_code);
-        console.log(this.cities[a].department_code);
-        console.log(this.cities[a].population);
-        console.log(this.cities[a].siren);
-      }
-      // ***************** TEST ***************** //
     }),
     (error:HttpErrorResponse) =>
     {
@@ -101,8 +88,8 @@ export class CityComponent implements OnInit {
 
 
   /**
-   * Méthode qui renvoie une city en fonction de son Id.
-   * @param no_city : id de la city récupérée.
+   * Méthode qui récupère une Ville.
+   * @param no_city : id de la ville récupérée.
    *
    */
   public getCityById(no_city:number): void {
@@ -120,8 +107,8 @@ export class CityComponent implements OnInit {
 
 
   /**
-   * Méthode qui ajoute une ville.
-   * @param city : ville ajoutée.
+   * Méthode qui enregistre une ville.
+   * @param city : ville enregistrée.
    *
    */
   public async createCity(city:City): Promise<void> {

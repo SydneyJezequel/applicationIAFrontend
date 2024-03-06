@@ -47,8 +47,8 @@ export class AddCityComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui ajoute une ville.
-   *
+   * Méthode d'exécution du formulaire de création d'une ville.
+   * *
    */
   public onAddCity(): void {
     console.log(this.addCity);

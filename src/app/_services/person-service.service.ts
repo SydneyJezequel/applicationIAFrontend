@@ -45,7 +45,7 @@ export class PersonServiceService {
 
   /**
    * Méthode qui récupère la liste de toutes les personnes.
-   * @return Person[] : Liste de toutes les personnes.
+   * @return Person[] : liste de toutes les personnes.
    *
    */
   public getAllPersons(): Observable<Person[]>  {
@@ -57,7 +57,7 @@ export class PersonServiceService {
   /**
    * Méthode qui récupère une personne.
    * @param no_person : id de la personne récupérée.
-   * @return Personne : Personne récupérée.
+   * @return Personne : personne récupérée.
    *
    */
   public getPersonById(no_person:number): Observable<Person> {
@@ -67,7 +67,7 @@ export class PersonServiceService {
 
 
   /**
-   * Méthode qui ajoute une personne.
+   * Méthode qui enregistre une personne.
    * @param person : personne ajoutée.
    * @param photoBase64String : photo de la personne.
    *
@@ -156,7 +156,7 @@ export class PersonServiceService {
   // *************************** TEST RECUPERER UNE IMAGE *************************** //
   /**
    * Méthode qui récupère la photo d'une personne.
-   * @return String qui contient l'image.
+   * @return String : image récupérée.
    *
    */
   public getImagebase64(): Promise<string> {

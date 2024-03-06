@@ -57,8 +57,9 @@ export class DetailComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode qui renvoie une personne en fonction de son Id.
+   * Méthode qui récupère une personne.
    * @param no_person : id de la personne récupérée.
+   * @return Personne : personne récupérée.
    *
    */
   public getOnePerson(no_person : number): void {

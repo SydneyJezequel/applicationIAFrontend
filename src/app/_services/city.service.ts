@@ -56,9 +56,6 @@ export class CityService {
    *
    */
   public getAllCities(): Observable<City[]> {
-    console.log("AFFICHAGE GET ALL : ");
-    console.log(this.http.get<City[]>(this.getAllCitiesUrl));
-    console.log("AFFICHAGE GET ALL : ");
     return this.http.get<City[]>(this.getAllCitiesUrl);
   }
 
@@ -77,8 +74,8 @@ export class CityService {
 
 
   /**
-   * Méthode qui ajoute une ville.
-   * @param city : ville ajoutée.
+   * Méthode qui enregistre une ville.
+   * @param city : ville enregistrée.
    *
    */
   public async createCity(city: City): Promise<void> {

@@ -52,7 +52,7 @@ export class EditCityComponent implements OnInit {
   /******************************* Méthodes *******************************/
 
   /**
-   * Méthode d'exécution du Formulaire.
+   * Méthode d'exécution du formulaire d'édition d'une ville.
    *
    */
   public onEditCity(): void {
