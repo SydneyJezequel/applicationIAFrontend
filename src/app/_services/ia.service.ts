@@ -53,6 +53,11 @@ export class IaService {
   private generateGANImageUrl: string = '/api/ia/gan-image-generation/generate-faces';
   private trainGANModelUrl: string = '/api/ia/gan-image-generation/train-gan-model';
 
+  // Urls du modèle d'Embedding :
+  private loadDataFileUrlUrl:string = '/api/ia/embedding/process-jsonl-dataset';
+  private initializeDataSetUrl:string = '/api/ia/embedding/load-dataset';
+  private generateEmbeddingAnswerUrl:string = '/api/ia/embedding/get-llm-embedding-answer';
+
 
 
 
@@ -476,6 +481,14 @@ export class IaService {
       console.error('Erreur : ', error);
     }
   }
+
+
+
+
+
+  /*********************** Méthodes du modèle d'Embedding ***********************/
+
+
 
 
 
