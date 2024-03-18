@@ -54,9 +54,12 @@ export class IaService {
   private trainGANModelUrl: string = '/api/ia/gan-image-generation/train-gan-model';
 
   // Urls du modèle d'Embedding :
-  private loadDataFileUrlUrl:string = '/api/ia/embedding/process-jsonl-dataset';
-  private initializeDataSetUrl:string = '/api/ia/embedding/load-dataset';
-  private generateEmbeddingAnswerUrl:string = '/api/ia/embedding/get-llm-embedding-answer';
+  private generateTemplateForJsonlDataSetUrl: string = '/api/ia/embedding/generate-template-jsonl-dataset';
+  private loadDataFileUrl: string = '/api/ia/embedding/process-jsonl-dataset';
+  private initializeDataSetUrl: string = '/api/ia/embedding/load-dataset';
+  private generateEmbeddingAnswerUrl: string = '/api/ia/embedding/get-llm-embedding-answer';
+  private selectCategoryUrl: string = '/api/ia/embedding/select-category';
+  private getCategoriesListUrl: string = '/api/ia/embedding/get-categories-list';
 
 
 
@@ -488,7 +491,101 @@ export class IaService {
 
   /*********************** Méthodes du modèle d'Embedding ***********************/
 
+  /**
+   * Méthode qui génère le fichier Jsonl pour charger le DataSet dans la BDD Vectorielle.
+   * Par défaut, le DataSet utilisé est celui du Camélia Yvon Jézéquel.
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public generateJsonlFileTemplateForDataset(): Observable<boolean> {
+    return this.http.get<boolean>(this.generateTemplateForJsonlDataSetUrl);
+  }
 
+
+
+  /**
+   * Méthode pour charger un fichier .jsonl contenant les données chargées dans la BDD Vectorielle.
+   * @param file : fichier .jsonl contenant les données de la BDD Vectorielle.
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public async importJsonlTemplateDataSetFile(file: File): Promise<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    console.log("Fichier d'images intégré : " +file);
+    return this.http.post<boolean>(this.loadDataFileUrl, formData).toPromise();
+  }
+
+
+
+  /**
+   * Méthode qui charge le dataset dans la BDD Vectorielle à partir du fichier .jsonl.
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public async loadFileIntoDataset(): Promise<any> {
+    try {
+      const response= await this.http.get<boolean>(this.initializeDataSetUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui renvoie la liste des modèles (HOG, CNN).
+   * @return List<String> : liste des modèles.
+   *
+   */
+  public async getListCategories(): Promise<any> {
+    try {
+      const response= await this.http.get<string>(this.getCategoriesListUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui sélectionne le modèle de machine learning.
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public async selectCategory(selectList:string): Promise<any> {
+    try {
+      console.log("choix modèle SERVICE : "+selectList);
+      const response= await this.http.post<boolean>(this.selectCategoryUrl, selectList).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui interroge le Llm au sujet du dataSet chargé dans la BDD Vectorielle.
+   * @param string : question posée au Llm.
+   * @return string : réponse fournie par le Llm.
+   *
+   */
+  public async getLlmEmbeddingAnswer(question:string): Promise<any> {
+    try {
+      // Exécution du Backend :
+      const response = await this.http.get<boolean>(this.generateEmbeddingAnswerUrl+question).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
 
 
 
