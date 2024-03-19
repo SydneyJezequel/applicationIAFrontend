@@ -8,9 +8,9 @@
 <br>
 
 <!-- Description -->
-<div class="cadre">
+<div class="frame">
   <h4> Description du modèle </h4>
-  <p class="consignes"> Ce module traduit le dataset fournit en vecteurs.
+  <p class="instructions"> Ce module traduit le dataset fournit en vecteurs.
     Les vecteurs sont stockés dans une base de données vectorielle.
     Le modèle s’appuie sur cette base de données pour fournir des réponses personnalisées.
     L’embedding est une méthode pour personnaliser les réponses fournies par un LLM. </p>
@@ -23,11 +23,11 @@
 <br>
 
 <!-- Section générant un ficher ".jsonl" pour intégrer un nouveau DataSet -->
-<div class="cadre">
+<div class="frame">
   <h4>Générer le fichier d'intégration des données</h4>
   <br>
   <button (click)="generateJsonlFileTemplateForDataset()">Générer le Fichier ".jsonl"</button>
-  <p class="consignes"> Générer un Fichier ".jsonl" pour intégrer un dataset dans la BDD Vectorielle</p>
+  <p class="instructions"> Générer un Fichier ".jsonl" pour intégrer un dataset dans la BDD Vectorielle</p>
   <div *ngIf="displaySuccessMessageJsonl">
     <p class="success-message"> {{ displaySuccessMessageJsonl }} </p>
   </div>
@@ -43,14 +43,14 @@
 <br>
 
 <!-- Chargement du fichier -->
-<div class="cadre">
+<div class="frame">
   <h4> Chargement du fichier de données </h4>
   <br>
   <input type="file" (change)="onDataSetFileSelected($event)" />
   <button (click)="importJsonlTemplateDataSetFile()">Charger les données</button>
   <br>
   <br>
-  <p class="consignes">Charger le fichier ".jsonl" contenant les données.</p>
+  <p class="instructions">Charger le fichier ".jsonl" contenant les données.</p>
   <div *ngIf="successLoadingDataSetFile">
     <p class="success-message"> {{ successLoadingDataSetFile }} </p>
   </div>
@@ -66,13 +66,13 @@
 <br>
 
 <!-- Initialisation de la BDD Vectorielle -->
-<div class="cadre">
+<div class="frame">
   <h4> Chargement de la Base de données Vectorielle </h4>
   <br>
   <button (click)="loadFileIntoDataset()">Charger les données dans la Base de données Vectorielle</button>
   <br>
   <br>
-  <p class="consignes">Charger les données dans la Base de données Vectorielle.</p>
+  <p class="instructions">Charger les données dans la Base de données Vectorielle.</p>
   <div *ngIf="successLoadingDataSetIntoVectorDataBase">
     <p class="success-message"> {{ successLoadingDataSetIntoVectorDataBase }} </p>
   </div>
@@ -89,17 +89,17 @@
 <br>
 
 <!-- Sélectionner la catégorie -->
-<div class="cadre">
+<div class="frame">
   <h4> Sélectionner la catégorie des données contextuelles </h4>
   <br>
-  <select [(ngModel)]="categoriesList">
+  <select [(ngModel)]="selectedCategory">
     <option value="Sélectionner le type de données chargées" disabled selected>Sélectionner une catégorie</option>
     <option *ngFor="let category of categoriesList" [value]="category">{{ category.valueOf() }}</option>
   </select>
   <br>
   <br>
   <button (click)="selectCategory()">Sélectionner la catégorie de données chargées</button>
-  <p class="consignes">Choisissez la catégorie de données chargées dans la Base de données Vectorielle.
+  <p class="instructions">Choisissez la catégorie de données chargées dans la Base de données Vectorielle.
     Cette étapes est nécessaire pour que le modèle réponde à vos questions avec le bon contexte.
   </p>
   <div *ngIf="successSelectCategory">
@@ -118,7 +118,7 @@
 <br>
 
 <!-- Manipulation du modèle -->
-<div class="cadre">
+<div class="frame">
   <h4> Interroger la Base de données Vectorielle </h4>
   <br>
   <form (ngSubmit)="getLlmEmbeddingAnswer()" #commentForm="ngForm">
@@ -128,9 +128,12 @@
   </form>
   <br>
   <br>
-  <p class="consignes">Posez une question au Modèle au sujet du dataset que vous avez chargé.</p>
+  <p class="instructions">Posez une question au Modèle au sujet du dataset que vous avez chargé.
+  Le temps de réponse peut être de quelques minutes.</p>
+  <br>
   <div *ngIf="displayLlmAnswer">
-    <p class="consignes"> Réponse du modèle : {{ displayLlmAnswer }} </p>
+    <p class="answer"> Réponse du modèle : </p>
+    <p class="text-answer"> {{ displayLlmAnswer }} </p>
   </div>
   <br>
 </div>

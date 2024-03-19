@@ -57,9 +57,9 @@ export class IaService {
   private generateTemplateForJsonlDataSetUrl: string = '/api/ia/embedding/generate-template-jsonl-dataset';
   private loadDataFileUrl: string = '/api/ia/embedding/process-jsonl-dataset';
   private initializeDataSetUrl: string = '/api/ia/embedding/load-dataset';
-  private generateEmbeddingAnswerUrl: string = '/api/ia/embedding/get-llm-embedding-answer';
   private selectCategoryUrl: string = '/api/ia/embedding/select-category';
   private getCategoriesListUrl: string = '/api/ia/embedding/get-categories-list';
+  private generateEmbeddingAnswerUrl: string = '/api/ia/embedding/get-llm-embedding-answer/';
 
 
 
@@ -557,10 +557,10 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public async selectCategory(selectList:string): Promise<any> {
+  public async selectCategory(selectCategory:string): Promise<any> {
     try {
-      console.log("choix modèle SERVICE : "+selectList);
-      const response= await this.http.post<boolean>(this.selectCategoryUrl, selectList).toPromise();
+      console.log("choix modèle SERVICE : "+selectCategory);
+      const response= await this.http.post<boolean>(this.selectCategoryUrl, selectCategory).toPromise();
       console.log(response);
       return response;
     } catch (error) {
@@ -579,7 +579,10 @@ export class IaService {
   public async getLlmEmbeddingAnswer(question:string): Promise<any> {
     try {
       // Exécution du Backend :
-      const response = await this.http.get<boolean>(this.generateEmbeddingAnswerUrl+question).toPromise();
+      console.log("QUESTION : " + question);
+      // console.log("TEST URL : " + this.generateEmbeddingAnswerUrl + question);
+      // const url = `${this.generateEmbeddingAnswerUrl}${question}`;
+      const response = await this.http.post<boolean>(this.generateEmbeddingAnswerUrl, question).toPromise();
       console.log(response);
       return response;
     } catch (error) {

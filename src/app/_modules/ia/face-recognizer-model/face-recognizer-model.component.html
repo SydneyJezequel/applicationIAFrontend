@@ -4,14 +4,14 @@
 <h2> Bienvenue dans le module de Reconnaissance Faciale </h2>
 
 <br>
-<p class="consignes"> Exécuter les étapes encadrées les unes après les autres </p>
+<p class="instructions"> Exécuter les étapes encadrées les unes après les autres </p>
 
 <br>
 <br>
 <br>
 
 <!-- Section pour charger le dataSet d'entrainement du modèle -->
-<div class="cadre">
+<div class="frame">
   <label> Charger le jeu de données d'entrainement : </label>
   <br>
   <br>
@@ -23,7 +23,7 @@
   </select>
   <br>
   <button (click)="selectModel()">Sélectionner le modèle de Machine Learning</button>
-  <p class="consignes">Choisissez le modèle de Machine Learning en charge de la reconnaissance faciale :
+  <p class="instructions">Choisissez le modèle de Machine Learning en charge de la reconnaissance faciale :
   HOG est une technique de traitement d'image traditionnelle basée sur du Machine Learning.
   CNN est une technique de traitement d'image plus moderne basée sur du Deep Learning.
   Les temps de traitement du modèle CNN peuvent être très long (plusieurs minutes) par rapport à ceux de HOG.
@@ -43,7 +43,7 @@
     <input type="file" (change)="onTrainingSetFileSelected($event)" />
     <button (click)="loadTrainingDataSetZip()">Charger les données</button>
   </div>
-  <p class="consignes">La liste de photos doit être stockée dans un fichier zip.
+  <p class="instructions">La liste de photos doit être stockée dans un fichier zip.
     Ce fichier doit être nommé avec le prénom et le nom de la personne
     à identifier : "prenom_nom". Vous pouvez charger les listes de plusieurs personnes.
     Une fois les photos chargées, cliquer sur ENTRAINER LE MODELE.</p>
@@ -53,7 +53,7 @@
   <br>
     <button (click)="trainFaceRecognizerModel()">Entrainer le modèle</button>
   <br>
-  <p class="consignes">L'entrainement du modèle peut prendre quelques minutes :
+  <p class="instructions">L'entrainement du modèle peut prendre quelques minutes :
     Attendez le message de l'application.</p>
   <br>
   <div *ngIf="successTrainingDataSet">
@@ -69,7 +69,7 @@
 <br>
 
 <!-- Section pour charger le dataSet de validation du modèle -->
-<div class="cadre">
+<div class="frame">
   <label> Chargement le jeu de données de validation : </label>
   <br>
   <br>
@@ -78,7 +78,7 @@
     <input type="file" (change)="onValidationSetFileSelected($event)" />
     <button (click)="loadValidationDataSetZip()">Charger les données</button>
   </div>
-  <p class="consignes">La liste de photos à tester doit être un fichier zip.
+  <p class="instructions">La liste de photos à tester doit être un fichier zip.
     Une fois les photos chargées, cliquer sur TESTER LE MODELE.</p>
   <br>
   <div *ngIf="loadValidationDataSetResultSuccess">
@@ -91,7 +91,7 @@
   <br>
   <button (click)="validateFaceRecognizerModel()">Tester le modèle</button>
   <br>
-  <p class="consignes">La validation du modèle prend quelques minutes :
+  <p class="instructions">La validation du modèle prend quelques minutes :
     Les photos du jeu de test seront affichées avec le nom de la personne.</p>
   <br>
   <div *ngIf="successValidationModel">
@@ -107,7 +107,7 @@
 <br>
 
 <!-- Section pour charger l'image à identifier -->
-<div class="cadre">
+<div class="frame">
   <label> Reconnaissance faciale : </label>
   <br>
   <br>
@@ -116,7 +116,7 @@
     <input type="file" (change)="onFaceIdentifyFileSelected($event)" />
     <button (click)="loadFaceIdentifyFile()">Charger les données</button>
   </div>
-  <p class="consignes">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
+  <p class="instructions">Charger la photo d'une personne que le modèle peut reconnaitre.</p>
   <br>
   <div *ngIf="successLoadFaceIdentify ">
     <p class="success-message"> {{ successLoadFaceIdentify  }} </p>
@@ -127,7 +127,7 @@
   <br>
   <br>
   <button (click)="executeFaceRecognizerModel()">Reconnaitre une personne</button>
-  <p class="consignes">Identifier le visage de la personne sur la photo.
+  <p class="instructions">Identifier le visage de la personne sur la photo.
   Cette action peut prendre quelques minutes : Attendez le retour
   de l'application.</p>
   <br>

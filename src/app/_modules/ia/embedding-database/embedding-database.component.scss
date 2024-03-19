@@ -9,7 +9,7 @@ h2, h4, p, li, button, label, input {
 
 
 /* Mise en forme des intitulés de cadres */
-label{
+label {
   font-weight: bold;
 }
 
@@ -80,7 +80,7 @@ button:hover {
 
 
 /* Message de succès lors de la génération d'un fichier Excel ou Csv. */
-.success-message{
+.success-message {
   font-family: Arial, sans-serif;
   color: #45a049;
 }
@@ -88,7 +88,7 @@ button:hover {
 
 
 /* Encadrement des fonctionnalités. */
-.cadre{
+.frame {
   border: 2px solid grey;
   padding: 20px;
   max-width: 400px;
@@ -98,7 +98,21 @@ button:hover {
 
 
 /* Consignes pour manipuler le modèle. */
-.consignes{
+.instructions {
   font-style: italic;
+}
+
+
+
+/* Réponse affichée. */
+.answer {
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.text-answer {
+  font-style: italic;
+  font-weight: bold;
 }
 

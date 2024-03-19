@@ -47,7 +47,7 @@ export class EmbeddingDatabaseComponent implements OnInit {
 
   // Catégories :
   public categoriesList !: string[];
-  public selectedCategory !: string;
+  selectedCategory !: string;
 
   // Messages de retour - Sélection de la catégorie :
   public reponseSelectCategory !: boolean;
