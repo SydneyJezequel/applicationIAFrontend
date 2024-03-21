@@ -56,6 +56,8 @@ export class IaService {
   // Urls du modèle d'Embedding :
   private generateTemplateForJsonlDataSetUrl: string = '/api/ia/embedding/generate-template-jsonl-dataset';
   private loadDataFileUrl: string = '/api/ia/embedding/process-jsonl-dataset';
+  private initializeDefaultDataSetUrl: string = '/api/ia/embedding/load-default-dataset';
+  private generateJsonlFileDefaultDatasetUrl: string = '/api/ia/embedding/generate-jsonl-default-dataset';
   private initializeDataSetUrl: string = '/api/ia/embedding/load-dataset';
   private selectCategoryUrl: string = '/api/ia/embedding/select-category';
   private getCategoriesListUrl: string = '/api/ia/embedding/get-categories-list';
@@ -514,6 +516,36 @@ export class IaService {
     formData.append('file', file, file.name);
     console.log("Fichier d'images intégré : " +file);
     return this.http.post<boolean>(this.loadDataFileUrl, formData).toPromise();
+  }
+
+
+
+  /**
+   * Méthode qui initialise le dataset par défaut dans la BDD Vectorielle.
+   * Le DataSet par défaut est le DataSet : "camelia_yvon_jezequel_dataset.jsonl".
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public async initializeDefaultDataset(): Promise<any> {
+    try {
+      const response= await this.http.get<boolean>(this.initializeDefaultDataSetUrl).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier ".jsonl" contenant le dataset par défaut.
+   * Le DataSet par défaut est le DataSet : "camelia_yvon_jezequel_dataset.jsonl".
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public generateJsonlFileDefaultDataset(): Observable<boolean>  {
+    return this.http.get<boolean>(this.generateJsonlFileDefaultDatasetUrl);
   }
 
 

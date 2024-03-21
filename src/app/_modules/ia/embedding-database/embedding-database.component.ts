@@ -21,7 +21,7 @@ export class EmbeddingDatabaseComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
-  // Messages de retour - Génértion du fichier pour charger le DataSet :
+  // Messages de retour - Génération du fichier pour charger le DataSet :
   public generationJsonlFile !: boolean;
   public successGenerationJsonl : string = "Fichier pour charger le dataset généré avec succès.";
   public errorFileGenerationJsonl : string = "Erreur lors de la génération du fichier pour charer le dataset.";
@@ -37,6 +37,20 @@ export class EmbeddingDatabaseComponent implements OnInit {
   public errorLoadingFile : string = "Erreur lors du chargement du fichier contenant le dataset.";
   public successLoadingDataSetFile !: string;
   public errorLoadingDataSetFile !: string;
+
+  // Messages de retour - Chargement du DataSet par défaut :
+  public reponseInitializeDefaultDataset !: boolean;
+  public successInitializeDataset : string = "Dataset par défaut chargé.";
+  public errorInitializeDataset : string = "Erreur lors du chargement du dataset par défaut.";
+  public successInitializeDefaultDataset !: string;
+  public errorInitializeDefaultDataset !: string;
+
+  // Messages de retour - Génération du fichier contenant le DataSet par défaut :
+  public reponseGeneratelFileDefaultDataset !: boolean;
+  public successGenerateFile: string = "Fichier généré avec succès.";
+  public errorGenerateFile: string = "Erreur lors de la génération du fichier.";
+  public successGeneratelFileDefaultDataset !: string;
+  public errorGeneratelFileDefaultDataset !: string;
 
   // Messages de retour - Chargement du DataSet dans la BDD Vectorielle :
   public reponseLoadingDataSetIntoVectorDataBase !: boolean;
@@ -84,7 +98,6 @@ export class EmbeddingDatabaseComponent implements OnInit {
 
 
   /******************************* Méthodes *******************************/
-
 
   /**
    * Méthode qui génère le fichier Jsonl pour charger le DataSet dans la BDD Vectorielle.
@@ -143,6 +156,54 @@ export class EmbeddingDatabaseComponent implements OnInit {
       }
 
     }
+  }
+
+
+
+  /**
+   * Méthode qui initialise le dataset par défaut dans la BDD Vectorielle.
+   * Le DataSet par défaut est le DataSet : "camelia_yvon_jezequel_dataset.jsonl".
+   *
+   */
+  public async initializeDefaultDataset(): Promise<void> {
+    // Exécution de la requête :
+    try {
+      this.reponseInitializeDefaultDataset = await this.iaService.initializeDefaultDataset();
+      // Affichage des messages de succès ou d'erreur :
+      if (this.reponseInitializeDefaultDataset) {
+        this.successInitializeDefaultDataset = this.successInitializeDataset;
+      } else {
+        this.errorInitializeDefaultDataset = this.errorInitializeDataset;
+      }
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
+
+
+
+  /**
+   * Méthode qui génère un fichier ".jsonl" contenant le dataset par défaut.
+   * Le DataSet par défaut est le DataSet : "camelia_yvon_jezequel_dataset.jsonl".
+   *
+   */
+  public async generateJsonlFileDefaultDataset(): Promise<void> {
+    // Exécution de la requête :
+    this.iaService.generateJsonlFileDefaultDataset().subscribe(
+      (response: boolean) => {
+        this.reponseGeneratelFileDefaultDataset = response;
+        console.log(this.reponseGeneratelFileDefaultDataset);
+        // Affichage des messages de succès ou d'erreur :
+        if (this.reponseGeneratelFileDefaultDataset) {
+          this.successGeneratelFileDefaultDataset = this.successGenerateFile;
+        } else {
+          this.errorGeneratelFileDefaultDataset = this.errorGenerateFile;
+        }
+      }),
+      (error:HttpErrorResponse) =>
+      {
+        alert(error.message);
+      }
   }
 
 
@@ -223,6 +284,7 @@ export class EmbeddingDatabaseComponent implements OnInit {
       console.error('Erreur : ', error);
     }
   }
+
 
 
 

@@ -44,8 +44,7 @@
 
 <!-- Chargement du fichier -->
 <div class="frame">
-  <h4> Chargement du fichier de données </h4>
-  <br>
+  <h4> Charger le fichier de données </h4>
   <input type="file" (change)="onDataSetFileSelected($event)" />
   <button (click)="importJsonlTemplateDataSetFile()">Charger les données</button>
   <br>
@@ -56,6 +55,32 @@
   </div>
   <div *ngIf="errorLoadingDataSetFile">
     <p class="error-message"> {{ errorLoadingDataSetFile }} </p>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Initialisation du dataset par défaut -->
+  <h4> Ou initialiser le modèle avec le Dataset par défaut : </h4>
+  <button (click)="initializeDefaultDataset()">Initialiser le modèle avec le Dataset par défaut</button>
+  <div *ngIf="successInitializeDefaultDataset">
+    <p class="success-message"> {{ successInitializeDefaultDataset }} </p>
+  </div>
+  <div *ngIf="errorInitializeDefaultDataset">
+    <p class="error-message"> {{ errorInitializeDefaultDataset }} </p>
+  </div>
+  <br>
+  <p class="instructions"> Si vous initialiser le modèle par défaut, rendez-vous dans la section "Sélectionner la catégorie des données contextuelles".</p>
+  <br>
+
+  <!-- Génération d'un fichier contenant le dataset par défaut -->
+  <button (click)="generateJsonlFileDefaultDataset()">Cliquez ici pour récupérer le dataset par défaut</button>
+  <div *ngIf="successGeneratelFileDefaultDataset">
+    <p class="success-message"> {{ successGeneratelFileDefaultDataset }} </p>
+  </div>
+  <div *ngIf="errorGeneratelFileDefaultDataset">
+    <p class="error-message"> {{ errorGeneratelFileDefaultDataset }} </p>
   </div>
   <br>
 </div>
