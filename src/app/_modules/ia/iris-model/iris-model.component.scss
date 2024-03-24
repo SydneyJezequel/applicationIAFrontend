@@ -78,3 +78,20 @@ button:hover {
   color: #45a049;
 }
 
+
+
+/* Encadrement des fonctionnalités. */
+.frame {
+  border: 2px solid grey;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+
+/* Consignes pour manipuler le modèle. */
+.instructions {
+  font-style: italic;
+}
+

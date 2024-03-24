@@ -10,65 +10,17 @@
     <img src="assets/iris.png" width="70" height="58" class="rounded-image">
 </div>
 
+
 <br>
 <br>
+<br>
 
 
-<!-- Section pour définir les paramètres et générer la prédiction -->
-<div>
-  <p>Ce modèle prédit le type de fleur d'Iris en fonction des paramètres suivants :</p>
-  <br>
-
-  <!-- Curseur pour définir le paramètre "petalLength" -->
-  <div class="inline-block-container">
-    <label>Longueur du Sépal</label>
-    <input type="range" id="sepalLength" [(ngModel)]="sepalLength" min="4.3" max="7.9" step="0.1">
-  </div>
-  <div class="inline-block-container">
-    <p>{{sepalLength}}</p>
-  </div>
-
-  <br>
-
-  <!-- Curseur pour définir le paramètre "sepalWidth" -->
-  <div class="inline-block-container">
-    <label>Largeur du Sépal</label>
-    <input type="range" id="sepalWidth" [(ngModel)]="sepalWidth" min="2.0" max="4.4" step="0.1">
-  </div>
-  <div class="inline-block-container">
-    <p>{{sepalWidth}}</p>
-  </div>
-
-  <br>
-
-  <!-- Curseur pour définir le paramètre "petalLength" -->
-  <div class="inline-block-container">
-    <label>Longueur du Pétale</label>
-    <input type="range" id="petalLength" [(ngModel)]="petalLength" min="1.0" max="6.9" step="0.1">
-  </div>
-  <div class="inline-block-container">
-    <p>{{petalLength}}</p>
-  </div>
-
-  <br>
-
-  <!-- Curseur pour définir le paramètre "petalWidth" -->
-  <div class="inline-block-container">
-    <label>Largeur du Pétale</label>
-    <input type="range" id="petalWidth" [(ngModel)]="petalWidth" min="0.1" max="2.5" step="0.1">
-  </div>
-  <div class="inline-block-container">
-    <p>{{petalWidth}}</p>
-  </div>
-
-  <br>
-  <br>
-
-  <!-- Boutons pour manipuler le modèle -->
-  <button (click)="getIrisModelPrediction()">Predict</button>
-  <button [routerLink]="'/result-iris'">Afficher les résultats du modèle</button>
-  <button [routerLink]="'/new-dataset'">Intégrer un nouveau jeu de données</button>
-  <button (click)="initializeModelPrediction()">Ré-initialiser le modèle de classification des Iris</button>
+<!-- Section pour manipuler les données -->
+<div class="frame">
+  <p class="instructions"> Initialiser le modèle avec un dataset </p>
+  <!-- Bouton pour Initialiser le modèle avec le dataset des Iris -->
+  <button (click)="initializeModelPrediction()">Initialiser le modèle Random Forest avec le Dataset des Iris</button>
   <!-- Affichage du message de succès ou d'erreur -->
   <div *ngIf="displaySuccessResultInitialization" class="success-message">
     {{ displaySuccessResultInitialization }}
@@ -78,20 +30,86 @@
   </div>
   <br>
   <br>
-
-  <!-- Bouton pour enregistrer la prédiction générée -->
-  <div *ngIf="reponseIrisModel">
-    <p class="result"> Type de fleur : {{ reponseIrisModel }} </p>
-    <button (click)="saveIrisModelPrediction()">Enregistrer cette prédiction</button>
-  </div>
-
-  <br>
+  <!-- Bouton pour intégrer un nouveau dataset -->
+  <button [routerLink]="'/new-dataset'">Intégrer un nouveau jeu de données</button>
   <br>
 </div>
 
 
 <br>
 <br>
+<br>
+
+
+<!-- Section pour définir les paramètres et générer la prédiction -->
+<div class="frame">
+  <p class="instructions">Ce modèle prédit le type de fleur d'Iris en fonction des paramètres suivants :</p>
+  <br>
+  <!-- Curseur pour définir le paramètre "petalLength" -->
+  <div class="inline-block-container">
+    <label>Longueur du Sépal</label>
+    <input type="range" id="sepalLength" [(ngModel)]="sepalLength" min="4.3" max="7.9" step="0.1">
+  </div>
+  <div class="inline-block-container">
+    <p>{{sepalLength}}</p>
+  </div>
+  <br>
+  <!-- Curseur pour définir le paramètre "sepalWidth" -->
+  <div class="inline-block-container">
+    <label>Largeur du Sépal</label>
+    <input type="range" id="sepalWidth" [(ngModel)]="sepalWidth" min="2.0" max="4.4" step="0.1">
+  </div>
+  <div class="inline-block-container">
+    <p>{{sepalWidth}}</p>
+  </div>
+  <br>
+  <!-- Curseur pour définir le paramètre "petalLength" -->
+  <div class="inline-block-container">
+    <label>Longueur du Pétale</label>
+    <input type="range" id="petalLength" [(ngModel)]="petalLength" min="1.0" max="6.9" step="0.1">
+  </div>
+  <div class="inline-block-container">
+    <p>{{petalLength}}</p>
+  </div>
+  <br>
+  <!-- Curseur pour définir le paramètre "petalWidth" -->
+  <div class="inline-block-container">
+    <label>Largeur du Pétale</label>
+    <input type="range" id="petalWidth" [(ngModel)]="petalWidth" min="0.1" max="2.5" step="0.1">
+  </div>
+  <div class="inline-block-container">
+    <p>{{petalWidth}}</p>
+  </div>
+  <br>
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+<!-- Section pour gérer les prédictions -->
+<div class="frame">
+  <p class="instructions"> Générer des prédictions.</p>
+  <!-- Bouton pour générer des prédictions -->
+  <button (click)="getIrisModelPrediction()">Predict</button>
+  <button [routerLink]="'/result-iris'">Afficher les résultats du modèle</button>
+  <br>
+  <br>
+  <!-- Bouton pour enregistrer la prédiction générée -->
+  <div *ngIf="reponseIrisModel">
+    <p class="result"> Type de fleur : {{ reponseIrisModel }} </p>
+    <button (click)="saveIrisModelPrediction()">Enregistrer cette prédiction</button>
+  </div>
+  <br>
+</div>
+
+
+<br>
+<br>
+<br>
+
 
 <!-- Bouton de retour à la liste des IA -->
 <button [routerLink]="'/ia-list'">Retour à la liste des IA </button>
