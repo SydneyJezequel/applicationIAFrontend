@@ -11,24 +11,45 @@
 <div class="frame">
   <h3> Présentation du module </h3>
   <br>
-  <p class="instructions"> Ajouter les consignes.
+  <p class="instructions"> Le fine-tuning est une technique en apprentissage où un modèle pré-entraîné
+    sur une grande quantité de données est spécialisé sur une tâche à l'aide d'un jeu de données
+    plus petit et plus ciblé.
+  </p>
+  <br>
+  <p class="instructions">
+  Ce module consiste à exécuter l'entrainement du modèle sur le jeu de données "hotpot_qa".
+    Puis à l'interroger pour vérifier la qualité de son entrainement.
+  </p>
+  <br>
+  <p>
+    Si vous souhaitez plus d'information sur ce jeu de données, vous pouvez consulter la page suivante :
+    <a href="https://huggingface.co/datasets/hotpot_qa">Modèle hotpot_qa</a>
   </p>
   <br>
 </div>
 
+<br>
+<br>
 <br>
 <br>
 <br>
 
 <!-- Exécution du Fine Tuning -->
 <div class="frame">
-  <h3> Fine Tuning </h3>
+  <h3> Fine Tuner le Llm </h3>
+  <button (click)="fineTuneModel()">Exécuter le Fine-Tuning du Llm</button>
   <br>
-  <p class="instructions"> Ajouter les consignes.
-  </p>
-  <br>
+  <p class="instructions">Entrainer le Llm pour le spécialiser sur un domaine donné.</p>
+  <div *ngIf="successFineTuningLlm">
+    <p class="success-message"> {{ successFineTuningLlm }} </p>
+  </div>
+  <div *ngIf="errorFineTuningLlm">
+    <p class="error-message"> {{ errorFineTuningLlm }} </p>
+  </div>
 </div>
 
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -37,17 +58,27 @@
 <div class="frame">
   <h3> Utilisation du Llm </h3>
   <br>
-  <p class="instructions"> Ajouter les consignes.
-  </p>
+  <form (ngSubmit)="getFineTunedLlmAnswer()" #commentForm="ngForm">
+    <textarea id="question" name="question" [(ngModel)]="question" placeholder="Posez une question." required></textarea>
+    <br>
+    <button type="submit" [disabled]="!commentForm.valid">Envoyer</button>
+  </form>
+  <br>
+  <br>
+  <p class="instructions">Posez une question au Modèle Fine-Tuné.
+    Le temps de réponse peut être de quelques minutes.</p>
+  <br>
+  <div *ngIf="displayLlmAnswer">
+    <p class="answer"> Réponse du modèle : </p>
+    <p class="text-answer"> {{ displayLlmAnswer }} </p>
+  </div>
   <br>
 </div>
 
+<br>
+<br>
+<br>
 
-
-
-
-
-
-
-
+<!-- Bouton de retour à la page principale -->
+<button [routerLink]="'/ia-list'">Retour à la liste des IA</button>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IaService} from "../../../_services/ia.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import { IaService } from "../../../_services/ia.service";
+import { HttpErrorResponse } from "@angular/common/http";
 
 
 
@@ -272,9 +272,7 @@ export class EmbeddingDatabaseComponent implements OnInit {
    */
   public async getLlmEmbeddingAnswer(): Promise<any>{
     try {
-      console.log("*********** TEST ***********")
       console.log(this.question)
-      console.log("*********** TEST ***********")
       this.llmAnswer = await this.iaService.getLlmEmbeddingAnswer(this.question);
       console.log(this.llmAnswer);
       if (this.llmAnswer) {

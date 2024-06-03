@@ -63,6 +63,10 @@ export class IaService {
   private getCategoriesListUrl: string = '/api/ia/embedding/get-categories-list';
   private generateEmbeddingAnswerUrl: string = '/api/ia/embedding/get-llm-embedding-answer/';
 
+  // Urls du Fine-Tuning d'un Llm :
+  generateLlmAnswerUrl: string = '/api/ia/llm/execute-model';
+  executeFineTuningUrl: string = '/api/ia/llm/fine-tune-model';
+
 
 
 
@@ -622,6 +626,41 @@ export class IaService {
     }
   }
 
+
+
+
+
+  /*********************** Méthodes du Fine-Tuning d'un Llm ***********************/
+
+  /**
+   * Méthode qui exécute le Fine-Tuning du Llm.
+   * Par défaut, le Dataset utilisé est le dataset "hotpot_qa".
+   * @return boolean : succès/échec de l'exécution.
+   *
+   */
+  public fineTuneModel(): Observable<boolean> {
+      return this.http.get<boolean>(this.executeFineTuningUrl);
+    }
+
+
+
+  /**
+   * Méthode qui interroge le Llm et obtient une réponse.
+   * @param string : question posée au Llm.
+   * @return string : réponse fournie par le Llm.
+   *
+   */
+  public async getFineTunedLlmAnswer(question:string): Promise<any> {
+    try {
+      // Exécution du Backend :
+      console.log("Question : " + question);
+      const response = await this.http.post<boolean>(this.generateLlmAnswerUrl, question).toPromise();
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error('Erreur : ', error);
+    }
+  }
 
 
 

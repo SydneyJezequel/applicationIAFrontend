@@ -2,15 +2,8 @@
 
 
 /* Police d'écriture */
-h2, h3, h4, p, li, button, label, input {
+h2, h3, p, button {
   font-family: Arial, sans-serif;
-}
-
-
-
-/* Mise en forme des intitulés de cadres */
-label {
-  font-weight: bold;
 }
 
 
@@ -28,34 +21,6 @@ button {
 
 button:hover {
   background-color: #45a049;
-}
-
-
-
-/* Mise en forme de l'image */
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rounded-image {
-  width: 80%;
-  height: auto;
-}
-
-
-
-/* Alignement des paramètres */
-.inline-block-container {
-  display: inline-block;
-}
-
-
-
-/* Mise en valeur du résultat */
-.result{
-  font-weight: bold;
 }
 
 
