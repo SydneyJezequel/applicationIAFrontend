@@ -22,7 +22,7 @@
   </p>
   <br>
   <p>
-    Si vous souhaitez plus d'information sur ce jeu de données, vous pouvez consulter la page suivante :
+    Si vous souhaitez plus d'informations sur ce jeu de données, vous pouvez consulter la page suivante :
     <a href="https://huggingface.co/datasets/hotpot_qa">Modèle hotpot_qa</a>
   </p>
   <br>
@@ -39,7 +39,9 @@
   <h3> Fine Tuner le Llm </h3>
   <button (click)="fineTuneModel()">Exécuter le Fine-Tuning du Llm</button>
   <br>
-  <p class="instructions">Entrainer le Llm pour le spécialiser sur un domaine donné.</p>
+  <p class="instructions">Entrainer le Llm pour le spécialiser sur un domaine donné.
+  Cela peut prendre quelques minutes.
+  </p>
   <div *ngIf="successFineTuningLlm">
     <p class="success-message"> {{ successFineTuningLlm }} </p>
   </div>
