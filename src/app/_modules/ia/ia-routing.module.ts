@@ -8,6 +8,7 @@ import { IrisModelNewDatasetComponent } from "./iris-model-new-dataset/iris-mode
 import { FaceRecognizerModelComponent } from "./face-recognizer-model/face-recognizer-model.component";
 import { GanModelComponent } from "./gan-model/gan-model.component";
 import { EmbeddingDatabaseComponent } from "./embedding-database/embedding-database.component";
+import {LlmModelComponent} from "./llm-model/llm-model.component";
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'new-dataset', component: IrisModelNewDatasetComponent},
   { path: 'reconnaissance-faciale', component: FaceRecognizerModelComponent},
   { path: 'gan-model', component: GanModelComponent},
-  { path: 'embedding', component: EmbeddingDatabaseComponent}
+  { path: 'embedding', component: EmbeddingDatabaseComponent},
+  { path: 'llm-model', component: LlmModelComponent}
 ];
 
 
