@@ -616,8 +616,6 @@ export class IaService {
     try {
       // Exécution du Backend :
       console.log("QUESTION : " + question);
-      // console.log("TEST URL : " + this.generateEmbeddingAnswerUrl + question);
-      // const url = `${this.generateEmbeddingAnswerUrl}${question}`;
       const response = await this.http.post<boolean>(this.generateEmbeddingAnswerUrl, question).toPromise();
       console.log(response);
       return response;
@@ -647,14 +645,20 @@ export class IaService {
   /**
    * Méthode qui interroge le Llm et obtient une réponse.
    * @param string : question posée au Llm.
+   * @param string : context de la question posée.
    * @return string : réponse fournie par le Llm.
    *
    */
-  public async getFineTunedLlmAnswer(question:string): Promise<any> {
+  public async getFineTunedLlmAnswer(question:string, context:string): Promise<any> {
     try {
       // Exécution du Backend :
       console.log("Question : " + question);
-      const response = await this.http.post<boolean>(this.generateLlmAnswerUrl, question).toPromise();
+      console.log("Context : " + context);
+      // Création de l'url :
+      const url = `${this.generateLlmAnswerUrl}?question=${question}&context=${context}`;
+      console.log("Url : " + url);
+      // Exécution du Backend :
+      const response = await this.http.post<boolean>(url, {}).toPromise();
       console.log(response);
       return response;
     } catch (error) {

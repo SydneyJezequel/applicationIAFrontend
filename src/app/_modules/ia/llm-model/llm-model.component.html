@@ -63,6 +63,8 @@
   <form (ngSubmit)="getFineTunedLlmAnswer()" #commentForm="ngForm">
     <textarea id="question" name="question" [(ngModel)]="question" placeholder="Posez une question." required></textarea>
     <br>
+    <textarea id="context" name="context" [(ngModel)]="context" placeholder="Ajoutez le contexte." required></textarea>
+    <br>
     <button type="submit" [disabled]="!commentForm.valid">Envoyer</button>
   </form>
   <br>

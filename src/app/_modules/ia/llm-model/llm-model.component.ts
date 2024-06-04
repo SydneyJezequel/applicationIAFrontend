@@ -30,6 +30,7 @@ export class LlmModelComponent implements OnInit {
 
   // Champs du formulaire contenant la question :
   public question !: string;
+  public context !: string;
 
   // Messages de retour - Réponse du Llm :
   public llmAnswer !: string;
@@ -89,7 +90,8 @@ export class LlmModelComponent implements OnInit {
   public async getFineTunedLlmAnswer(): Promise<any>{
     try {
       console.log(this.question)
-      this.llmAnswer = await this.iaService.getFineTunedLlmAnswer(this.question);
+      console.log(this.context)
+      this.llmAnswer = await this.iaService.getFineTunedLlmAnswer(this.question, this.context);
       console.log(this.llmAnswer);
       if (this.llmAnswer) {
         this.displayLlmAnswer = this.llmAnswer;
