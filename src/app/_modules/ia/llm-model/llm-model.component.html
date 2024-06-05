@@ -37,8 +37,31 @@
 <!-- Exécution du Fine Tuning -->
 <div class="frame">
   <h3> Fine Tuner le Llm </h3>
+  <br>
+  <form (ngSubmit)="fineTuneModel()" #commentForm="ngForm">
+    <label>Nombre de cycles d'entrainement : </label>
+    <input id="nbepochs" name="nbepochs" [(ngModel)]="question" placeholder="Nombre de cycles d'entrainement." required>
+    <br>
+    <label>Taille du dataset d’entrainement : </label>
+    <input id="trainDatasetSize" name="trainDatasetSize" [(ngModel)]="context" placeholder="Taille du dataset d’entrainement." required>
+    <br>
+    <label>Taille du dataset validation : </label>
+    <input id="validationDatasetSize" name="validationDatasetSize" [(ngModel)]="question" placeholder="Taille du dataset validation." required>
+    <br>
+    <label>Nombre de lignes d’entrainement par batch : </label>
+    <input id="trainBatchSize" name="trainBatchSize" [(ngModel)]="context" placeholder="Nombre de lignes d’entrainement par batch." required>
+    <br>
+    <label>Nombre de lignes d’évaluation par batch : </label>
+    <input id="evalBatchSize" name="evalBatchSize" [(ngModel)]="question" placeholder="Nombre de lignes d’évaluation par batch." required>
+    <br>
+    <button type="submit" [disabled]="!commentForm.valid">Exécuter le Fine-Tuning du Llm</button>
+  </form>
+  <br>
+  <br>
+  <!--
   <button (click)="fineTuneModel()">Exécuter le Fine-Tuning du Llm</button>
   <br>
+   -->
   <p class="instructions">Entrainer le Llm pour le spécialiser sur un domaine donné.
   Cela peut prendre quelques minutes.
   </p>

@@ -21,14 +21,21 @@ export class LlmModelComponent implements OnInit {
 
   /******************************* Attributs *******************************/
 
+  // Champs du formulaire pour Fine Tuner le Modèle :
+  public nbEpochs !: number;
+  public trainDatasetSize !: number;
+  public validationDatasetSize !: number;
+  public trainBatchSize !: number;
+  public evalBatchSize !: number;
+
   // Messages de retour - Fine Tuning du Llm :
-  public reponseFineTuningLlm !: boolean;
+  public reponseFineTuningLlm !: boolean | undefined;
   public fineTuningLlmSucceeded : string = "Le Fine Tuning du modèle s'est déroulé avec succès.";
   public fineTuningLlmFailed : string = "Le Fine Tuning du modèle a échoué.";
   public successFineTuningLlm !: string;
   public errorFineTuningLlm !: string;
 
-  // Champs du formulaire contenant la question :
+  // Champs du formulaire pour interroger le modèle :
   public question !: string;
   public context !: string;
 
@@ -62,23 +69,20 @@ export class LlmModelComponent implements OnInit {
    * Par défaut, le Dataset utilisé est le dataset "hotpot_qa".
    *
    */
-  public async fineTuneModel(): Promise<void> {
-    // Exécution de la requête :
-    this.iaService.fineTuneModel().subscribe(
-      (response: boolean) => {
-        this.reponseFineTuningLlm = response;
-        console.log(this.reponseFineTuningLlm);
-        // Affichage des messages de succès ou d'erreur :
-        if (this.reponseFineTuningLlm) {
-          this.successFineTuningLlm = this.fineTuningLlmSucceeded;
-        } else {
-          this.errorFineTuningLlm = this.fineTuningLlmFailed;
-        }
-      }),
-      (error:HttpErrorResponse) =>
-      {
-        alert(error.message);
+  public async fineTuneModel(): Promise<any> {
+    try{
+      // Exécution de la requête :
+      this.reponseFineTuningLlm = await this.iaService.fineTuneModel(this.nbEpochs, this.trainDatasetSize, this.validationDatasetSize, this.trainBatchSize, this.evalBatchSize);
+      console.log(this.reponseFineTuningLlm);
+      // Affichage des messages de succès ou d'erreur :
+      if (this.reponseFineTuningLlm) {
+        this.successFineTuningLlm = this.fineTuningLlmSucceeded;
+      } else {
+        this.errorFineTuningLlm = this.fineTuningLlmFailed;
       }
+    } catch (error) {
+       console.error('Erreur : ', error);
+    }
   }
 
 

@@ -636,9 +636,14 @@ export class IaService {
    * @return boolean : succès/échec de l'exécution.
    *
    */
-  public fineTuneModel(): Observable<boolean> {
-      return this.http.get<boolean>(this.executeFineTuningUrl);
-    }
+  public async fineTuneModel(n_epochs : number, train_dataset_size : number, validation_dataset_size : number, train_batch_size : number, eval_batch_size : number): Promise<undefined | boolean> {
+    // Création de l'url :
+    const url = `${this.executeFineTuningUrl}?nbEpochs=${n_epochs}&trainDatasetSize=${train_dataset_size}&validationDatasetSize=${validation_dataset_size}&trainBatchSize=${train_batch_size}&evalBatchSize=${eval_batch_size}ave_step}`;
+    // Exécution du Backend :
+    const response = await this.http.post<boolean>(url, {}).toPromise();
+    console.log(response);
+    return response;
+  }
 
 
 
