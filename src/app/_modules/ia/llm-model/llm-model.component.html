@@ -40,30 +40,26 @@
   <br>
   <form (ngSubmit)="fineTuneModel()" #commentForm="ngForm">
     <label>Nombre de cycles d'entrainement : </label>
-    <input id="nbepochs" name="nbepochs" [(ngModel)]="question" placeholder="Nombre de cycles d'entrainement." required>
+    <input id="nbEpochs" name="nbEpochs" [(ngModel)]="nbEpochs" placeholder="3" required>
     <br>
     <label>Taille du dataset d’entrainement : </label>
-    <input id="trainDatasetSize" name="trainDatasetSize" [(ngModel)]="context" placeholder="Taille du dataset d’entrainement." required>
+    <input id="trainDatasetSize" name="trainDatasetSize" [(ngModel)]="trainDatasetSize" placeholder="8000" required>
     <br>
     <label>Taille du dataset validation : </label>
-    <input id="validationDatasetSize" name="validationDatasetSize" [(ngModel)]="question" placeholder="Taille du dataset validation." required>
+    <input id="validationDatasetSize" name="validationDatasetSize" [(ngModel)]="validationDatasetSize" placeholder="2000" required>
     <br>
     <label>Nombre de lignes d’entrainement par batch : </label>
-    <input id="trainBatchSize" name="trainBatchSize" [(ngModel)]="context" placeholder="Nombre de lignes d’entrainement par batch." required>
+    <input id="trainBatchSize" name="trainBatchSize" [(ngModel)]="trainBatchSize" placeholder="16" required>
     <br>
     <label>Nombre de lignes d’évaluation par batch : </label>
-    <input id="evalBatchSize" name="evalBatchSize" [(ngModel)]="question" placeholder="Nombre de lignes d’évaluation par batch." required>
+    <input id="evalBatchSize" name="evalBatchSize" [(ngModel)]="evalBatchSize" placeholder="16" required>
     <br>
     <button type="submit" [disabled]="!commentForm.valid">Exécuter le Fine-Tuning du Llm</button>
   </form>
   <br>
   <br>
-  <!--
-  <button (click)="fineTuneModel()">Exécuter le Fine-Tuning du Llm</button>
-  <br>
-   -->
   <p class="instructions">Entrainer le Llm pour le spécialiser sur un domaine donné.
-  Cela peut prendre quelques minutes.
+  Cela peut prendre quelques minutes. Les données indiquées sont les valeurs par défaut.
   </p>
   <div *ngIf="successFineTuningLlm">
     <p class="success-message"> {{ successFineTuningLlm }} </p>

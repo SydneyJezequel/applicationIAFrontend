@@ -638,7 +638,7 @@ export class IaService {
    */
   public async fineTuneModel(n_epochs : number, train_dataset_size : number, validation_dataset_size : number, train_batch_size : number, eval_batch_size : number): Promise<undefined | boolean> {
     // Création de l'url :
-    const url = `${this.executeFineTuningUrl}?nbEpochs=${n_epochs}&trainDatasetSize=${train_dataset_size}&validationDatasetSize=${validation_dataset_size}&trainBatchSize=${train_batch_size}&evalBatchSize=${eval_batch_size}ave_step}`;
+    const url = `${this.executeFineTuningUrl}?nbEpochs=${n_epochs}&trainDatasetSize=${train_dataset_size}&validationDatasetSize=${validation_dataset_size}&trainBatchSize=${train_batch_size}&evalBatchSize=${eval_batch_size}`;
     // Exécution du Backend :
     const response = await this.http.post<boolean>(url, {}).toPromise();
     console.log(response);

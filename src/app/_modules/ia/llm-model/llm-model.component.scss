@@ -2,7 +2,7 @@
 
 
 /* Police d'écriture */
-h2, h3, p, button {
+h2, h3, p, button, label, input {
   font-family: Arial, sans-serif;
 }
 
@@ -48,6 +48,27 @@ button:hover {
 .success-message {
   font-family: Arial, sans-serif;
   color: #45a049;
+}
+
+
+
+/* Mise en forme du formulaire */
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 
